@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3329BFD2428EF1510AE55E10 /* Pods_ColorClashTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC961AE35B8DF1AB7C321C6 /* Pods_ColorClashTests.framework */; };
+		380BC51D256E379B00A8652C /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380BC51C256E379B00A8652C /* Tile.swift */; };
 		38C40526256E2A0F00DD10DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C40525256E2A0F00DD10DE /* Color.swift */; };
 		4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */; };
 		4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */; };
@@ -40,8 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorClash_ColorClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		380BC51C256E379B00A8652C /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		38C40525256E2A0F00DD10DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorClash_ColorClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8DC1CD256E240400ECCCD5 /* ColorClash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorClash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +107,6 @@
 				515C2A6C3AD6D5F5FCF77C9A /* Pods-ColorClashTests.debug.xcconfig */,
 				549A1AC6477F3D9A4820F739 /* Pods-ColorClashTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -143,6 +144,7 @@
 				4C8DC1DE256E240700ECCCD5 /* Info.plist */,
 				4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */,
 				38C40525256E2A0F00DD10DE /* Color.swift */,
+				380BC51C256E379B00A8652C /* Tile.swift */,
 			);
 			path = ColorClash;
 			sourceTree = "<group>";
@@ -416,6 +418,7 @@
 			files = (
 				4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */,
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
+				380BC51D256E379B00A8652C /* Tile.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
 			);
