@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
     var tileViews = [UIView]()
-    var occupiedTiles = [Tile]()
+    var occupiedTiles = [Color]()
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
         Tile2.backgroundColor = Tile2.color
     }*/
     
-    func swipeToEmptyTile(oldTile: Tile, newTile: Tile) {
+    func swipeToEmptyTile(oldTile: Color, newTile: Color) {
         newTile.backgroundColor = oldTile.backgroundColor
         newTile.occupied = true
         oldTile.backgroundColor = .systemBackground
@@ -145,10 +145,10 @@ class ViewController: UIViewController {
     
     func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         
-        var group0 = [Tile]()
-        var group1 = [Tile]()
-        var group2 = [Tile]()
-        var group3 = [Tile]()
+        var group0 = [Color]()
+        var group1 = [Color]()
+        var group2 = [Color]()
+        var group3 = [Color]()
         
         switch direction {
         case .up:
@@ -194,13 +194,13 @@ class ViewController: UIViewController {
         occupiedTiles.removeAll()*/
     }
     
-    func assessPositions(group: [Tile]) {
+    func assessPositions(group: [Color]) {
         for (index, tile) in group.enumerated() {
             
         }
     }
     
-    func combineCheck(oldTile: Tile, newTile: Tile) -> Bool {
+    func combineCheck(oldTile: Color, newTile: Color) -> Bool {
         if oldTile.color == newTile.color {
             return false
         } else {
@@ -263,39 +263,12 @@ class ViewController: UIViewController {
     
     func createNewTile() {
         let newTileCoords = pickRandomTile()
-        let newTile = Tile(color: pickRandomTileColor(), occupied: true, xCoord: newTileCoords.0, yCoord: newTileCoords.1, xPos: newTileCoords.2, yPos: newTileCoords.3, width: newTileCoords.4, height: newTileCoords.5)
+        let newTile = Color(color: pickRandomTileColor(), occupied: true, xCoord: newTileCoords.0, yCoord: newTileCoords.1, xPos: newTileCoords.2, yPos: newTileCoords.3, width: newTileCoords.4, height: newTileCoords.5)
         occupiedTiles.append(newTile)
         self.gameBoard.addSubview(newTile)
     }
 }
 
-class Tile: UIView {
 
-    var color: UIColor
-    var occupied: Bool
-    var xCoord: Int
-    var yCoord: Int
-    var xPos: CGFloat
-    var yPos: CGFloat
-    var width: CGFloat
-    var height: CGFloat
-    
-    init(color: UIColor, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
-        self.color = color
-        self.occupied = occupied
-        self.xCoord = xCoord
-        self.yCoord = yCoord
-        self.xPos = xPos
-        self.yPos = yPos
-        self.width = width
-        self.height = height
-        super.init(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
-        self.backgroundColor = color
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
 
