@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +11,149 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Local_Deals" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzI-bA-sBQ">
+                                <rect key="frame" x="7" y="248" width="400" height="400"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-OS-TZl">
+                                        <rect key="frame" x="5" y="5" width="390" height="390"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CTL-iz-AH1">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="94"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZl-Q6-9ms">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMQ-IW-Ly9">
+                                                        <rect key="frame" x="99" y="0.0" width="93.5" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVp-Qi-5pr">
+                                                        <rect key="frame" x="197.5" y="0.0" width="94" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIU-dB-nNY">
+                                                        <rect key="frame" x="296.5" y="0.0" width="93.5" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ldz-Rs-17F">
+                                                <rect key="frame" x="0.0" y="99" width="390" height="93.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKL-FZ-ved">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAT-ck-1Yv">
+                                                        <rect key="frame" x="99" y="0.0" width="93.5" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vuS-wk-oCW">
+                                                        <rect key="frame" x="197.5" y="0.0" width="94" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwg-zr-HwX">
+                                                        <rect key="frame" x="296.5" y="0.0" width="93.5" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-9G-RfU">
+                                                <rect key="frame" x="0.0" y="197.5" width="390" height="94"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4v-sQ-ZgI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0t-Xv-4ZD">
+                                                        <rect key="frame" x="99" y="0.0" width="93.5" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tuz-Kz-p3C">
+                                                        <rect key="frame" x="197.5" y="0.0" width="94" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQ9-ZE-UdD">
+                                                        <rect key="frame" x="296.5" y="0.0" width="93.5" height="94"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PT7-L4-f9c">
+                                                <rect key="frame" x="0.0" y="296.5" width="390" height="93.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="450-Hb-RiL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoQ-Nn-Zw3">
+                                                        <rect key="frame" x="99" y="0.0" width="93.5" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpa-a4-3E1">
+                                                        <rect key="frame" x="197.5" y="0.0" width="94" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Nb-RUh">
+                                                        <rect key="frame" x="296.5" y="0.0" width="93.5" height="93.5"/>
+                                                        <color key="backgroundColor" red="1" green="0.84501861209999996" blue="0.60483242530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7479305845318418" green="0.53640886974331359" blue="0.2489180630897635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="1GX-Ti-181"/>
+                                    <constraint firstItem="xA4-OS-TZl" firstAttribute="leading" secondItem="BzI-bA-sBQ" secondAttribute="leading" constant="5" id="EJQ-ZU-g4Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="xA4-OS-TZl" secondAttribute="trailing" constant="5" id="EPL-tA-re3"/>
+                                    <constraint firstItem="xA4-OS-TZl" firstAttribute="top" secondItem="BzI-bA-sBQ" secondAttribute="top" constant="5" id="Khz-EB-N1k"/>
+                                    <constraint firstAttribute="bottom" secondItem="xA4-OS-TZl" secondAttribute="bottom" constant="5" id="gBR-j5-aGU"/>
+                                    <constraint firstAttribute="width" constant="400" id="moG-MB-sXf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BzI-bA-sBQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1ut-rR-aAy"/>
+                            <constraint firstItem="BzI-bA-sBQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="L7q-wC-xAt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameBoard" destination="BzI-bA-sBQ" id="mub-EV-E5f"/>
+                        <outlet property="row1" destination="PT7-L4-f9c" id="GIK-8m-lGT"/>
+                        <outlet property="row2" destination="8VO-9G-RfU" id="UyA-t6-CVD"/>
+                        <outlet property="row3" destination="Ldz-Rs-17F" id="7GE-GX-jLM"/>
+                        <outlet property="row4" destination="CTL-iz-AH1" id="IEW-9J-jFQ"/>
+                        <outlet property="tile1" destination="450-Hb-RiL" id="pJ8-hF-9jO"/>
+                        <outlet property="tile10" destination="xAT-ck-1Yv" id="POP-mt-fVK"/>
+                        <outlet property="tile11" destination="vuS-wk-oCW" id="IEh-Il-x4t"/>
+                        <outlet property="tile12" destination="vwg-zr-HwX" id="BXi-nt-qdC"/>
+                        <outlet property="tile13" destination="RZl-Q6-9ms" id="Sh1-mV-9am"/>
+                        <outlet property="tile14" destination="fMQ-IW-Ly9" id="NX4-um-ziZ"/>
+                        <outlet property="tile15" destination="XVp-Qi-5pr" id="bNi-IA-Qga"/>
+                        <outlet property="tile16" destination="yIU-dB-nNY" id="P8d-JL-o58"/>
+                        <outlet property="tile2" destination="hoQ-Nn-Zw3" id="ufg-sq-qOL"/>
+                        <outlet property="tile3" destination="mpa-a4-3E1" id="Lyq-tI-wV4"/>
+                        <outlet property="tile4" destination="MKz-Nb-RUh" id="OlE-l3-IZj"/>
+                        <outlet property="tile5" destination="P4v-sQ-ZgI" id="DEy-01-uy6"/>
+                        <outlet property="tile6" destination="l0t-Xv-4ZD" id="O81-Sm-ZJ8"/>
+                        <outlet property="tile7" destination="tuz-Kz-p3C" id="Eq8-20-8wu"/>
+                        <outlet property="tile8" destination="pQ9-ZE-UdD" id="BmL-rJ-Z9V"/>
+                        <outlet property="tile9" destination="SKL-FZ-ved" id="58T-nz-nKb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="134.78260869565219" y="34.821428571428569"/>
         </scene>
     </scenes>
 </document>
