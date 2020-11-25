@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>303000969297-eqchpim3nrht16h218hcu9nlhbpsc0l6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.303000969297-eqchpim3nrht16h218hcu9nlhbpsc0l6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAro9qUsWK2JmGMl7KDBW59Lby2XBW8-6Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>303000969297</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.parkingpal.ColorClashGame</string>
+	<key>PROJECT_ID</key>
+	<string>colorclash-e77cf</string>
+	<key>STORAGE_BUCKET</key>
+	<string>colorclash-e77cf.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:303000969297:ios:e93e050087e0c6293cd870</string>
+	<key>DATABASE_URL</key>
+	<string>https://colorclash-e77cf.firebaseio.com</string>
+</dict>
+</plist>
