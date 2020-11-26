@@ -9,93 +9,91 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var tile1: UIView!
-    @IBOutlet weak var tile2: UIView!
-    @IBOutlet weak var tile3: UIView!
-    @IBOutlet weak var tile4: UIView!
-    @IBOutlet weak var tile5: UIView!
-    @IBOutlet weak var tile6: UIView!
-    @IBOutlet weak var tile7: UIView!
-    @IBOutlet weak var tile8: UIView!
-    @IBOutlet weak var tile9: UIView!
-    @IBOutlet weak var tile10: UIView!
-    @IBOutlet weak var tile11: UIView!
-    @IBOutlet weak var tile12: UIView!
-    @IBOutlet weak var tile13: UIView!
-    @IBOutlet weak var tile14: UIView!
-    @IBOutlet weak var tile15: UIView!
-    @IBOutlet weak var tile16: UIView!
-    @IBOutlet weak var gameBoard: UIView!
-    @IBOutlet weak var row1: UIStackView!
-    @IBOutlet weak var row2: UIStackView!
-    @IBOutlet weak var row3: UIStackView!
-    @IBOutlet weak var row4: UIStackView!
-    
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
     var tileViews = [UIView]()
+    let gameBoardView = UIView()
+    //we need to set up the initialization later so the xMax and yMax below are the same as the xMax and yMax in the Board initilization...so we don't have to manually put in both
+    let xMax = 3
+    let yMax = 3
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax:3, yMax:3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //manualAddTile()
+        createBoardGraphically()
         createGestures()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
-        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tile1.frame.width, tileHeight: tile1.frame.height)
+        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
-        self.gameBoard.addSubview(newTile)
+        self.gameBoardView.addSubview(newTile)
+    }
+    
+    func createBoardGraphically() {
+        let boardDimension = view.frame.width - 20
+        let boardSpacing = (boardDimension / CGFloat(xMax) / 15)
+        
+        //create board
+        gameBoardView.backgroundColor = .brown
+        view.addSubview(gameBoardView)
+        
+        //set up constraints for board
+        gameBoardView.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = gameBoardView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        let verticalConstraint = gameBoardView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        let widthConstraint = gameBoardView.widthAnchor.constraint(equalToConstant: boardDimension)
+        let heightConstraint = gameBoardView.heightAnchor.constraint(equalToConstant: boardDimension)
+        view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+        
+        //add vertical stackview to the board
+        let verticalStack = UIStackView()
+        verticalStack.distribution = .fillEqually
+        verticalStack.axis = .vertical
+        verticalStack.spacing = boardSpacing
+        gameBoardView.addSubview(verticalStack)
+        verticalStack.translatesAutoresizingMaskIntoConstraints = false
+        let verticalStackLeadingConstraint = verticalStack.leadingAnchor.constraint(equalTo: gameBoardView.leadingAnchor, constant: boardSpacing)
+        let verticalStackTrailingConstraint = verticalStack.trailingAnchor.constraint(equalTo: gameBoardView.trailingAnchor, constant: -boardSpacing)
+        let verticalStackTopConstraint = verticalStack.topAnchor.constraint(equalTo: gameBoardView.topAnchor, constant: boardSpacing)
+        let verticalStackBottomConstraint = verticalStack.bottomAnchor.constraint(equalTo: gameBoardView.bottomAnchor, constant: -boardSpacing)
+        gameBoardView.addConstraints([verticalStackLeadingConstraint, verticalStackTrailingConstraint, verticalStackTopConstraint, verticalStackBottomConstraint])
+        
+        //add horizontal stackviews to the board with views (tiles)
+        for _ in 0...xMax {
+            let horizontalStack = UIStackView()
+            horizontalStack.distribution = .fillEqually
+            horizontalStack.axis = .horizontal
+            horizontalStack.spacing = boardSpacing
+            
+            for _ in 0...yMax {
+                let backgroundTile = UIView()
+                tileViews.append(backgroundTile)
+                backgroundTile.backgroundColor = .white
+                horizontalStack.addArrangedSubview(backgroundTile)
+            }
+            verticalStack.addArrangedSubview(horizontalStack)
+        }
+        
     }
     
     func addTileViewsToArray() {
-        tileViews.append(tile1)
-        tileViews.append(tile2)
-        tileViews.append(tile3)
-        tileViews.append(tile4)
-        tileViews.append(tile5)
-        tileViews.append(tile6)
-        tileViews.append(tile7)
-        tileViews.append(tile8)
-        tileViews.append(tile9)
-        tileViews.append(tile10)
-        tileViews.append(tile11)
-        tileViews.append(tile12)
-        tileViews.append(tile13)
-        tileViews.append(tile14)
-        tileViews.append(tile15)
-        tileViews.append(tile16)
-        
         var xIndex = 0
         var yIndex = 0
-        tileHeight = tile1.frame.height
-        tileWidth = tile1.frame.width
+        tileHeight = tileViews[0].frame.height
+        tileWidth = tileViews[0].frame.width
         
         for (_, tile) in tileViews.enumerated() {
-            
-            if xIndex == 0 {
-                let newFrame = gameBoard.convert(tile.frame, from: row4)
-                tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
-            } else if xIndex == 1 {
-                let newFrame = gameBoard.convert(tile.frame, from: row3)
-                tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
-            } else if xIndex == 2 {
-                let newFrame = gameBoard.convert(tile.frame, from: row2)
-                tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
-            } else if xIndex == 3 {
-                let newFrame = gameBoard.convert(tile.frame, from: row1)
-                tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
-            }
+            let newFrame = gameBoardView.convert(tile.frame, from: tile.superview)
+            tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
             
             yIndex += 1
             
-            if yIndex == 4 {
+            if yIndex == yMax + 1 {
                 yIndex = 0
                 xIndex += 1
             }
@@ -121,9 +119,9 @@ class ViewController: UIViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         //moveTiles(direction: gesture.direction)
         //move to moveTiles funtion
-        var newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tile1.frame.width, tileHeight: tile1.frame.height)
+        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
-        self.gameBoard.addSubview(newTile)
+        self.gameBoardView.addSubview(newTile)
     }
     
     func swipeToEmptyTile(oldTile: Tile, newTile: Tile) {
@@ -134,7 +132,9 @@ class ViewController: UIViewController {
     }
     
     /*func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
-        
+     
+        //tile.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[2,3]]!, tileSize: tileHeight)
+     
         var group0 = [Tile]()
         var group1 = [Tile]()
         var group2 = [Tile]()
