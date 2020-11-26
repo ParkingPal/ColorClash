@@ -20,4 +20,17 @@ class Color: Tile {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func growAndAppearTile() {
+        let grow = CASpringAnimation(keyPath: "transform.scale")
+        grow.duration = 3.0
+        grow.fromValue = 0.1
+        grow.toValue = 1.0
+        grow.autoreverses = false
+        grow.repeatCount = 0
+        grow.initialVelocity = 0.3
+        grow.damping = 5.0
+        
+        layer.add(grow, forKey: nil)
+    }
 }
