@@ -40,7 +40,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //comment in VC
         
         //manualAddTile()
         createGestures()
@@ -51,7 +50,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         addTileViewsToArray()
         createNewTile()
-        createNewTile()
+        //createNewTile()
     }
     
     func addTileViewsToArray() {
@@ -265,6 +264,7 @@ class ViewController: UIViewController {
         let newTileCoords = pickRandomTile()
         let newTile = Color(color: pickRandomTileColor(), occupied: true, xCoord: newTileCoords.0, yCoord: newTileCoords.1, xPos: newTileCoords.2, yPos: newTileCoords.3, width: newTileCoords.4, height: newTileCoords.5)
         occupiedTiles.append(newTile)
+        newTile.growAndAppearTile()
         self.gameBoard.addSubview(newTile)
     }
 }
