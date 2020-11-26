@@ -7,6 +7,8 @@ target 'ColorClash' do
 
   # Pods for ColorClash
   pod 'Firebase/Analytics'
+  pod 'TheAnimation'
+
   target 'ColorClashTests' do
     inherit! :search_paths
     # Pods for testing

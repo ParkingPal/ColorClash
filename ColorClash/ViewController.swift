@@ -124,9 +124,9 @@ class ViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        //moveTiles(direction: gesture.direction)
+        moveTiles(direction: gesture.direction)
         //move to moveTiles funtion
-        createNewTile()
+        //createNewTile()
     }
     
     /*func manualAddTile() {
@@ -144,6 +144,9 @@ class ViewController: UIViewController {
     
     func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         
+        /*for tile in occupiedTiles {
+            tile.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[2,3]]!, tileSize: tileHeight)
+        }*/
         var group0 = [Color]()
         var group1 = [Color]()
         var group2 = [Color]()
@@ -265,6 +268,7 @@ class ViewController: UIViewController {
         let newTile = Color(color: pickRandomTileColor(), occupied: true, xCoord: newTileCoords.0, yCoord: newTileCoords.1, xPos: newTileCoords.2, yPos: newTileCoords.3, width: newTileCoords.4, height: newTileCoords.5)
         occupiedTiles.append(newTile)
         newTile.growAndAppearTile()
+        
         self.gameBoard.addSubview(newTile)
     }
 }
