@@ -34,13 +34,12 @@ class ViewController: UIViewController {
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
     var tileViews = [UIView]()
-    var occupiedTiles = [Color]()
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
+    var board = Board(xMax:3, yMax:3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         //manualAddTile()
         createGestures()
@@ -50,8 +49,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
-        createNewTile()
-        createNewTile()
+        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tile1.frame.width, tileHeight: tile1.frame.height)
+        newTile.growAndAppearTile()
+        self.gameBoard.addSubview(newTile)
     }
     
     func addTileViewsToArray() {
@@ -100,12 +100,6 @@ class ViewController: UIViewController {
                 xIndex += 1
             }
         }
-        
-        /*for (key, value) in tileCoordsWithPositions {
-            //let newTileCoords = pickRandomTile()
-            let newTile = Tile(color: pickRandomTileColor(), occupied: true, xCoord: key[0], yCoord: key[1], xPos: value[0], yPos: value[1], width: tileWidth, height: tileHeight)
-            self.gameBoard.addSubview(newTile)
-        }*/
     }
     
     func createGestures() {
@@ -127,28 +121,24 @@ class ViewController: UIViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         //moveTiles(direction: gesture.direction)
         //move to moveTiles funtion
-        createNewTile()
+        var newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tile1.frame.width, tileHeight: tile1.frame.height)
+        newTile.growAndAppearTile()
+        self.gameBoard.addSubview(newTile)
     }
     
-    /*func manualAddTile() {
-        Tile2.occupied = true
-        Tile2.color = pickRandomTileColor()
-        Tile2.backgroundColor = Tile2.color
-    }*/
-    
-    func swipeToEmptyTile(oldTile: Color, newTile: Color) {
+    func swipeToEmptyTile(oldTile: Tile, newTile: Tile) {
         newTile.backgroundColor = oldTile.backgroundColor
         newTile.occupied = true
         oldTile.backgroundColor = .systemBackground
         oldTile.occupied = false
     }
     
-    func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
+    /*func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         
-        var group0 = [Color]()
-        var group1 = [Color]()
-        var group2 = [Color]()
-        var group3 = [Color]()
+        var group0 = [Tile]()
+        var group1 = [Tile]()
+        var group2 = [Tile]()
+        var group3 = [Tile]()
         
         switch direction {
         case .up:
@@ -192,9 +182,9 @@ class ViewController: UIViewController {
         }
         
         occupiedTiles.removeAll()*/
-    }
+    }*/
     
-    func assessPositions(group: [Color]) {
+    func assessPositions(group: [Tile]) {
         for (index, tile) in group.enumerated() {
             
         }
@@ -206,45 +196,6 @@ class ViewController: UIViewController {
         } else {
             return true
         }
-    }
-    
-    func pickRandomTile() -> (Int, Int, CGFloat, CGFloat, CGFloat, CGFloat) {
-        
-        var randomX = -1
-        var randomY = -1
-        
-        repeat {
-            randomX = Int.random(in: 0...3)
-            randomY = Int.random(in: 0...3)
-        } while isTileOccupied(x: randomX, y: randomY)
-        
-        let coords = [randomX, randomY]
-        
-        let tileHeight = tile1.frame.height
-        let tileWidth = tile1.frame.width
-        var tileX: CGFloat = 0.0
-        var tileY: CGFloat = 0.0
-        
-        for (key, value) in tileCoordsWithPositions {
-            if key == coords {
-                tileX = value[0]
-                tileY = value[1]
-            }
-        }
-        
-        return (coords[0], coords[1], tileX, tileY, tileWidth, tileHeight)
-    }
-    
-    func isTileOccupied(x: Int, y: Int) -> Bool {
-        var isOccupied = false
-        
-        for tile in occupiedTiles {
-            if (tile.xCoord == x) && (tile.yCoord == y) {
-                isOccupied = true
-            }
-        }
-        
-        return isOccupied
     }
     
     func pickRandomTileColor() -> UIColor {
@@ -260,15 +211,4 @@ class ViewController: UIViewController {
         
         return .white
     }
-    
-    func createNewTile() {
-        let newTileCoords = pickRandomTile()
-        let newTile = Color(color: pickRandomTileColor(), occupied: true, xCoord: newTileCoords.0, yCoord: newTileCoords.1, xPos: newTileCoords.2, yPos: newTileCoords.3, width: newTileCoords.4, height: newTileCoords.5)
-        occupiedTiles.append(newTile)
-        self.gameBoard.addSubview(newTile)
-    }
 }
-
-
-
-
