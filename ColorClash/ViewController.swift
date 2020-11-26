@@ -119,7 +119,7 @@ class ViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        moveTiles(direction: gesture.direction)
+        //moveTiles(direction: gesture.direction)
         //move to moveTiles funtion
         var newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tile1.frame.width, tileHeight: tile1.frame.height)
         newTile.growAndAppearTile()
