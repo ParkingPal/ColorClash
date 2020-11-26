@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import TheAnimation
 
 class Color: Tile {
     var color: UIColor
@@ -32,5 +33,17 @@ class Color: Tile {
         grow.damping = 5.0
         
         layer.add(grow, forKey: nil)
+    }
+    
+    func moveTile(oldCoords: [CGFloat], newCoords: [CGFloat], tileSize: CGFloat) {
+        let move = BasicAnimation(keyPath: .position)
+        move.fromValue = CGPoint(x: oldCoords[0] + (tileSize/2), y: oldCoords[1] + (tileSize/2))
+        move.toValue = CGPoint(x: newCoords[0] + (tileSize/2), y: newCoords[1] + (tileSize/2))
+        move.timingFunction = .easeOut
+        move.duration = 0.3
+        move.fillMode = .forwards
+        move.isRemovedOnCompletion = false
+        move.beginTime = CACurrentMediaTime()
+        move.animate(in: layer)
     }
 }
