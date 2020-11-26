@@ -182,7 +182,7 @@ class ViewController: UIViewController {
         occupiedTiles.removeAll()*/
     }
     
-    func assessPositions(group: [Color]) {
+    func assessPositions(group: [Tile]) {
         for (index, tile) in group.enumerated() {
             
         }

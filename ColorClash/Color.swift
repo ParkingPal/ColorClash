@@ -12,8 +12,8 @@ class Color: Tile {
     var color: UIColor
     
     init(color: UIColor, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
+        self.color = color
         super.init(type:"Color", occupied:occupied, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
-        self.color = color                
         self.backgroundColor = color
     }
     

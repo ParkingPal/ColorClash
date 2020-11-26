@@ -29,4 +29,8 @@ class Tile: UIView {
 
         super.init(frame: CGRect(x: xPos, y: yPos, width: width, height: height))
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
