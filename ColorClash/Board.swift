@@ -66,7 +66,6 @@ class Board {
     }
     
     func addTile(tile: Tile, xPos: Int, yPos: Int) {
-        //boardRepresentation[xPos][yPos] = 1
         board[xPos][yPos] = tile
     }
 }
