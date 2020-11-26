@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
     var tileViews = [UIView]()
-    var occupiedTiles = [Color]()
+    var occupiedTiles = [Tile]()
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     
@@ -100,12 +100,6 @@ class ViewController: UIViewController {
                 xIndex += 1
             }
         }
-        
-        /*for (key, value) in tileCoordsWithPositions {
-            //let newTileCoords = pickRandomTile()
-            let newTile = Tile(color: pickRandomTileColor(), occupied: true, xCoord: key[0], yCoord: key[1], xPos: value[0], yPos: value[1], width: tileWidth, height: tileHeight)
-            self.gameBoard.addSubview(newTile)
-        }*/
     }
     
     func createGestures() {
@@ -130,13 +124,7 @@ class ViewController: UIViewController {
         createNewTile()
     }
     
-    /*func manualAddTile() {
-        Tile2.occupied = true
-        Tile2.color = pickRandomTileColor()
-        Tile2.backgroundColor = Tile2.color
-    }*/
-    
-    func swipeToEmptyTile(oldTile: Color, newTile: Color) {
+    func swipeToEmptyTile(oldTile: Tile, newTile: Tile) {
         newTile.backgroundColor = oldTile.backgroundColor
         newTile.occupied = true
         oldTile.backgroundColor = .systemBackground
@@ -145,10 +133,10 @@ class ViewController: UIViewController {
     
     func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         
-        var group0 = [Color]()
-        var group1 = [Color]()
-        var group2 = [Color]()
-        var group3 = [Color]()
+        var group0 = [Tile]()
+        var group1 = [Tile]()
+        var group2 = [Tile]()
+        var group3 = [Tile]()
         
         switch direction {
         case .up:
