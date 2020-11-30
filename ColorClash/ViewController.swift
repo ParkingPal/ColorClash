@@ -197,19 +197,4 @@ class ViewController: UIViewController {
             return true
         }
     }
-    
-    
-    /*func pickRandomTileColor() -> UIColor {
-        let randomColorInt = Int.random(in: 1...3)
-        
-        if randomColorInt == 1 {
-            return .blue
-        } else if randomColorInt == 2 {
-            return .red
-        } else if randomColorInt == 3 {
-            return .yellow
-        }
-        
-        return .white
-    }*/
 }
