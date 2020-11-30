@@ -118,39 +118,61 @@ class ViewController: UIViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         //move to moveTiles funtion
-        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-        newTile.growAndAppearTile()
         moveTiles(direction: gesture.direction)
-        self.gameBoardView.addSubview(newTile)
-    }
-    
-    func swipeToEmptyTile(oldTile: Tile, newTile: Tile) {
-        newTile.backgroundColor = oldTile.backgroundColor
-        newTile.occupied = true
-        oldTile.backgroundColor = .systemBackground
-        oldTile.occupied = false
     }
     
     func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         for (index, row) in board.self.board.enumerated(){
             for tile in row {
                 if direction == .up {
-                    if tile?.yCoord != nil {
-                        checkColumn(tile: tile!)
+                    if tile?.yCoord != nil && tile?.yCoord ?? -1 > 0 {
+                        moveTileVertically(tile: tile, direction: direction)
+                    }
+                } else if direction == .down {
+                    if tile?.yCoord != nil && tile?.yCoord ?? 4 < 3 {
+                        moveTileVertically(tile: tile, direction: direction)
                     }
                 }
                 //print("\(tile?.xCoord ?? -1), \(tile?.yCoord ?? -1)")
             }
         }
+        //print("---------")
+        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        newTile.growAndAppearTile()
+        self.gameBoardView.addSubview(newTile)
     }
     
-    func checkColumn(tile: Tile) {
-        var newYIndex = 0
-        
-        for index in 0...tile.yCoord {
-            if board.self.board[tile.xCoord][index] != nil {
-                
+    func moveTileVertically(tile: Tile?, direction: UISwipeGestureRecognizer.Direction) {
+        let newYIndex = checkColumn(tile: tile!, direction: direction)
+        let color = tile as! Color
+        board.removeTile(xPos: tile!.xCoord, yPos: tile!.yCoord)
+        tile!.yCoord = newYIndex
+        board.addTile(tile: tile!, xPos: tile!.xCoord, yPos: tile!.yCoord)
+        color.moveTile(oldCoords: [tile!.xPos, tile!.yPos], newCoords: tileCoordsWithPositions[[tile!.xCoord, newYIndex]]!, tileSize: tileHeight)
+    }
+    
+    func checkColumn(tile: Tile, direction: UISwipeGestureRecognizer.Direction) -> Int {
+        if direction == .up {
+            var newYIndex = 0
+            
+            for index in 0...tile.yCoord - 1 {
+                if board.self.board[tile.xCoord][index] != nil {
+                    newYIndex = index + 1
+                }
             }
+            
+            return newYIndex
+            
+        } else {
+            var newYIndex = 3
+            
+            for index in 0...tile.yCoord {
+                if board.self.board[tile.xCoord][newYIndex] != nil {
+                    newYIndex -= 1
+                }
+            }
+            
+            return newYIndex
         }
     }
     

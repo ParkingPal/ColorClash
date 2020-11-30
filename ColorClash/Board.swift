@@ -66,4 +66,8 @@ class Board {
     func addTile(tile: Tile, xPos: Int, yPos: Int) {
         board[xPos][yPos] = tile
     }
+    
+    func removeTile(xPos: Int, yPos: Int) {
+        board[xPos][yPos] = nil
+    }
 }
