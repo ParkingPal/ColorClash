@@ -38,7 +38,7 @@ class Board {
             }
         }
         
-        let tile = Color(color: pickRandomTileColor(), occupied: true, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
+        let tile = Color(color: pickRandomTileColor().0, colorString: pickRandomTileColor().1, colorType: "Primary", occupied: true, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
         addTile(tile:tile, xPos:randomX, yPos:randomY)
         return tile
     }
@@ -51,15 +51,15 @@ class Board {
         }
     }
     
-    func pickRandomTileColor() -> UIImage {
+    func pickRandomTileColor() -> (UIImage, String) {
         let randomColorInt = Int.random(in: 1...3)
         
         if randomColorInt == 1 {
-            return UIImage(named: "BlueTileBevel.png")!
+            return (UIImage(named: "BlueTileBevel.png")!, "Blue")
         } else if randomColorInt == 2 {
-            return UIImage(named: "RedTileBevel.png")!
+            return (UIImage(named: "RedTileBevel.png")!, "Red")
         } else {
-            return UIImage(named: "YellowTileBevel.png")!
+            return (UIImage(named: "YellowTileBevel.png")!, "Yellow")
         }
     }
     

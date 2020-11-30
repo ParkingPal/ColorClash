@@ -134,9 +134,28 @@ class ViewController: UIViewController {
     func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
         for (index, row) in board.self.board.enumerated(){
             for tile in row {
-                print("\(tile?.xCoord ?? -1), \(tile?.yCoord ?? -1)")
+                if direction == .up {
+                    if tile?.yCoord != nil {
+                        checkColumn(tile: tile!)
+                    }
+                }
+                //print("\(tile?.xCoord ?? -1), \(tile?.yCoord ?? -1)")
             }
         }
+    }
+    
+    func checkColumn(tile: Tile) {
+        var newYIndex = 0
+        
+        for index in 0...tile.yCoord {
+            if board.self.board[tile.xCoord][index] != nil {
+                
+            }
+        }
+    }
+    
+    func checkColor() {
+        
     }
     
     /*func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
