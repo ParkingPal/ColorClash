@@ -91,11 +91,11 @@ class ViewController: UIViewController {
             let newFrame = gameBoardView.convert(tile.frame, from: tile.superview)
             tileCoordsWithPositions[[xIndex, yIndex]] = [newFrame.origin.x, newFrame.origin.y]
             
-            yIndex += 1
+            xIndex += 1
             
-            if yIndex == yMax + 1 {
-                yIndex = 0
-                xIndex += 1
+            if xIndex == xMax + 1 {
+                xIndex = 0
+                yIndex += 1
             }
         }
     }
@@ -117,10 +117,10 @@ class ViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        //moveTiles(direction: gesture.direction)
         //move to moveTiles funtion
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
+        moveTiles(direction: gesture.direction)
         self.gameBoardView.addSubview(newTile)
     }
     
@@ -129,6 +129,14 @@ class ViewController: UIViewController {
         newTile.occupied = true
         oldTile.backgroundColor = .systemBackground
         oldTile.occupied = false
+    }
+    
+    func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
+        for (index, row) in board.self.board.enumerated(){
+            for tile in row {
+                print("\(tile?.xCoord ?? -1), \(tile?.yCoord ?? -1)")
+            }
+        }
     }
     
     /*func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
