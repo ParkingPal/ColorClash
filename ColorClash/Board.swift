@@ -51,18 +51,16 @@ class Board {
         }
     }
     
-    func pickRandomTileColor() -> UIColor {
+    func pickRandomTileColor() -> UIImage {
         let randomColorInt = Int.random(in: 1...3)
         
         if randomColorInt == 1 {
-            return .blue
+            return UIImage(named: "BlueTileBevel.png")!
         } else if randomColorInt == 2 {
-            return .red
-        } else if randomColorInt == 3 {
-            return .yellow
+            return UIImage(named: "RedTileBevel.png")!
+        } else {
+            return UIImage(named: "YellowTileBevel.png")!
         }
-        
-        return .white
     }
     
     func addTile(tile: Tile, xPos: Int, yPos: Int) {

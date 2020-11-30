@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Tile: UIView {
+class Tile: UIImageView {
     var type: String
     var occupied: Bool
     var xCoord: Int

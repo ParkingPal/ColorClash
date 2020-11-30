@@ -10,12 +10,12 @@ import UIKit
 import TheAnimation
 
 class Color: Tile {
-    var color: UIColor
+    var color: UIImage
     
-    init(color: UIColor, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
+    init(color: UIImage, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
         self.color = color
         super.init(type:"Color", occupied:occupied, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
-        self.backgroundColor = color
+        self.image = color
     }
     
     required init?(coder: NSCoder) {
