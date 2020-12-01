@@ -166,13 +166,13 @@ class Board {
     
     func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> (Bool, UISwipeGestureRecognizer.Direction) {
         
-        if direction == .up && tile.yCoord > 0 && ((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary" {
+        if direction == .up && tile.yCoord > 0 && /*primary color condition*/((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || /*secondary color condidition*/ (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
             return (true, .up)
-        } else if direction == .down && tile.yCoord < yMax && ((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord + 1] as! Color).colorType)  && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary" {
+        } else if direction == .down && tile.yCoord < yMax && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord + 1] as! Color).colorType)  && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
             return (true, .down)
-        } else if direction == .right && tile.xCoord < xMax && ((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord + 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary" {
+        } else if direction == .right && tile.xCoord < xMax && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord + 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
             return (true, .right)
-        } else if direction == .left && tile.xCoord > 0 && ((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord - 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary" {
+        } else if direction == .left && tile.xCoord > 0 && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord - 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
             return (true, .left)
         }
         
@@ -213,6 +213,11 @@ class Board {
                 newColor.image = UIImage(named: "GreenTileBevel")
                 newColor.colorType = "Secondary"
             }
+        } else if newColor.colorString == oldColor.colorString && newColor.colorType == "Secondary" {
+            removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
+            removeTile(xPos: newColor.xCoord, yPos: newColor.yCoord)
+            oldColor.removeFromSuperview()
+            newColor.removeFromSuperview()
         }
         
         oldTile.removeFromSuperview()
