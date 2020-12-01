@@ -32,6 +32,9 @@ class ViewController: UIViewController {
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
+        //let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        //newTile2.growAndAppearTile()
+        //self.gameBoardView.addSubview(newTile2)
     }
     
     func createBoardGraphically() {
