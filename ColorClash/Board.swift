@@ -72,14 +72,78 @@ class Board {
     }
     
     func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
-        for x in 0...xMax {
-            for y in 0...yMax {
-                if board[x][y] == nil {
+        var loopIfrom = 0
+        var loopIthrough = xMax
+        var loopByI = 1
+        var loopJfrom = 0
+        var loopJthrough = yMax
+        var loopByJ = 1
+        
+        if (direction == .up) {
+            loopIfrom = 0
+            loopIthrough = xMax
+            loopByI = 1
+            loopJfrom = 0
+            loopJthrough = yMax
+            loopByJ = 1
+        } else if (direction == .down) {
+            loopIfrom = 0
+            loopIthrough = xMax
+            loopByI = 1
+            loopJfrom = yMax
+            loopJthrough = 0
+            loopByJ = -1
+        } else if (direction == .right) {
+            loopIfrom = 0
+            loopIthrough = yMax
+            loopByI = 1
+            loopJfrom = xMax
+            loopJthrough = 0
+            loopByJ = -1
+        } else if (direction == .left) {
+            loopIfrom = 0
+            loopIthrough = yMax
+            loopByI = 1
+            loopJfrom = 0
+            loopJthrough = xMax
+            loopByJ = 1
+        }
+        
+        for i in stride(from: loopIfrom, through: loopIthrough, by: loopByI) {
+            var spaces = 0
+            for j in stride(from: loopJfrom, through: loopJthrough, by: loopByJ) {
+                if (direction == .up || direction == .down) && board[i][j] == nil {
+                    spaces += 1
+                    continue
+                } else if (direction == .right || direction == .left) && board[j][i] == nil {
+                    spaces += 1
                     continue
                 }
-                let tile = board[x][y]!
+                var tile: Tile
+                if (direction == .up || direction == .down) {
+                    tile = board[i][j]!
+                } else {
+                    tile = board[j][i]!
+                }
                 if tileCanMove(direction: direction, tile: tile) {
-                    moveTileVertically(tile: tile, direction: direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    var newXCoord = -1
+                    var newYCoord = -1
+                    
+                    if (direction == .up) {
+                        newXCoord = i
+                        newYCoord = j - spaces
+                    } else if (direction == .down) {
+                        newXCoord = i
+                        newYCoord = j + spaces
+                    } else if (direction == .right) {
+                        newXCoord = i + spaces
+                        newYCoord = j
+                    } else if (direction == .left) {
+                        newXCoord = i - spaces
+                        newYCoord = j
+                    }
+                    
+                    moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                 }
             }
         }
@@ -88,44 +152,22 @@ class Board {
     func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
         if direction == .up && tile.yCoord > 0 && board[tile.xCoord][tile.yCoord - 1] == nil{
             return true
-        } else if direction == .down && tile.yCoord < yMax {
+        } else if direction == .down && tile.yCoord < yMax && board[tile.xCoord][tile.yCoord + 1] == nil{
+            return true
+        } else if direction == .right && tile.xCoord < xMax && board[tile.xCoord + 1][tile.yCoord] == nil{
+            return true
+        } else if direction == .left && tile.xCoord > 0 && board[tile.xCoord - 1][tile.yCoord] == nil{
             return true
         }
         
         return false
     }
     
-    func moveTileVertically(tile: Tile, direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
-        let newYIndex = checkColumn(tile: tile, direction: direction)
+    func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let color = tile as! Color
         removeTile(xPos: tile.xCoord, yPos: tile.yCoord)
-        tile.yCoord = newYIndex
+        tile.yCoord = newYCoord
         addTile(tile: tile, xPos: tile.xCoord, yPos: tile.yCoord)
-        color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYIndex]]!, tileSize: tileSize)
-    }
-    
-    func checkColumn(tile: Tile, direction: UISwipeGestureRecognizer.Direction) -> Int {
-        if direction == .up {
-            var newYIndex = 0
-            
-            for index in 0...tile.yCoord - 1 {
-                if board[tile.xCoord][index] != nil {
-                    newYIndex = index + 1
-                }
-            }
-            
-            return newYIndex
-            
-        } else {
-            var newYIndex = 3
-            
-            for index in 0...tile.yCoord {
-                if board[tile.xCoord][newYIndex] != nil {
-                    newYIndex -= 1
-                }
-            }
-            
-            return newYIndex
-        }
+        color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYCoord]]!, tileSize: tileSize)
     }
 }
