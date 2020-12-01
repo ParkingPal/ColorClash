@@ -20,6 +20,7 @@
 		4C8DC1E8256E240700ECCCD5 /* ColorClashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1E7256E240700ECCCD5 /* ColorClashTests.swift */; };
 		4C8DC1F3256E240700ECCCD5 /* ColorClashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1F2256E240700ECCCD5 /* ColorClashUITests.swift */; };
 		4C8DC210256E28F400ECCCD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */; };
+		4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDA03525770863001DB53F /* MusicPlayer.swift */; };
 		765467AD666DDCA5D9CEBB42 /* Pods_ColorClash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E34C1B7231DC31BAB02B3D /* Pods_ColorClash.framework */; };
 		C9F3D1B7104F82A372063013 /* Pods_ColorClash_ColorClashUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		4C8DC1F2256E240700ECCCD5 /* ColorClashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorClashUITests.swift; sourceTree = "<group>"; };
 		4C8DC1F4256E240700ECCCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4CDDA03525770863001DB53F /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		515C2A6C3AD6D5F5FCF77C9A /* Pods-ColorClashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClashTests.debug.xcconfig"; path = "Target Support Files/Pods-ColorClashTests/Pods-ColorClashTests.debug.xcconfig"; sourceTree = "<group>"; };
 		549A1AC6477F3D9A4820F739 /* Pods-ColorClashTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClashTests.release.xcconfig"; path = "Target Support Files/Pods-ColorClashTests/Pods-ColorClashTests.release.xcconfig"; sourceTree = "<group>"; };
 		6799BBEB28A0AAC1E4B56D5E /* Pods-ColorClash-ColorClashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClash-ColorClashUITests.debug.xcconfig"; path = "Target Support Files/Pods-ColorClash-ColorClashUITests/Pods-ColorClash-ColorClashUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				38C40525256E2A0F00DD10DE /* Color.swift */,
 				380BC51C256E379B00A8652C /* Tile.swift */,
 				380F36C3256F570D00BA06C7 /* Board.swift */,
+				4CDDA0342576ED14001DB53F /* Sounds */,
 			);
 			path = ColorClash;
 			sourceTree = "<group>";
@@ -168,6 +171,14 @@
 				4C8DC1F4256E240700ECCCD5 /* Info.plist */,
 			);
 			path = ColorClashUITests;
+			sourceTree = "<group>";
+		};
+		4CDDA0342576ED14001DB53F /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4CDDA03525770863001DB53F /* MusicPlayer.swift */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		6D93BE2A7C17A5B108C2F30C /* Frameworks */ = {
@@ -423,6 +434,7 @@
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
 				380F36C4256F570D00BA06C7 /* Board.swift in Sources */,
 				380BC51D256E379B00A8652C /* Tile.swift in Sources */,
+				4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
 			);
