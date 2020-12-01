@@ -86,7 +86,7 @@ class Board {
     }
     
     func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
-        if direction == .up && tile.yCoord > 0 {
+        if direction == .up && tile.yCoord > 0 && board[tile.xCoord][tile.yCoord - 1] == nil{
             return true
         } else if direction == .down && tile.yCoord < yMax {
             return true
