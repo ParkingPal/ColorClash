@@ -136,11 +136,11 @@ class Board {
                         newXCoord = i
                         newYCoord = j + spaces
                     } else if (direction == .right) {
-                        newXCoord = i + spaces
-                        newYCoord = j
+                        newXCoord = j + spaces
+                        newYCoord = i
                     } else if (direction == .left) {
-                        newXCoord = i - spaces
-                        newYCoord = j
+                        newXCoord = j - spaces
+                        newYCoord = i
                     }
                     
                     moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
@@ -167,6 +167,7 @@ class Board {
         let color = tile as! Color
         removeTile(xPos: tile.xCoord, yPos: tile.yCoord)
         tile.yCoord = newYCoord
+        tile.xCoord = newXCoord
         addTile(tile: tile, xPos: tile.xCoord, yPos: tile.yCoord)
         color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYCoord]]!, tileSize: tileSize)
     }
