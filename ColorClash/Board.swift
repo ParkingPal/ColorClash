@@ -166,9 +166,11 @@ class Board {
     func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let color = tile as! Color
         removeTile(xPos: tile.xCoord, yPos: tile.yCoord)
-        tile.yCoord = newYCoord
         tile.xCoord = newXCoord
+        tile.yCoord = newYCoord
         addTile(tile: tile, xPos: tile.xCoord, yPos: tile.yCoord)
         color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYCoord]]!, tileSize: tileSize)
+        tile.xPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![0]
+        tile.yPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![1]
     }
 }
