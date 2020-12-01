@@ -126,9 +126,6 @@ class Board {
                     tile = board[j][i]!
                 }
                 if tileCanMove(direction: direction, tile: tile) {
-                    if tileCanCombine(direction: direction, tile: tile) {
-                        
-                    }
                     var newXCoord = -1
                     var newYCoord = -1
                     
@@ -150,20 +147,6 @@ class Board {
                 }
             }
         }
-    }
-    
-    func tileCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
-        if direction == .up && (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
-            return true
-        } else if direction == .down && (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord + 1] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
-            return true
-        } else if direction == .right && (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord + 1][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
-            return true
-        } else if direction == .left && (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord - 1][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
-            return true
-        }
-        
-        return false
     }
     
     func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
@@ -191,5 +174,38 @@ class Board {
         color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYCoord]]!, tileSize: tileSize)
         tile.xPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![0]
         tile.yPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![1]
+    }
+    
+    func combineTiles(newTile: Tile, oldTile: Tile, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+        let newColor = newTile as! Color
+        let oldColor = oldTile as! Color
+        
+        if newColor.colorString == "Red" {
+            if oldColor.colorString == "Blue" {
+                newColor.colorString = "Purple"
+                newColor.image = UIImage(named: "PurpleTileBevel")
+            } else if oldColor.colorString == "Yellow" {
+                newColor.colorString = "Orange"
+                newColor.image = UIImage(named: "OrangeTileBevel")
+            }
+        } else if newColor.colorString == "Blue" {
+            if oldColor.colorString == "Red" {
+                newColor.colorString = "Purple"
+                newColor.image = UIImage(named: "PurpleTileBevel")
+            } else if oldColor.colorString == "Yellow" {
+                newColor.colorString = "Green"
+                newColor.image = UIImage(named: "GreenTileBevel")
+            }
+        } else if newColor.colorString == "Yellow" {
+            if oldColor.colorString == "Red" {
+                newColor.colorString = "Orange"
+                newColor.image = UIImage(named: "OrangeTileBevel")
+            } else if oldColor.colorString == "Blue" {
+                newColor.colorString = "Green"
+                newColor.image = UIImage(named: "GreenTileBevel")
+            }
+        }
+        
+        removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
     }
 }

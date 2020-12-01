@@ -28,13 +28,13 @@ class Color: Tile {
     
     func growAndAppearTile() {
         let grow = CASpringAnimation(keyPath: "transform.scale")
-        grow.duration = 3.0
+        grow.duration = 1.5
         grow.fromValue = 0.1
         grow.toValue = 1.0
         grow.autoreverses = false
         grow.repeatCount = 0
         grow.initialVelocity = 0.3
-        grow.damping = 5.0
+        grow.damping = 8.0
         
         layer.add(grow, forKey: nil)
     }
