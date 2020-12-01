@@ -39,6 +39,19 @@ class Color: Tile {
         layer.add(grow, forKey: nil)
     }
     
+    func combineTiles() {
+        let grow = CASpringAnimation(keyPath: "transform.scale")
+        grow.duration = 2.0
+        grow.fromValue = 0.1
+        grow.toValue = 1.0
+        grow.autoreverses = false
+        grow.repeatCount = 0
+        grow.initialVelocity = 0.6
+        grow.damping = 5.0
+        
+        layer.add(grow, forKey: nil)
+    }
+    
     func moveTile(oldCoords: [CGFloat], newCoords: [CGFloat], tileSize: CGFloat) {
         let move = BasicAnimation(keyPath: .position)
         move.fromValue = CGPoint(x: oldCoords[0] + (tileSize/2), y: oldCoords[1] + (tileSize/2))
