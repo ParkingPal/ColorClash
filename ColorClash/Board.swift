@@ -165,7 +165,6 @@ class Board {
     
     func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat, direction: UISwipeGestureRecognizer.Direction) {
         let color = tile as! Color
-        let oldTile = color
         removeTile(xPos: color.xCoord, yPos: color.yCoord)
         color.xCoord = newXCoord
         color.yCoord = newYCoord

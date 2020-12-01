@@ -40,6 +40,12 @@ class ViewController: UIViewController {
         
         //create board
         gameBoardView.backgroundColor = .brown
+        //add shadow
+        gameBoardView.layer.masksToBounds = false
+        gameBoardView.layer.shadowColor = CGColor(srgbRed: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        gameBoardView.layer.shadowOpacity = 1.0
+        gameBoardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        gameBoardView.layer.shadowRadius = 50.0
         view.addSubview(gameBoardView)
         
         //set up constraints for board
