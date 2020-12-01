@@ -118,120 +118,15 @@ class ViewController: UIViewController {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         //move to moveTiles funtion
-        moveTiles(direction: gesture.direction)
-    }
-    
-    func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
-        for (index, row) in board.self.board.enumerated(){
-            for tile in row {
-                if direction == .up {
-                    if tile?.yCoord != nil && tile?.yCoord ?? -1 > 0 {
-                        moveTileVertically(tile: tile, direction: direction)
-                    }
-                } else if direction == .down {
-                    if tile?.yCoord != nil && tile?.yCoord ?? 4 < 3 {
-                        moveTileVertically(tile: tile, direction: direction)
-                    }
-                }
-                //print("\(tile?.xCoord ?? -1), \(tile?.yCoord ?? -1)")
-            }
-        }
-        //print("---------")
+        board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
     }
     
-    func moveTileVertically(tile: Tile?, direction: UISwipeGestureRecognizer.Direction) {
-        let newYIndex = checkColumn(tile: tile!, direction: direction)
-        let color = tile as! Color
-        board.removeTile(xPos: tile!.xCoord, yPos: tile!.yCoord)
-        tile!.yCoord = newYIndex
-        board.addTile(tile: tile!, xPos: tile!.xCoord, yPos: tile!.yCoord)
-        color.moveTile(oldCoords: [tile!.xPos, tile!.yPos], newCoords: tileCoordsWithPositions[[tile!.xCoord, newYIndex]]!, tileSize: tileHeight)
-    }
-    
-    func checkColumn(tile: Tile, direction: UISwipeGestureRecognizer.Direction) -> Int {
-        if direction == .up {
-            var newYIndex = 0
-            
-            for index in 0...tile.yCoord - 1 {
-                if board.self.board[tile.xCoord][index] != nil {
-                    newYIndex = index + 1
-                }
-            }
-            
-            return newYIndex
-            
-        } else {
-            var newYIndex = 3
-            
-            for index in 0...tile.yCoord {
-                if board.self.board[tile.xCoord][newYIndex] != nil {
-                    newYIndex -= 1
-                }
-            }
-            
-            return newYIndex
-        }
-    }
-    
     func checkColor() {
         
     }
-    
-    /*func moveTiles(direction: UISwipeGestureRecognizer.Direction) {
-     
-        //tile.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[2,3]]!, tileSize: tileHeight)
-     
-        var group0 = [Tile]()
-        var group1 = [Tile]()
-        var group2 = [Tile]()
-        var group3 = [Tile]()
-        
-        switch direction {
-        case .up:
-            var startingIndex = 3
-            for _ in 0...3 {
-                for tile in occupiedTiles {
-                    if tile.xCoord == startingIndex {
-                        switch tile.yCoord {
-                        case 0:
-                            group0.append(tile)
-                        case 1:
-                            group1.append(tile)
-                        case 2:
-                            group2.append(tile)
-                        case 3:
-                            group3.append(tile)
-                        default:
-                            break
-                        }
-                    }
-                }
-                startingIndex -= 1
-            }
-            
-            assessPositions(group: group0)
-            
-        case .down:
-            print()
-        case .left:
-            print()
-        case .right:
-            print()
-        default:
-            break
-        }
-        
-        /*for tile in tileViews {
-            if tile.occupied {
-                occupiedTiles.append(tile)
-            }
-        }
-        
-        occupiedTiles.removeAll()*/
-    }*/
     
     func assessPositions(group: [Tile]) {
         for (index, tile) in group.enumerated() {

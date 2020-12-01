@@ -70,4 +70,62 @@ class Board {
     func removeTile(xPos: Int, yPos: Int) {
         board[xPos][yPos] = nil
     }
+    
+    func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+        for x in 0...xMax {
+            for y in 0...yMax {
+                if board[x][y] == nil {
+                    continue
+                }
+                let tile = board[x][y]!
+                if tileCanMove(direction: direction, tile: tile) {
+                    moveTileVertically(tile: tile, direction: direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                }
+            }
+        }
+    }
+    
+    func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
+        if direction == .up && tile.yCoord > 0 {
+            return true
+        } else if direction == .down && tile.yCoord < yMax {
+            return true
+        }
+        
+        return false
+    }
+    
+    func moveTileVertically(tile: Tile, direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+        let newYIndex = checkColumn(tile: tile, direction: direction)
+        let color = tile as! Color
+        removeTile(xPos: tile.xCoord, yPos: tile.yCoord)
+        tile.yCoord = newYIndex
+        addTile(tile: tile, xPos: tile.xCoord, yPos: tile.yCoord)
+        color.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, newYIndex]]!, tileSize: tileSize)
+    }
+    
+    func checkColumn(tile: Tile, direction: UISwipeGestureRecognizer.Direction) -> Int {
+        if direction == .up {
+            var newYIndex = 0
+            
+            for index in 0...tile.yCoord - 1 {
+                if board[tile.xCoord][index] != nil {
+                    newYIndex = index + 1
+                }
+            }
+            
+            return newYIndex
+            
+        } else {
+            var newYIndex = 3
+            
+            for index in 0...tile.yCoord {
+                if board[tile.xCoord][newYIndex] != nil {
+                    newYIndex -= 1
+                }
+            }
+            
+            return newYIndex
+        }
+    }
 }
