@@ -129,22 +129,4 @@ class ViewController: UIViewController {
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
     }
-    
-    func checkColor() {
-        
-    }
-    
-    func assessPositions(group: [Tile]) {
-        for (index, tile) in group.enumerated() {
-            
-        }
-    }
-    
-    func combineCheck(oldTile: Color, newTile: Color) -> Bool {
-        if oldTile.color == newTile.color {
-            return false
-        } else {
-            return true
-        }
-    }
 }
