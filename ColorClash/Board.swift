@@ -126,6 +126,9 @@ class Board {
                     tile = board[j][i]!
                 }
                 if tileCanMove(direction: direction, tile: tile) {
+                    if tileCanCombine(direction: direction, tile: tile) {
+                        
+                    }
                     var newXCoord = -1
                     var newYCoord = -1
                     
@@ -149,6 +152,20 @@ class Board {
         }
     }
     
+    func tileCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
+        if direction == .up && (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
+            return true
+        } else if direction == .down && (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord + 1] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
+            return true
+        } else if direction == .right && (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord + 1][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
+            return true
+        } else if direction == .left && (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString && (board[tile.xCoord - 1][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType{
+            return true
+        }
+        
+        return false
+    }
+    
     func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
         if direction == .up && tile.yCoord > 0 && board[tile.xCoord][tile.yCoord - 1] == nil{
             return true
@@ -159,6 +176,8 @@ class Board {
         } else if direction == .left && tile.xCoord > 0 && board[tile.xCoord - 1][tile.yCoord] == nil{
             return true
         }
+        
+        //(board[tile.xCoord][tile.yCoord - 1] == nil || (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString != (board[tile.xCoord][tile.yCoord] as! Color).colorString)
         
         return false
     }
