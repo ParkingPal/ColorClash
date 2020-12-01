@@ -182,6 +182,9 @@ class Board {
     func combineTiles(newTile: Tile, oldTile: Tile, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
+        UIView.animate(withDuration: 0.2) {
+            newColor.alpha = 0.0
+        }
         
         if newColor.colorString == "Red" {
             if oldColor.colorString == "Blue" {
@@ -220,6 +223,7 @@ class Board {
             newColor.removeFromSuperview()
         }
         
+        newColor.growAndAppearTile()
         oldTile.removeFromSuperview()
         removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
     }

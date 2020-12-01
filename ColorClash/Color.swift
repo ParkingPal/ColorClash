@@ -27,6 +27,7 @@ class Color: Tile {
     }
     
     func growAndAppearTile() {
+        self.alpha = 1.0
         let grow = CASpringAnimation(keyPath: "transform.scale")
         grow.duration = 1.5
         grow.fromValue = 0.1
