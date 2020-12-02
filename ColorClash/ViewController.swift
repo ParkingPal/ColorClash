@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
     var tileViews = [UIView]()
@@ -131,5 +133,6 @@ class ViewController: UIViewController {
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
+        scoreLabel.text = String(board.score)
     }
 }

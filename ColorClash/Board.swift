@@ -12,6 +12,7 @@ class Board {
     var board = [[Tile?]]()   //2d array of Tiles
     var xMax: Int
     var yMax: Int
+    var score = 0
     
     init(xMax: Int, yMax: Int) {
         self.xMax = xMax
@@ -145,18 +146,18 @@ class Board {
                         newYCoord = i
                     }
                     
-                    moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction)
+                    moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
                 } else {
                     let canCombine = tilesCanCombine(direction: direction, tile: tile)
                     if canCombine.0 {
                         if canCombine.1 == .up {
-                            combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                            combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                         } else if canCombine.1 == .down {
-                            combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                            combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                         } else if canCombine.1 == .right {
-                            combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                            combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                         } else if canCombine.1 == .left {
-                            combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                            combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                         }
                     }
                 }
@@ -179,52 +180,53 @@ class Board {
         return (false, .up)
     }
     
-    func combineTiles(newTile: Tile, oldTile: Tile, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+    func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
-        UIView.animate(withDuration: 0.2) {
+        var newImage = UIImage()
+        /*UIView.animate(withDuration: 0.2) {
             newColor.alpha = 0.0
-        }
+        }*/
         
         if newColor.colorString == "Red" {
             if oldColor.colorString == "Blue" {
                 newColor.colorString = "Purple"
-                newColor.image = UIImage(named: "PurpleTileBevel")
+                newImage = UIImage(named: "PurpleTileBevel")!
                 newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Yellow" {
                 newColor.colorString = "Orange"
-                newColor.image = UIImage(named: "OrangeTileBevel")
+                newImage = UIImage(named: "OrangeTileBevel")!
                 newColor.colorType = "Secondary"
             }
         } else if newColor.colorString == "Blue" {
             if oldColor.colorString == "Red" {
                 newColor.colorString = "Purple"
-                newColor.image = UIImage(named: "PurpleTileBevel")
+                newImage = UIImage(named: "PurpleTileBevel")!
                 newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Yellow" {
                 newColor.colorString = "Green"
-                newColor.image = UIImage(named: "GreenTileBevel")
+                newImage = UIImage(named: "GreenTileBevel")!
                 newColor.colorType = "Secondary"
             }
         } else if newColor.colorString == "Yellow" {
             if oldColor.colorString == "Red" {
                 newColor.colorString = "Orange"
-                newColor.image = UIImage(named: "OrangeTileBevel")
+                newImage = UIImage(named: "OrangeTileBevel")!
                 newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Blue" {
                 newColor.colorString = "Green"
-                newColor.image = UIImage(named: "GreenTileBevel")
+                newImage = UIImage(named: "GreenTileBevel")!
                 newColor.colorType = "Secondary"
             }
         } else if newColor.colorString == oldColor.colorString && newColor.colorType == "Secondary" {
             removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
             removeTile(xPos: newColor.xCoord, yPos: newColor.yCoord)
-            oldColor.removeFromSuperview()
-            newColor.removeFromSuperview()
+            oldColor.pointScored()
+            newColor.pointScored()
+            score += 1
         }
-        
-        newColor.growAndAppearTile()
-        oldTile.removeFromSuperview()
+        oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
+        newColor.combineTiles(newImage: newImage)
         removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
     }
     
@@ -242,27 +244,49 @@ class Board {
         return false
     }
     
-    func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat, direction: UISwipeGestureRecognizer.Direction) {
+    func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat, direction: UISwipeGestureRecognizer.Direction, spaces: Int) {
         let color = tile as! Color
+        let oldXCoord = tile.xCoord
+        let oldYCoord = tile.yCoord
         removeTile(xPos: color.xCoord, yPos: color.yCoord)
         color.xCoord = newXCoord
         color.yCoord = newYCoord
         addTile(tile: color, xPos: color.xCoord, yPos: color.yCoord)
-        color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, newYCoord]]!, tileSize: tileSize)
+        color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, color.yCoord]]!, tileSize: tileSize, isCombined: false)
         color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
         color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
         
-        /*let canCombine = tilesCanCombine(direction: direction, tile: tile)
-        if canCombine.0 {
-            if canCombine.1 == .up {
-                combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-            } else if canCombine.1 == .down {
-                combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-            } else if canCombine.1 == .right {
-                combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-            } else if canCombine.1 == .left {
-                combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+        if tileCanMove(direction: direction, tile: tile) {
+            var newestXCoord = -1
+            var newestYCoord = -1
+            
+            if direction == .up {
+                newestXCoord = newXCoord
+                newestYCoord = newYCoord - 1
+            } else if direction == .down {
+                newestXCoord = newXCoord
+                newestYCoord = newYCoord + 1
+            } else if direction == .right {
+                newestXCoord = newXCoord + 1
+                newestYCoord = newYCoord
+            } else if direction == .left {
+                newestXCoord = newXCoord - 1
+                newestYCoord = newYCoord
             }
-        }*/
+            moveTile(tile: tile, newXCoord: newestXCoord, newYCoord: newestYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
+        } else {
+            let canCombine = tilesCanCombine(direction: direction, tile: tile)
+            if canCombine.0 {
+                if canCombine.1 == .up {
+                    combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                } else if canCombine.1 == .down {
+                    combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                } else if canCombine.1 == .right {
+                    combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                } else if canCombine.1 == .left {
+                    combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                }
+            }
+        }
     }
 }
