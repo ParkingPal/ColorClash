@@ -147,18 +147,18 @@ class Board {
                     }
                     
                     moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
-                } else {
-                    let canCombine = tilesCanCombine(direction: direction, tile: tile)
-                    if canCombine.0 {
-                        if canCombine.1 == .up {
-                            combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                        } else if canCombine.1 == .down {
-                            combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                        } else if canCombine.1 == .right {
-                            combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                        } else if canCombine.1 == .left {
-                            combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                        }
+                }
+                
+                let canCombine = tilesCanCombine(direction: direction, tile: tile)
+                if canCombine.0 {
+                    if canCombine.1 == .up {
+                        combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    } else if canCombine.1 == .down {
+                        combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    } else if canCombine.1 == .right {
+                        combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    } else if canCombine.1 == .left {
+                        combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     }
                 }
             }
@@ -274,19 +274,6 @@ class Board {
                 newestYCoord = newYCoord
             }
             moveTile(tile: tile, newXCoord: newestXCoord, newYCoord: newestYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
-        } else {
-            let canCombine = tilesCanCombine(direction: direction, tile: tile)
-            if canCombine.0 {
-                if canCombine.1 == .up {
-                    combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                } else if canCombine.1 == .down {
-                    combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                } else if canCombine.1 == .right {
-                    combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                } else if canCombine.1 == .left {
-                    combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: color, oldXCoord: oldXCoord, oldYCoord: oldYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                }
-            }
         }
     }
 }
