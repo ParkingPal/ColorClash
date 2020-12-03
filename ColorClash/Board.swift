@@ -151,14 +151,14 @@ class Board {
                 }
                 
                 let canCombine = tilesCanCombine(direction: direction, tile: tile)
-                if canCombine.0 {
-                    if canCombine.1 == .up {
+                if canCombine {
+                    if direction == .up {
                         combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if canCombine.1 == .down {
+                    } else if direction == .down {
                         combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if canCombine.1 == .right {
+                    } else if direction == .right {
                         combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if canCombine.1 == .left {
+                    } else if direction == .left {
                         combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     }
                 }
@@ -166,60 +166,71 @@ class Board {
         }
     }
     
-    func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> (Bool, UISwipeGestureRecognizer.Direction) {
-        
-        if direction == .up && tile.yCoord > 0 && /*primary color condition*/((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || /*secondary color condidition*/ (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord][tile.yCoord - 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
-            return (true, .up)
-        } else if direction == .down && tile.yCoord < yMax && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord][tile.yCoord + 1] as! Color).colorType)  && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord][tile.yCoord + 1] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
-            return (true, .down)
-        } else if direction == .right && tile.xCoord < xMax && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord + 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord + 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
-            return (true, .right)
-        } else if direction == .left && tile.xCoord > 0 && ((((board[tile.xCoord][tile.yCoord] as! Color).colorString != (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == (board[tile.xCoord - 1][tile.yCoord] as! Color).colorType) && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Primary") || (board[tile.xCoord][tile.yCoord] as! Color).colorString == (board[tile.xCoord - 1][tile.yCoord] as! Color).colorString && (board[tile.xCoord][tile.yCoord] as! Color).colorType == "Secondary"){
-            return (true, .left)
+    func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
+        var checkTile:Tile? = nil
+        var checkType:String? = nil
+        let tileType = tile.getTypeByValue(value: tile.value)
+        if direction == .up && tile.yCoord > 0 && board[tile.xCoord][tile.yCoord - 1] != nil {
+            checkTile = board[tile.xCoord][tile.yCoord - 1]!
+            checkType = checkTile!.getTypeByValue(value: checkTile!.value)
+        } else if direction == .down && tile.yCoord < yMax && board[tile.xCoord][tile.yCoord + 1] != nil {
+            checkTile = board[tile.xCoord][tile.yCoord + 1]!
+            checkType = checkTile!.getTypeByValue(value: checkTile!.value)
+        } else if direction == .right && tile.xCoord < xMax && board[tile.xCoord + 1][tile.yCoord] != nil {
+            checkTile = board[tile.xCoord + 1][tile.yCoord]!
+            checkType = checkTile!.getTypeByValue(value: checkTile!.value)
+        } else if direction == .left && tile.xCoord > 0 && board[tile.xCoord - 1][tile.yCoord] != nil {
+            checkTile = board[tile.xCoord - 1][tile.yCoord]!
+            checkType = checkTile!.getTypeByValue(value: checkTile!.value)
         }
         
-        return (false, .up)
+        if checkType == tileType {
+            if tileType == "Primary" && checkType == "Primary" && checkTile!.value != tile.value {
+                return true
+            } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value) {
+                return true
+            }
+        }
+        
+        return false
     }
     
     func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
         var newImage = UIImage()
-        /*UIView.animate(withDuration: 0.2) {
-            newColor.alpha = 0.0
-        }*/
         
         if newColor.colorString == "Red" {
             if oldColor.colorString == "Blue" {
                 newColor.colorString = "Purple"
+                newColor.value = 3
                 newImage = UIImage(named: "PurpleTileBevel")!
-                newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Yellow" {
                 newColor.colorString = "Orange"
+                newColor.value = 4
                 newImage = UIImage(named: "OrangeTileBevel")!
-                newColor.colorType = "Secondary"
             }
         } else if newColor.colorString == "Blue" {
             if oldColor.colorString == "Red" {
                 newColor.colorString = "Purple"
+                newColor.value = 3
                 newImage = UIImage(named: "PurpleTileBevel")!
-                newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Yellow" {
                 newColor.colorString = "Green"
+                newColor.value = 5
                 newImage = UIImage(named: "GreenTileBevel")!
-                newColor.colorType = "Secondary"
             }
         } else if newColor.colorString == "Yellow" {
             if oldColor.colorString == "Red" {
                 newColor.colorString = "Orange"
+                newColor.value = 4
                 newImage = UIImage(named: "OrangeTileBevel")!
-                newColor.colorType = "Secondary"
             } else if oldColor.colorString == "Blue" {
                 newColor.colorString = "Green"
+                newColor.value = 5
                 newImage = UIImage(named: "GreenTileBevel")!
-                newColor.colorType = "Secondary"
             }
-        } else if newColor.colorString == oldColor.colorString && newColor.colorType == "Secondary" {
+        } else if newColor.colorString == oldColor.colorString && newColor.getTypeByValue(value: newColor.value) == "Secondary" {
             removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
             removeTile(xPos: newColor.xCoord, yPos: newColor.yCoord)
             oldColor.pointScored()
