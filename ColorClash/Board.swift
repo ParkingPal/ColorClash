@@ -227,6 +227,8 @@ class Board {
         }
         oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
         newColor.combineTiles(newImage: newImage)
+        let musicPlayer = MusicPlayer.shared
+        musicPlayer.playSoundEffect(fileName: "TileCombine", fileType: "wav")
         removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
     }
     
