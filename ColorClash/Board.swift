@@ -41,7 +41,7 @@ class Board {
         
         let colorInfo = pickRandomTileColor()
         
-        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", occupied: true, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
+        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
         addTile(tile:tile, xPos:randomX, yPos:randomY)
         return tile
     }

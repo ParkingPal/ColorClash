@@ -13,12 +13,13 @@ class Color: Tile {
     var color: UIImage
     var colorString: String
     var colorType: String
+    //var value: Int
     
-    init(color: UIImage, colorString: String, colorType: String, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
+    init(color: UIImage, colorString: String, colorType: String, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
         self.color = color
         self.colorString = colorString
         self.colorType = colorType
-        super.init(type:"Color", occupied:occupied, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
+        super.init(type:"Color", xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
         self.image = color
     }
     
