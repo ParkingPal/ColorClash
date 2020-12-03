@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class Board {
+    var colorHelper = ColorHelper()
     var board = [[Tile?]]()   //2d array of Tiles
     var xMax: Int
     var yMax: Int
@@ -41,7 +42,7 @@ class Board {
         
         let colorInfo = pickRandomTileColor()
         
-        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
+        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", value: colorInfo.2, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
         addTile(tile:tile, xPos:randomX, yPos:randomY)
         return tile
     }
@@ -54,15 +55,15 @@ class Board {
         }
     }
     
-    func pickRandomTileColor() -> (UIImage, String) {
-        let randomColorInt = Int.random(in: 1...3)
+    func pickRandomTileColor() -> (UIImage, String, Int) {
+        let randomColorInt = Int.random(in: 0...2)
         
         if randomColorInt == 1 {
-            return (UIImage(named: "BlueTileBevel.png")!, "Blue")
+            return (UIImage(named: "RedTileBevel.png")!, "Red", colorHelper.getValueByColor(color: "Red"))
         } else if randomColorInt == 2 {
-            return (UIImage(named: "RedTileBevel.png")!, "Red")
+            return (UIImage(named: "BlueTileBevel.png")!, "Blue", colorHelper.getValueByColor(color: "Blue"))
         } else {
-            return (UIImage(named: "YellowTileBevel.png")!, "Yellow")
+            return (UIImage(named: "YellowTileBevel.png")!, "Yellow", colorHelper.getValueByColor(color: "Yellow"))
         }
     }
     
