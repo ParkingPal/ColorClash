@@ -36,6 +36,10 @@ class ColorHelper {
     }
     
     func getCombinedColorValue(color1: String, color2: String) -> Int {
-        return getValueByColor(color: color1) + getValueByColor(color: color2) + 2
+        if (color1 == color2) {
+            return getValueByColor(color: color1)
+        } else {
+            return getValueByColor(color: color1) + getValueByColor(color: color2) + 2
+        }
     }
 }

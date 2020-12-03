@@ -198,45 +198,19 @@ class Board {
     func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
-        var newImage = UIImage()
-        
-        if newColor.colorString == "Red" {
-            if oldColor.colorString == "Blue" {
-                newColor.colorString = "Purple"
-                newColor.value = 3
-                newImage = UIImage(named: "PurpleTileBevel")!
-            } else if oldColor.colorString == "Yellow" {
-                newColor.colorString = "Orange"
-                newColor.value = 4
-                newImage = UIImage(named: "OrangeTileBevel")!
-            }
-        } else if newColor.colorString == "Blue" {
-            if oldColor.colorString == "Red" {
-                newColor.colorString = "Purple"
-                newColor.value = 3
-                newImage = UIImage(named: "PurpleTileBevel")!
-            } else if oldColor.colorString == "Yellow" {
-                newColor.colorString = "Green"
-                newColor.value = 5
-                newImage = UIImage(named: "GreenTileBevel")!
-            }
-        } else if newColor.colorString == "Yellow" {
-            if oldColor.colorString == "Red" {
-                newColor.colorString = "Orange"
-                newColor.value = 4
-                newImage = UIImage(named: "OrangeTileBevel")!
-            } else if oldColor.colorString == "Blue" {
-                newColor.colorString = "Green"
-                newColor.value = 5
-                newImage = UIImage(named: "GreenTileBevel")!
-            }
-        } else if newColor.colorString == oldColor.colorString && newColor.getTypeByValue(value: newColor.value) == "Secondary" {
+        if newColor.getTypeByValue(value: newColor.value) == "Secondary" && oldColor.getTypeByValue(value: oldColor.value) == "Secondary" {
             removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
-            removeTile(xPos: newColor.xCoord, yPos: newColor.yCoord)
+            removeTile(xPos: newColor.xCoord, yPos: oldColor.yCoord)
             oldColor.pointScored()
             newColor.pointScored()
             score += 1
         }
+        
+        let newColorString = colorHelper.getCombinedColorString(color1: oldColor.colorString, color2: newColor.colorString)
+        newColor.colorString = newColorString
+        newColor.value = colorHelper.getValueByColor(color: newColorString)
+        let newImage = UIImage(named: newColorString + "TileBevel")!
+        
         oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
         newColor.combineTiles(newImage: newImage)
         let musicPlayer = MusicPlayer.shared
