@@ -198,18 +198,19 @@ class Board {
     func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
-        if newColor.getTypeByValue(value: newColor.value) == "Secondary" && oldColor.getTypeByValue(value: oldColor.value) == "Secondary" {
-            removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
-            removeTile(xPos: newColor.xCoord, yPos: oldColor.yCoord)
-            oldColor.pointScored()
-            newColor.pointScored()
-            score += 1
-        }
         
         let newColorString = colorHelper.getCombinedColorString(color1: oldColor.colorString, color2: newColor.colorString)
         newColor.colorString = newColorString
         newColor.value = colorHelper.getValueByColor(color: newColorString)
         let newImage = UIImage(named: newColorString + "TileBevel")!
+        
+        if newColor.getTypeByValue(value: newColor.value) == "Secondary" && oldColor.getTypeByValue(value: oldColor.value) == "Secondary" && newColor.value == oldColor.value {
+            removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
+            removeTile(xPos: newColor.xCoord, yPos: newColor.yCoord)
+            oldColor.pointScored()
+            newColor.pointScored()
+            score += 1
+        }
         
         oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
         newColor.combineTiles(newImage: newImage)
