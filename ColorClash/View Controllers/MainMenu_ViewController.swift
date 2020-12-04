@@ -9,10 +9,19 @@ import UIKit
 
 class MainMenu_ViewController: UIViewController {
 
+    @IBOutlet weak var singleGameButton: MainMenu_Button!
+    @IBOutlet weak var levelsButton: MainMenu_Button!
+    @IBOutlet weak var leaderboardsButton: MainMenu_Button!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        singleGameButton.addTarget(self, action: #selector(singleGameButtonClicked), for: .touchUpInside)
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func singleGameButtonClicked() {
+        performSegue(withIdentifier: "toSingleGame", sender: self)
     }
     
 
