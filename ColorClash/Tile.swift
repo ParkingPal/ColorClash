@@ -10,16 +10,17 @@ import UIKit
 
 class Tile: UIImageView {
     var type: String
-    var occupied: Bool
+    var value: Int
     var xCoord: Int
     var yCoord: Int
     var xPos: CGFloat
     var yPos: CGFloat
     var width: CGFloat
     var height: CGFloat
-    init(type:String, occupied: Bool, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
+    
+    init(type:String, value: Int, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
         self.type = type
-        self.occupied = occupied
+        self.value = value
         self.xCoord = xCoord
         self.yCoord = yCoord
         self.xPos = xPos
@@ -32,5 +33,15 @@ class Tile: UIImageView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func getTypeByValue(value: Int) -> String {
+        if value >= 0 && value < 3 {
+            return "Primary"
+        } else if value < 7 {
+            return "Secondary"
+        } else {
+            return "Error -> Unknown Type"
+        }
     }
 }
