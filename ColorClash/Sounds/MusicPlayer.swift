@@ -12,7 +12,7 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
     static let shared = MusicPlayer()
     var backgroundPlayer: AVAudioPlayer?
     var soundEffectPlayer: AVAudioPlayer?
-    var regularVolume: Float = 0.01
+    var regularVolume: Float = 1.0
     
     /*func startBackgroundMusic() {
         let bundle = Bundle.main.path(forResource: "TrivieMusic1", ofType: "mp3")
