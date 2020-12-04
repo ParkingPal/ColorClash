@@ -10,7 +10,7 @@
         <!--Launch View Controller-->
         <scene sceneID="01r-eG-UrS">
             <objects>
-                <viewController id="GJW-GK-0sg" customClass="LaunchViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GJW-GK-0sg" customClass="Launch_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="USV-4N-VN6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,6 +32,7 @@
                     </view>
                     <connections>
                         <outlet property="tmpLogo" destination="JQV-Ww-6Tg" id="Ah4-KE-qA9"/>
+                        <segue destination="Etk-5g-pak" kind="presentation" identifier="toMainMenu" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="d2h-CK-iR8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJh-Dg-WaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

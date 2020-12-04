@@ -25,7 +25,8 @@
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
-		4CF8A6DA2579E19B009B98D3 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF8A6D92579E19A009B98D3 /* LaunchViewController.swift */; };
+		4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */; };
+		4CF8A6ED2579E538009B98D3 /* MainMenu_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF8A6EC2579E538009B98D3 /* MainMenu_ViewController.swift */; };
 		765467AD666DDCA5D9CEBB42 /* Pods_ColorClash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5E34C1B7231DC31BAB02B3D /* Pods_ColorClash.framework */; };
 		C9F3D1B7104F82A372063013 /* Pods_ColorClash_ColorClashUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */; };
 /* End PBXBuildFile section */
@@ -72,7 +73,8 @@
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
-		4CF8A6D92579E19A009B98D3 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch_ViewController.swift; sourceTree = "<group>"; };
+		4CF8A6EC2579E538009B98D3 /* MainMenu_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu_ViewController.swift; sourceTree = "<group>"; };
 		515C2A6C3AD6D5F5FCF77C9A /* Pods-ColorClashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClashTests.debug.xcconfig"; path = "Target Support Files/Pods-ColorClashTests/Pods-ColorClashTests.debug.xcconfig"; sourceTree = "<group>"; };
 		549A1AC6477F3D9A4820F739 /* Pods-ColorClashTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClashTests.release.xcconfig"; path = "Target Support Files/Pods-ColorClashTests/Pods-ColorClashTests.release.xcconfig"; sourceTree = "<group>"; };
 		6799BBEB28A0AAC1E4B56D5E /* Pods-ColorClash-ColorClashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClash-ColorClashUITests.debug.xcconfig"; path = "Target Support Files/Pods-ColorClash-ColorClashUITests/Pods-ColorClash-ColorClashUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -223,7 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
-				4CF8A6D92579E19A009B98D3 /* LaunchViewController.swift */,
+				4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */,
+				4CF8A6EC2579E538009B98D3 /* MainMenu_ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -484,10 +487,11 @@
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
 				380F36C4256F570D00BA06C7 /* Board.swift in Sources */,
 				38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */,
+				4CF8A6ED2579E538009B98D3 /* MainMenu_ViewController.swift in Sources */,
 				380BC51D256E379B00A8652C /* Tile.swift in Sources */,
 				4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
-				4CF8A6DA2579E19B009B98D3 /* LaunchViewController.swift in Sources */,
+				4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

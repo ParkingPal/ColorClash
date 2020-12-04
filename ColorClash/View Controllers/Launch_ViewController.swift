@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+class Launch_ViewController: UIViewController {
 
     @IBOutlet weak var tmpLogo: UIImageView!
     
@@ -17,6 +17,7 @@ class LaunchViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {self.animate()})
     }
     
     func animate() {
@@ -26,6 +27,7 @@ class LaunchViewController: UIViewController {
         } completion: { (done) in
             if done {
                 //will use this probably similar to Trivia Ace where it will check to see if they are a new user or not. For now, will just continue to VC
+                self.performSegue(withIdentifier: "toMainMenu", sender: self)
             }
         }
 
