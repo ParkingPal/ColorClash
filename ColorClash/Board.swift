@@ -129,6 +129,10 @@ class Board {
                 } else {
                     tile = board[j][i]!
                 }
+                if tile.type == "Wall" {
+                    spaces -= 1
+                    continue
+                }
                 if tileCanMove(direction: direction, tile: tile) {
                     var newXCoord = -1
                     var newYCoord = -1

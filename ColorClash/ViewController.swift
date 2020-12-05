@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
-        let newWall = Wall(wall: UIImage(named: "RedTileBevel.png")!, xCoord: 0, yCoord: 0, xPos: tileCoordsWithPositions[[0,0]]![0], yPos: tileCoordsWithPositions[[0,0]]![1], width: tileWidth, height: tileHeight)
+        let newWall = Wall(wall: UIImage(named: "RedTileBevel.png")!, xCoord: 1, yCoord: 1, xPos: tileCoordsWithPositions[[1,1]]![0], yPos: tileCoordsWithPositions[[1,1]]![1], width: tileWidth, height: tileHeight)
         board.addTile(tile: newWall, xPos: newWall.xCoord, yPos: newWall.yCoord)
         self.gameBoardView.addSubview(newWall)
         
