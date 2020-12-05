@@ -145,7 +145,9 @@ class Board {
                     tile = board[j][i]!
                 }
                 if tile.type == "Wall" {
-                    spaces -= 1
+                    if spaces >= 0 {
+                        spaces -= 1
+                    }
                     continue
                 }
                 if tileCanMove(direction: direction, tile: tile) {
