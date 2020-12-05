@@ -12,6 +12,7 @@
 		380F36C4256F570D00BA06C7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380F36C3256F570D00BA06C7 /* Board.swift */; };
 		38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BEC54B25787809003E6D19 /* ColorHelper.swift */; };
 		38C40526256E2A0F00DD10DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C40525256E2A0F00DD10DE /* Color.swift */; };
+		4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */; };
 		4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */; };
 		4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */; };
 		4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D4256E240400ECCCD5 /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 		38BEC54B25787809003E6D19 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		38C40525256E2A0F00DD10DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorClash_ColorClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame_ViewController.swift; sourceTree = "<group>"; };
 		4C8DC1CD256E240400ECCCD5 /* ColorClash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorClash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
 				4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */,
+				4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */,
 				380BC51D256E379B00A8652C /* Tile.swift in Sources */,
 				4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */,
+				4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
 				4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
