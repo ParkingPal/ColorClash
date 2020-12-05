@@ -27,7 +27,7 @@ class Launch_ViewController: UIViewController {
         } completion: { (done) in
             if done {
                 //will use this probably similar to Trivia Ace where it will check to see if they are a new user or not. For now, will just continue to VC
-                self.performSegue(withIdentifier: "toMainMenu", sender: self)
+                self.performSegue(withIdentifier: "toGame", sender: self)
             }
         }
 
