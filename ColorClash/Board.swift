@@ -21,6 +21,21 @@ class Board {
         self.board = Array(repeating: Array(repeating: nil, count: xMax + 1), count: yMax + 1)
     }
     
+    func addWallsRandomly(numToAdd: Int, gameBoardView: UIView, tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) {
+        for _ in 0...numToAdd {
+            var randomX: Int
+            var randomY: Int
+            repeat { // make sure you don't add 2 walls to the same tile
+                randomX = Int.random(in: 0...xMax)
+                randomY = Int.random(in: 0...yMax)
+            } while isTileOccupied(xPos: randomX, yPos: randomY)
+            
+            let newWall = Wall(wall: UIImage(named: "RedTileBevel.png")!, xCoord: randomX, yCoord: randomY, xPos: tileCoordsWithPositions[[randomX,randomY]]![0], yPos: tileCoordsWithPositions[[randomX,randomY]]![1], width: tileWidth, height: tileHeight)
+            addTile(tile: newWall, xPos: newWall.xCoord, yPos: newWall.yCoord)
+            gameBoardView.addSubview(newWall)
+        }
+    }
+    
     func addTileRandomly(tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) -> Color {
         var randomX: Int
         var randomY: Int
