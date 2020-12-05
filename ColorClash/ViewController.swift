@@ -31,12 +31,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
+        let newWall = Wall(wall: UIImage(named: "RedTileBevel.png")!, xCoord: 0, yCoord: 0, xPos: tileCoordsWithPositions[[0,0]]![0], yPos: tileCoordsWithPositions[[0,0]]![1], width: tileWidth, height: tileHeight)
+        board.addTile(tile: newWall, xPos: newWall.xCoord, yPos: newWall.yCoord)
+        self.gameBoardView.addSubview(newWall)
+        
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
-        //let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-        //newTile2.growAndAppearTile()
-        //self.gameBoardView.addSubview(newTile2)
+        let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        newTile2.growAndAppearTile()
+        self.gameBoardView.addSubview(newTile2)
     }
     
     func createBoardGraphically() {
