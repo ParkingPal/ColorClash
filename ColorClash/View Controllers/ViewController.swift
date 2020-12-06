@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let yMax = 3
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
-    var board = Board(xMax:3, yMax:3)
+    var board = Board(xMax: 3, yMax: 3)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
+        board.addWallsRandomly(numToAdd: 3, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
-        //let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-        //newTile2.growAndAppearTile()
-        //self.gameBoardView.addSubview(newTile2)
+        let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        newTile2.growAndAppearTile()
+        self.gameBoardView.addSubview(newTile2)
     }
     
     func createBoardGraphically() {

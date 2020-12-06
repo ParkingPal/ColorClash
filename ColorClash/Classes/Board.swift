@@ -21,6 +21,21 @@ class Board {
         self.board = Array(repeating: Array(repeating: nil, count: xMax + 1), count: yMax + 1)
     }
     
+    func addWallsRandomly(numToAdd: Int, gameBoardView: UIView, tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) {
+        for _ in 0...numToAdd - 1 {
+            var randomX: Int
+            var randomY: Int
+            repeat { // make sure you don't add 2 walls to the same tile
+                randomX = Int.random(in: 0...xMax)
+                randomY = Int.random(in: 0...yMax)
+            } while isTileOccupied(xPos: randomX, yPos: randomY)
+            
+            let newWall = Wall(xCoord: randomX, yCoord: randomY, xPos: tileCoordsWithPositions[[randomX,randomY]]![0], yPos: tileCoordsWithPositions[[randomX,randomY]]![1], width: tileWidth, height: tileHeight)
+            addTile(tile: newWall, xPos: newWall.xCoord, yPos: newWall.yCoord)
+            gameBoardView.addSubview(newWall)
+        }
+    }
+    
     func addTileRandomly(tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) -> Color {
         var randomX: Int
         var randomY: Int
@@ -129,9 +144,16 @@ class Board {
                 } else {
                     tile = board[j][i]!
                 }
+                if tile.type == "Wall" {
+                    spaces = 0
+                    continue
+                }
                 if tileCanMove(direction: direction, tile: tile) {
                     var newXCoord = -1
                     var newYCoord = -1
+                    if spaces < 0 {
+                        spaces = 0
+                    }
                     
                     if (direction == .up) {
                         newXCoord = i
@@ -143,7 +165,7 @@ class Board {
                         newXCoord = j + spaces
                         newYCoord = i
                     } else if (direction == .left) {
-                        newXCoord = j - spaces
+                        newXCoord = j - spaces + 1
                         newYCoord = i
                     }
                     
@@ -235,8 +257,6 @@ class Board {
     
     func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat, direction: UISwipeGestureRecognizer.Direction, spaces: Int) {
         let color = tile as! Color
-        let oldXCoord = tile.xCoord
-        let oldYCoord = tile.yCoord
         removeTile(xPos: color.xCoord, yPos: color.yCoord)
         color.xCoord = newXCoord
         color.yCoord = newYCoord
