@@ -170,7 +170,6 @@
 				4C8DC1D9256E240700ECCCD5 /* Assets.xcassets */,
 				4C8DC1DE256E240700ECCCD5 /* Info.plist */,
 				4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */,
-				38765C3C257C3D86008435B5 /* Wall.swift */,
 			);
 			path = ColorClash;
 			sourceTree = "<group>";
@@ -229,6 +228,7 @@
 				38C40525256E2A0F00DD10DE /* Color.swift */,
 				38BEC54B25787809003E6D19 /* ColorHelper.swift */,
 				380BC51C256E379B00A8652C /* Tile.swift */,
+				38765C3C257C3D86008435B5 /* Wall.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
