@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let yMax = 3
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
-    var board = Board(xMax:3, yMax:3)
+    var board = Board(xMax: 3, yMax: 3)
     
     override func viewDidLoad() {
         super.viewDidLoad()

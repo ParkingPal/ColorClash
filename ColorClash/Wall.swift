@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 
 class Wall: Tile {
-    var wall: UIImage
-    
-    init(wall: UIImage, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
-        self.wall = wall
+    init(xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
         super.init(type:"Wall", value: -1, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
+        super.image = UIImage(named: "BlackTileBevel.png")
     }
     
     required init?(coder: NSCoder) {
