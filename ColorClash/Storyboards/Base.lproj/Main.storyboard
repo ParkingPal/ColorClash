@@ -165,10 +165,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acD-Z3-vJz" userLabel="Single Game Label View">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="105.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Single Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I52-D8-zzx">
-                                                        <rect key="frame" x="30" y="10" width="354" height="85.5"/>
+                                                        <rect key="frame" x="30" y="10" width="354" height="101"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -182,39 +182,54 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lre-dF-GoI" userLabel="Single Game Buttons">
-                                                <rect key="frame" x="0.0" y="105.5" width="414" height="316.5"/>
+                                                <rect key="frame" x="0.0" y="121" width="414" height="362.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-dR-qkE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="316.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-dR-qkE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTL-3G-cNd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="117.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va3-fd-o2D">
-                                                                        <rect key="frame" x="10" y="10" width="394" height="138"/>
+                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
                                                                         <state key="normal" title="Classic" backgroundImage="MainMenuButton_Blue"/>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="Va3-fd-o2D" secondAttribute="bottom" constant="10" id="RIz-9u-V1N"/>
-                                                                    <constraint firstItem="Va3-fd-o2D" firstAttribute="top" secondItem="sTL-3G-cNd" secondAttribute="top" constant="10" id="tdO-xe-uSW"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Va3-fd-o2D" secondAttribute="bottom" constant="5" id="RIz-9u-V1N"/>
+                                                                    <constraint firstItem="Va3-fd-o2D" firstAttribute="top" secondItem="sTL-3G-cNd" secondAttribute="top" constant="5" id="tdO-xe-uSW"/>
                                                                     <constraint firstItem="Va3-fd-o2D" firstAttribute="leading" secondItem="sTL-3G-cNd" secondAttribute="leading" constant="10" id="v3V-KC-tPd"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Va3-fd-o2D" secondAttribute="trailing" constant="10" id="vX3-GV-PsI"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wK-wF-qne">
-                                                                <rect key="frame" x="0.0" y="158" width="414" height="158.5"/>
+                                                                <rect key="frame" x="0.0" y="122.5" width="414" height="117.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDm-5m-hw7">
-                                                                        <rect key="frame" x="10" y="10" width="394" height="138.5"/>
+                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
                                                                         <state key="normal" title="Arcade" backgroundImage="MainMenuButton_Purple"/>
                                                                     </button>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="sDm-5m-hw7" secondAttribute="trailing" constant="10" id="D1r-z7-xCw"/>
-                                                                    <constraint firstItem="sDm-5m-hw7" firstAttribute="top" secondItem="0wK-wF-qne" secondAttribute="top" constant="10" id="IIt-Cf-VvG"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="sDm-5m-hw7" secondAttribute="bottom" constant="10" id="pvq-TQ-Sis"/>
+                                                                    <constraint firstItem="sDm-5m-hw7" firstAttribute="top" secondItem="0wK-wF-qne" secondAttribute="top" constant="5" id="IIt-Cf-VvG"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="sDm-5m-hw7" secondAttribute="bottom" constant="5" id="pvq-TQ-Sis"/>
                                                                     <constraint firstItem="sDm-5m-hw7" firstAttribute="leading" secondItem="0wK-wF-qne" secondAttribute="leading" constant="10" id="q6l-ou-fKa"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Siv-BG-NbV">
+                                                                <rect key="frame" x="0.0" y="245" width="414" height="117.5"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByO-bD-qpg">
+                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
+                                                                        <state key="normal" title="Hardcore" backgroundImage="MainMenuButton_Green"/>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="ByO-bD-qpg" secondAttribute="trailing" constant="10" id="Ybg-eK-toU"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ByO-bD-qpg" secondAttribute="bottom" constant="5" id="f1H-Lz-qIb"/>
+                                                                    <constraint firstItem="ByO-bD-qpg" firstAttribute="top" secondItem="Siv-BG-NbV" secondAttribute="top" constant="5" id="j6A-yB-lEQ"/>
+                                                                    <constraint firstItem="ByO-bD-qpg" firstAttribute="leading" secondItem="Siv-BG-NbV" secondAttribute="leading" constant="10" id="qn8-jk-zik"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -228,10 +243,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtN-tn-u22" userLabel="Quick Stats Label View">
-                                                <rect key="frame" x="0.0" y="422" width="414" height="105.5"/>
+                                                <rect key="frame" x="0.0" y="483.5" width="414" height="90.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Stats: Classic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-Ap-131">
-                                                        <rect key="frame" x="30" y="10" width="354" height="85.5"/>
+                                                        <rect key="frame" x="30" y="10" width="354" height="70.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -245,10 +260,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dI-oN-2bH" userLabel="Quick Stats ScrollView">
-                                                <rect key="frame" x="0.0" y="527.5" width="414" height="158"/>
+                                                <rect key="frame" x="0.0" y="574" width="414" height="121"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-jl-HQO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
                                                         <viewLayoutGuide key="contentLayoutGuide" id="fji-IV-BzX"/>
                                                         <viewLayoutGuide key="frameLayoutGuide" id="QVo-kb-qpG"/>
                                                     </scrollView>
@@ -261,10 +276,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-kX-lgW" userLabel="PageControl View">
-                                                <rect key="frame" x="0.0" y="685.5" width="414" height="39.5"/>
+                                                <rect key="frame" x="0.0" y="695" width="414" height="30"/>
                                                 <subviews>
                                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="4m6-UQ-JZ5">
-                                                        <rect key="frame" x="5" y="5" width="404" height="29.5"/>
+                                                        <rect key="frame" x="5" y="5" width="404" height="20"/>
                                                     </pageControl>
                                                 </subviews>
                                                 <constraints>
@@ -276,10 +291,10 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="HtN-tn-u22" firstAttribute="height" secondItem="acD-Z3-vJz" secondAttribute="height" id="5mQ-OK-0qn"/>
+                                            <constraint firstItem="HtN-tn-u22" firstAttribute="height" secondItem="acD-Z3-vJz" secondAttribute="height" multiplier="0.75" id="5mQ-OK-0qn"/>
                                             <constraint firstItem="Lre-dF-GoI" firstAttribute="height" secondItem="acD-Z3-vJz" secondAttribute="height" multiplier="3" id="Y1Q-2E-17F"/>
                                             <constraint firstItem="5dI-oN-2bH" firstAttribute="height" secondItem="SFJ-kX-lgW" secondAttribute="height" multiplier="4" id="Y4W-u1-Kqd"/>
-                                            <constraint firstItem="Lre-dF-GoI" firstAttribute="height" secondItem="5dI-oN-2bH" secondAttribute="height" multiplier="2" id="fPj-yM-nZI"/>
+                                            <constraint firstItem="Lre-dF-GoI" firstAttribute="height" secondItem="5dI-oN-2bH" secondAttribute="height" multiplier="3" id="fPj-yM-nZI"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -307,6 +322,7 @@
                     <connections>
                         <outlet property="arcadeButton" destination="sDm-5m-hw7" id="JEC-KW-hRE"/>
                         <outlet property="classicButton" destination="Va3-fd-o2D" id="tdX-T4-T5h"/>
+                        <outlet property="hardcoreButton" destination="ByO-bD-qpg" id="pZK-Ob-q47"/>
                         <outlet property="quickStatsTitleLabel" destination="EbG-Ap-131" id="tpa-eu-9h1"/>
                         <outlet property="singleGameTitleLabel" destination="I52-D8-zzx" id="ebM-xT-4qF"/>
                         <outlet property="statsPageControl" destination="4m6-UQ-JZ5" id="I2d-ea-hmd"/>
@@ -360,6 +376,7 @@
         <image name="BlueBackground" width="200" height="200"/>
         <image name="ColorClashAppIcon1" width="1024" height="1024"/>
         <image name="MainMenuButton_Blue" width="1080" height="540"/>
+        <image name="MainMenuButton_Green" width="1080" height="540"/>
         <image name="MainMenuButton_Purple" width="1080" height="540"/>
     </resources>
 </document>

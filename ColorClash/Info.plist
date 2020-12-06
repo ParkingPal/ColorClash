@@ -5,6 +5,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Arang.ttf</string>
+		<string>AbingdonBold.ttf</string>
+		<string>AssassinNinja.ttf</string>
+		<string>HeyNovember.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

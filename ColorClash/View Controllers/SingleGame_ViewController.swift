@@ -13,6 +13,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var quickStatsTitleLabel: UILabel!
     @IBOutlet weak var classicButton: UIButton!
     @IBOutlet weak var arcadeButton: UIButton!
+    @IBOutlet weak var hardcoreButton: UIButton!
     @IBOutlet weak var statsScrollView: UIScrollView!
     @IBOutlet weak var statsPageControl: UIPageControl!
     
@@ -34,8 +35,13 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         
         classicButton.titleLabel?.font = UIFont(name: "Arang", size: 75.0)
         classicButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        arcadeButton.titleLabel?.font = UIFont(name: "Arang", size: 75.0)
+        classicButton.titleEdgeInsets = UIEdgeInsets(top: 40.0, left: 40.0, bottom: 40.0, right: 40.0)
+        arcadeButton.titleLabel?.font = UIFont(name: "Abingdon", size: 75.0)
         arcadeButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        arcadeButton.titleEdgeInsets = UIEdgeInsets(top: 40.0, left: 40.0, bottom: 40.0, right: 40.0)
+        hardcoreButton.titleLabel?.font = UIFont(name: "Hey November", size: 75.0)
+        hardcoreButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        hardcoreButton.titleEdgeInsets = UIEdgeInsets(top: 40.0, left: 20.0, bottom: 40.0, right: 20.0)
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
         
@@ -60,7 +66,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             
             header.text = headers[index]
             header.font = UIFont(name: "Arang", size: 20.0)
-            score.font = UIFont(name: "Arang", size: 40.0)
+            score.font = UIFont(name: "Arang", size: 60.0)
             header.textAlignment = .center
             score.textAlignment = .center
             
@@ -72,7 +78,6 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             score.heightAnchor.constraint(equalTo: header.heightAnchor, multiplier: 2.0).isActive = true
             
             self.statsScrollView.addSubview(stack)
-            
         }
         
         statsScrollView.contentSize = CGSize(width: (statsScrollView.frame.size.width * CGFloat(headers.count)), height: 1.0)

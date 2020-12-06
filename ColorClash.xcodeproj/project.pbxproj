@@ -13,6 +13,9 @@
 		38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BEC54B25787809003E6D19 /* ColorHelper.swift */; };
 		38C40526256E2A0F00DD10DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C40525256E2A0F00DD10DE /* Color.swift */; };
 		4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */; };
+		4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */; };
+		4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */; };
+		4C69EA6C257C624100C3D2F2 /* HeyNovember.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA6B257C624000C3D2F2 /* HeyNovember.ttf */; };
 		4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */; };
 		4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */; };
 		4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D4256E240400ECCCD5 /* ViewController.swift */; };
@@ -56,6 +59,9 @@
 		38C40525256E2A0F00DD10DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorClash_ColorClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame_ViewController.swift; sourceTree = "<group>"; };
+		4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AbingdonBold.ttf; sourceTree = "<group>"; };
+		4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AssassinNinja.ttf; sourceTree = "<group>"; };
+		4C69EA6B257C624000C3D2F2 /* HeyNovember.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HeyNovember.ttf; sourceTree = "<group>"; };
 		4C8DC1CD256E240400ECCCD5 /* ColorClash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorClash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,7 +243,10 @@
 		4CF8A6F42579E717009B98D3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */,
+				4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */,
 				4CF8A6F52579E736009B98D3 /* Arang.ttf */,
+				4C69EA6B257C624000C3D2F2 /* HeyNovember.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -360,13 +369,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C69EA6C257C624100C3D2F2 /* HeyNovember.ttf in Resources */,
 				4C8DC1DD256E240700ECCCD5 /* LaunchScreen.storyboard in Resources */,
 				4CF8A6F62579E736009B98D3 /* Arang.ttf in Resources */,
 				4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */,
 				4C8DC210256E28F400ECCCD5 /* GoogleService-Info.plist in Resources */,
+				4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */,
 				4C8DC1DA256E240700ECCCD5 /* Assets.xcassets in Resources */,
 				4C8DC1D8256E240400ECCCD5 /* Main.storyboard in Resources */,
 				4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */,
+				4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */,
 				4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
