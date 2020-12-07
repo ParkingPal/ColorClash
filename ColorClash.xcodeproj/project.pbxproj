@@ -13,6 +13,7 @@
 		38765C3D257C3D86008435B5 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38765C3C257C3D86008435B5 /* Wall.swift */; };
 		38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BEC54B25787809003E6D19 /* ColorHelper.swift */; };
 		38C40526256E2A0F00DD10DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C40525256E2A0F00DD10DE /* Color.swift */; };
+		4C3F4419257EED4000012BE4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F4418257EED4000012BE4 /* CustomLabel.swift */; };
 		4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */; };
 		4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */; };
 		4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */; };
@@ -60,6 +61,7 @@
 		38BEC54B25787809003E6D19 /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		38C40525256E2A0F00DD10DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorClash_ColorClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3F4418257EED4000012BE4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame_ViewController.swift; sourceTree = "<group>"; };
 		4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AbingdonBold.ttf; sourceTree = "<group>"; };
 		4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AssassinNinja.ttf; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				38BEC54B25787809003E6D19 /* ColorHelper.swift */,
 				380BC51C256E379B00A8652C /* Tile.swift */,
 				38765C3C257C3D86008435B5 /* Wall.swift */,
+				4C3F4418257EED4000012BE4 /* CustomLabel.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */,
 				380BC51D256E379B00A8652C /* Tile.swift in Sources */,
 				4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */,
+				4C3F4419257EED4000012BE4 /* CustomLabel.swift in Sources */,
 				4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
 				4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */,

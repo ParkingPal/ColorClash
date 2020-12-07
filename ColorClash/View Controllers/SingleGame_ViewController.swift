@@ -9,8 +9,8 @@ import UIKit
 
 class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var singleGameTitleLabel: UILabel!
-    @IBOutlet weak var quickStatsTitleLabel: UILabel!
+    @IBOutlet weak var singleGameTitleLabel: CustomLabel!
+    @IBOutlet weak var quickStatsTitleLabel: CustomLabel!
     @IBOutlet weak var classicButton: UIButton!
     @IBOutlet weak var arcadeButton: UIButton!
     @IBOutlet weak var hardcoreButton: UIButton!
@@ -28,10 +28,8 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupLayout() {
-        singleGameTitleLabel.font = UIFont(name: "Arang", size: 100.0)
-        singleGameTitleLabel.adjustsFontSizeToFitWidth = true
-        quickStatsTitleLabel.font = UIFont(name: "Arang", size: 100.0)
-        quickStatsTitleLabel.adjustsFontSizeToFitWidth =  true
+        singleGameTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0)
+        quickStatsTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0)
         
         classicButton.titleLabel?.font = UIFont(name: "Arang", size: 75.0)
         classicButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -54,8 +52,8 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             frame.size = statsScrollView.frame.size
             
             let stack = UIStackView(frame: frame)
-            let header = UILabel(frame: frame)
-            let score = UILabel(frame: frame)
+            let header = CustomLabel(frame: frame)
+            let score = CustomLabel(frame: frame)
             
             let isInteger = floor(scores[index]) == scores[index]
             if isInteger {
