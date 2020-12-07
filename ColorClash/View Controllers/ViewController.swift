@@ -39,6 +39,10 @@ class ViewController: UIViewController {
         let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile2.growAndAppearTile()
         self.gameBoardView.addSubview(newTile2)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.gameBoardView.alpha = 1.0
+        }
     }
     
     func createBoardGraphically() {
@@ -53,6 +57,7 @@ class ViewController: UIViewController {
         gameBoardView.layer.shadowOpacity = 1.0
         gameBoardView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         gameBoardView.layer.shadowRadius = 50.0
+        gameBoardView.alpha = 0.0
         view.addSubview(gameBoardView)
         
         //set up constraints for board
