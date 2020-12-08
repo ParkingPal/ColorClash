@@ -21,6 +21,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     var headers: [String] = ["High Score", "Average Score", "Games Played"]
     var scores: [Double] = [64, 22.3, 10]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    var isStackViewLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,9 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupScrollView()
+        if isStackViewLoaded == false {
+            setupScrollView()
+        }
     }
     
     func setupLayout() {
@@ -76,6 +79,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             score.heightAnchor.constraint(equalTo: header.heightAnchor, multiplier: 2.0).isActive = true
             
             self.statsScrollView.addSubview(stack)
+            isStackViewLoaded = true
         }
         
         statsScrollView.contentSize = CGSize(width: (statsScrollView.frame.size.width * CGFloat(headers.count)), height: 1.0)
