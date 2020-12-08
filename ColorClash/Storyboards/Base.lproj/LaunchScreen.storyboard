@@ -15,6 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8v4-cU-cfF">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon1" translatesAutoresizingMaskIntoConstraints="NO" id="Ifq-K4-nxj">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
@@ -24,9 +27,12 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="1" green="0.97656575489999997" blue="0.83416697309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="8v4-cU-cfF" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Bmp-ch-tzJ"/>
+                            <constraint firstItem="8v4-cU-cfF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uu8-sB-u3H"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8v4-cU-cfF" secondAttribute="trailing" id="asD-9F-JpX"/>
                             <constraint firstItem="Ifq-K4-nxj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dM3-XI-uDO"/>
+                            <constraint firstAttribute="bottom" secondItem="8v4-cU-cfF" secondAttribute="bottom" id="gtI-Uh-jTY"/>
                             <constraint firstItem="Ifq-K4-nxj" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="oTr-EF-7VQ"/>
                         </constraints>
                     </view>
@@ -37,6 +43,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BlueBackground" width="200" height="200"/>
         <image name="ColorClashAppIcon1" width="1024" height="1024"/>
     </resources>
 </document>
