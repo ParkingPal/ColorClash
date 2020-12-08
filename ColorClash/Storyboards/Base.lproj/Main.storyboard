@@ -82,6 +82,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AKT-vh-acE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,6 +104,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ayN-l8-vuR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -124,6 +126,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="HGa-gY-7tD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,6 +148,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AWd-vK-vsO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,6 +170,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pEI-Bg-xhT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
