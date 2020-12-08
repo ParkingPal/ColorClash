@@ -16,11 +16,11 @@ class ViewController: UIViewController {
     var tileViews = [UIView]()
     let gameBoardView = UIView()
     //we need to set up the initialization later so the xMax and yMax below are the same as the xMax and yMax in the Board initilization...so we don't have to manually put in both
-    let xMax = 3
-    let yMax = 3
+    var xMax = 0
+    var yMax = 0
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
-    var board = Board(xMax: 3, yMax: 3)
+    var board = Board(xMax: 0, yMax: 0, gameType: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
-        board.addWallsRandomly(numToAdd: 3, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        
+        if board.gameType == "Hardcore" {
+            board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        }
         
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()

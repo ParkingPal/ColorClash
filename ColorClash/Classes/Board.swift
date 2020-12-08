@@ -14,10 +14,12 @@ class Board {
     var xMax: Int
     var yMax: Int
     var score = 0
+    var gameType: String
     
-    init(xMax: Int, yMax: Int) {
+    init(xMax: Int, yMax: Int, gameType: String) {
         self.xMax = xMax
         self.yMax = yMax
+        self.gameType = gameType
         self.board = Array(repeating: Array(repeating: nil, count: xMax + 1), count: yMax + 1)
     }
     

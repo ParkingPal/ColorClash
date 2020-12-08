@@ -406,7 +406,8 @@
                         <outlet property="singleGameTitleLabel" destination="I52-D8-zzx" id="ebM-xT-4qF"/>
                         <outlet property="statsPageControl" destination="4m6-UQ-JZ5" id="I2d-ea-hmd"/>
                         <outlet property="statsScrollView" destination="J2R-jl-HQO" id="UGd-LG-Gt7"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toPlayClassic" id="ueF-5Q-9m7"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toClassic" id="ueF-5Q-9m7"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toHardcore" id="KOu-dR-AF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohu-Q6-1hx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -514,6 +515,9 @@
             <point key="canvasLocation" x="-1126" y="2034"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KOu-dR-AF4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueBackground" width="200" height="200"/>
         <image name="ColorClashAppIcon1" width="1024" height="1024"/>
