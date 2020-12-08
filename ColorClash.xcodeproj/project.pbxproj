@@ -19,6 +19,10 @@
 		4C3F442E257F06FE00012BE4 /* DelicateSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */; };
 		4C3F4436257F448800012BE4 /* ADrippingMarker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */; };
 		4C3F443E257F4A1B00012BE4 /* JosefinSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */; };
+		4C3F4446257F666C00012BE4 /* Profile_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F4445257F666C00012BE4 /* Profile_ViewController.swift */; };
+		4C3F444B257F669400012BE4 /* Levels_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F444A257F669400012BE4 /* Levels_ViewController.swift */; };
+		4C3F4450257F66B800012BE4 /* Leaderboards_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F444F257F66B800012BE4 /* Leaderboards_ViewController.swift */; };
+		4C3F4455257F66C900012BE4 /* Store_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F4454257F66C900012BE4 /* Store_ViewController.swift */; };
 		4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */; };
 		4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */; };
 		4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */; };
@@ -72,6 +76,10 @@
 		4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DelicateSansBold.ttf; sourceTree = "<group>"; };
 		4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ADrippingMarker.ttf; sourceTree = "<group>"; };
 		4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSansRegular.ttf; sourceTree = "<group>"; };
+		4C3F4445257F666C00012BE4 /* Profile_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_ViewController.swift; sourceTree = "<group>"; };
+		4C3F444A257F669400012BE4 /* Levels_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels_ViewController.swift; sourceTree = "<group>"; };
+		4C3F444F257F66B800012BE4 /* Leaderboards_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboards_ViewController.swift; sourceTree = "<group>"; };
+		4C3F4454257F66C900012BE4 /* Store_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store_ViewController.swift; sourceTree = "<group>"; };
 		4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame_ViewController.swift; sourceTree = "<group>"; };
 		4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AbingdonBold.ttf; sourceTree = "<group>"; };
 		4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AssassinNinja.ttf; sourceTree = "<group>"; };
@@ -253,6 +261,10 @@
 				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
 				4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */,
 				4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */,
+				4C3F4445257F666C00012BE4 /* Profile_ViewController.swift */,
+				4C3F444A257F669400012BE4 /* Levels_ViewController.swift */,
+				4C3F444F257F66B800012BE4 /* Leaderboards_ViewController.swift */,
+				4C3F4454257F66C900012BE4 /* Store_ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -534,8 +546,12 @@
 			files = (
 				4C3F441E257EFE1A00012BE4 /* CustomButton.swift in Sources */,
 				4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */,
+				4C3F444B257F669400012BE4 /* Levels_ViewController.swift in Sources */,
 				38765C3D257C3D86008435B5 /* Wall.swift in Sources */,
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
+				4C3F4446257F666C00012BE4 /* Profile_ViewController.swift in Sources */,
+				4C3F4455257F66C900012BE4 /* Store_ViewController.swift in Sources */,
+				4C3F4450257F66B800012BE4 /* Leaderboards_ViewController.swift in Sources */,
 				380F36C4256F570D00BA06C7 /* Board.swift in Sources */,
 				38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */,
 				380BC51D256E379B00A8652C /* Tile.swift in Sources */,

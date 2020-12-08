@@ -182,7 +182,7 @@
         <!--Profile-->
         <scene sceneID="pZ4-fY-ALt">
             <objects>
-                <viewController id="Wdo-zH-Grk" sceneMemberID="viewController">
+                <viewController id="Wdo-zH-Grk" customClass="Profile_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f50-bU-WG9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -416,7 +416,7 @@
         <!--Challenge Levels-->
         <scene sceneID="Yhq-pG-7W1">
             <objects>
-                <viewController id="Psq-aH-6ij" sceneMemberID="viewController">
+                <viewController id="Psq-aH-6ij" customClass="Levels_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ONc-sy-a75">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,7 +437,7 @@
         <!--Leaderboards-->
         <scene sceneID="9fI-gs-VHt">
             <objects>
-                <viewController id="Wmi-Du-JfW" sceneMemberID="viewController">
+                <viewController id="Wmi-Du-JfW" customClass="Leaderboards_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tgd-JR-Igs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -458,7 +458,7 @@
         <!--Store-->
         <scene sceneID="1aj-k8-OH1">
             <objects>
-                <viewController id="DiC-5B-P3r" sceneMemberID="viewController">
+                <viewController id="DiC-5B-P3r" customClass="Store_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3fm-xR-bLC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
