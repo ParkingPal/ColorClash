@@ -57,6 +57,11 @@
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="pf9-Eg-BRX" kind="relationship" relationship="viewControllers" id="Haj-RN-SRI"/>
                         <segue destination="LbC-XN-O9l" kind="relationship" relationship="viewControllers" id="IeX-jN-906"/>
@@ -69,16 +74,22 @@
             </objects>
             <point key="canvasLocation" x="-455" y="35"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="3TZ-8Y-fYS">
             <objects>
                 <navigationController id="pf9-Eg-BRX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="uzl-iB-chp"/>
+                    <tabBarItem key="tabBarItem" title="" image="ProflieIcon" id="uzl-iB-chp"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AKT-vh-acE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Wdo-zH-Grk" kind="relationship" relationship="rootViewController" id="4Ld-Ih-SQo"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Src-d1-Jkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,11 +99,14 @@
         <scene sceneID="OnA-MQ-Yw5">
             <objects>
                 <navigationController id="LbC-XN-O9l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="xQi-qB-JzF"/>
+                    <tabBarItem key="tabBarItem" title="" image="SinglePlayerIcon" id="xQi-qB-JzF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ayN-l8-vuR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="9fL-SP-S92" kind="relationship" relationship="rootViewController" id="i87-mf-0Ci"/>
@@ -102,52 +116,96 @@
             </objects>
             <point key="canvasLocation" x="-1126" y="715"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="3bx-UY-Tud">
             <objects>
                 <navigationController id="ulz-ve-bv3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Er0-E1-af1"/>
+                    <tabBarItem key="tabBarItem" title="" image="LevelsIcon" id="Er0-E1-af1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="HGa-gY-7tD">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Psq-aH-6ij" kind="relationship" relationship="rootViewController" id="RXr-Xh-ymG"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aoe-Nn-uEB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-455" y="715"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="w4Z-Eq-Br2">
             <objects>
                 <navigationController id="4ct-su-aCz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9sr-cG-q3m"/>
+                    <tabBarItem key="tabBarItem" title="" image="LeaderboardsIcon" id="9sr-cG-q3m"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="AWd-vK-vsO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Wmi-Du-JfW" kind="relationship" relationship="rootViewController" id="R3T-a4-6R0"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vja-Ge-Nag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="216" y="715"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="cG8-71-SKf">
             <objects>
                 <navigationController id="xzB-cc-XzK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Czg-ti-UgU"/>
+                    <tabBarItem key="tabBarItem" title="" image="StoreIcon" id="Czg-ti-UgU"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="pEI-Bg-xhT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="DiC-5B-P3r" kind="relationship" relationship="rootViewController" id="1M6-h1-3bZ"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOI-iw-FZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="875" y="715"/>
         </scene>
-        <!--Single Game View Controller-->
+        <!--Profile-->
+        <scene sceneID="pZ4-fY-ALt">
+            <objects>
+                <viewController id="Wdo-zH-Grk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f50-bU-WG9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="W8Y-QP-DVw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8wA-OK-JCg"/>
+                        <constraints>
+                            <constraint firstItem="W8Y-QP-DVw" firstAttribute="leading" secondItem="8wA-OK-JCg" secondAttribute="leading" id="7SM-Hf-Dvl"/>
+                            <constraint firstItem="W8Y-QP-DVw" firstAttribute="top" secondItem="8wA-OK-JCg" secondAttribute="top" id="HbC-yb-yEK"/>
+                            <constraint firstItem="8wA-OK-JCg" firstAttribute="trailing" secondItem="W8Y-QP-DVw" secondAttribute="trailing" id="oeH-2i-Jn4"/>
+                            <constraint firstItem="8wA-OK-JCg" firstAttribute="bottom" secondItem="W8Y-QP-DVw" secondAttribute="bottom" id="uCm-DU-iYb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="hoY-JK-Idl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g50-PN-8PE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1810" y="1369"/>
+        </scene>
+        <!--Single Game-->
         <scene sceneID="egM-wB-GZt">
             <objects>
                 <viewController id="9fL-SP-S92" customClass="SingleGame_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
@@ -336,7 +394,9 @@
                             <constraint firstItem="akx-PC-guB" firstAttribute="bottom" secondItem="YKn-LU-WFi" secondAttribute="bottom" id="zxN-Tx-Ll6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="g7O-fe-X2o"/>
+                    <navigationItem key="navigationItem" title="Single Game" id="g7O-fe-X2o">
+                        <barButtonItem key="backBarButtonItem" title="Single Game" id="Uei-lw-IL7"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="arcadeButton" destination="sDm-5m-hw7" id="JEC-KW-hRE"/>
                         <outlet property="classicButton" destination="Va3-fd-o2D" id="tdX-T4-T5h"/>
@@ -352,6 +412,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohu-Q6-1hx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1126.0869565217392" y="1368.75"/>
+        </scene>
+        <!--Challenge Levels-->
+        <scene sceneID="Yhq-pG-7W1">
+            <objects>
+                <viewController id="Psq-aH-6ij" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ONc-sy-a75">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Apk-Wc-e6n">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="REQ-Iz-qLH"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Challenge Levels" id="J9U-CQ-fxR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-L1-1RB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-428" y="1369"/>
+        </scene>
+        <!--Leaderboards-->
+        <scene sceneID="9fI-gs-VHt">
+            <objects>
+                <viewController id="Wmi-Du-JfW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tgd-JR-Igs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-FV-EDC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gx5-SE-R1t"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Leaderboards" id="gnW-fG-kFZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0KO-MT-lBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="1369"/>
+        </scene>
+        <!--Store-->
+        <scene sceneID="1aj-k8-OH1">
+            <objects>
+                <viewController id="DiC-5B-P3r" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3fm-xR-bLC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oKz-yJ-QnP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0W4-7v-GVT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Store" id="wdD-eO-OFu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3j-Tp-gQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="1369"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -394,8 +517,13 @@
     <resources>
         <image name="BlueBackground" width="200" height="200"/>
         <image name="ColorClashAppIcon1" width="1024" height="1024"/>
+        <image name="LeaderboardsIcon" width="32" height="32"/>
+        <image name="LevelsIcon" width="32" height="32"/>
         <image name="MainMenuButton_Blue" width="1080" height="540"/>
         <image name="MainMenuButton_Green" width="1080" height="540"/>
         <image name="MainMenuButton_Purple" width="1080" height="540"/>
+        <image name="ProflieIcon" width="32" height="32"/>
+        <image name="SinglePlayerIcon" width="32" height="32"/>
+        <image name="StoreIcon" width="32" height="32"/>
     </resources>
 </document>

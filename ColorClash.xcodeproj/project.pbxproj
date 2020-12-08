@@ -18,6 +18,7 @@
 		4C3F4423257F050800012BE4 /* TheBattleContinuez.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F4422257F050700012BE4 /* TheBattleContinuez.ttf */; };
 		4C3F442E257F06FE00012BE4 /* DelicateSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */; };
 		4C3F4436257F448800012BE4 /* ADrippingMarker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */; };
+		4C3F443E257F4A1B00012BE4 /* JosefinSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */; };
 		4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */; };
 		4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */; };
 		4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */; };
@@ -70,6 +71,7 @@
 		4C3F4422257F050700012BE4 /* TheBattleContinuez.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TheBattleContinuez.ttf; sourceTree = "<group>"; };
 		4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DelicateSansBold.ttf; sourceTree = "<group>"; };
 		4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ADrippingMarker.ttf; sourceTree = "<group>"; };
+		4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JosefinSansRegular.ttf; sourceTree = "<group>"; };
 		4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame_ViewController.swift; sourceTree = "<group>"; };
 		4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AbingdonBold.ttf; sourceTree = "<group>"; };
 		4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AssassinNinja.ttf; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		4CF8A6F42579E717009B98D3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */,
 				4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */,
 				4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */,
 				4C3F4422257F050700012BE4 /* TheBattleContinuez.ttf */,
@@ -401,6 +404,7 @@
 				4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */,
 				4C3F4423257F050800012BE4 /* TheBattleContinuez.ttf in Resources */,
 				4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */,
+				4C3F443E257F4A1B00012BE4 /* JosefinSansRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
