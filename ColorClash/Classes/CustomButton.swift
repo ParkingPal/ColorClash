@@ -1,5 +1,5 @@
 //
-//  CustomLabel.swift
+//  CustomButton.swift
 //  ColorClash
 //
 //  Created by ParkingPal on 12/7/20.
@@ -8,11 +8,14 @@
 import Foundation
 import UIKit
 
-class CustomLabel: UILabel {
+class CustomButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        font = fontToFitHeight()
+        
+        if titleLabel?.font != nil {
+            titleLabel!.font = fontToFitHeight()
+        }
     }
     
     func fontToFitHeight() -> UIFont {
@@ -26,24 +29,28 @@ class CustomLabel: UILabel {
             fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
             
             // Abort if text happens to be nil
-            guard text?.count ?? 0 > 0 else {
+            guard titleLabel?.text?.count ?? 0 > 0 else {
                 break
             }
             
-            if let labelText: NSString = text as NSString? {
+            guard titleLabel?.font != nil else {
+                break
+            }
+            
+            if let labelText: NSString = titleLabel?.text as NSString? {
                 let labelHeight = frame.size.height
                 
                 let testStringHeight = labelText.size(
-                    withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]
+                    withAttributes: [NSAttributedString.Key.font: titleLabel!.font.withSize(fontSizeAverage)]
                 ).height
                 
                 textAndLabelHeightDiff = labelHeight - testStringHeight
                 
                 if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
                     if (textAndLabelHeightDiff < 0) {
-                        return font.withSize(fontSizeAverage - 1)
+                        return titleLabel!.font.withSize(fontSizeAverage - 1)
                     }
-                    return font.withSize(fontSizeAverage)
+                    return titleLabel!.font.withSize(fontSizeAverage)
                 }
                 
                 if (textAndLabelHeightDiff < 0) {
@@ -53,20 +60,10 @@ class CustomLabel: UILabel {
                     minFontSize = fontSizeAverage + 1
                     
                 } else {
-                    return font.withSize(fontSizeAverage)
+                    return titleLabel!.font.withSize(fontSizeAverage)
                 }
             }
         }
-        return font.withSize(fontSizeAverage)
-    }
-    
-    func setupLabel(font: String, size: CGFloat, shadowOpacity: Float, shadowRadius: CGFloat, shadowColor: CGFloat) {
-        self.font = UIFont(name: font, size: size)
-        self.adjustsFontSizeToFitWidth = true
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.layer.shadowRadius = shadowRadius
+        return titleLabel!.font.withSize(fontSizeAverage)
     }
 }

@@ -165,10 +165,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acD-Z3-vJz" userLabel="Single Game Label View">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Single Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I52-D8-zzx" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="10" width="354" height="101"/>
+                                                        <rect key="frame" x="30" y="10" width="354" height="102"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -182,16 +182,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lre-dF-GoI" userLabel="Single Game Buttons">
-                                                <rect key="frame" x="0.0" y="121" width="414" height="362.5"/>
+                                                <rect key="frame" x="0.0" y="122" width="414" height="365.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bb0-dR-qkE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="365.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sTL-3G-cNd">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="117.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="118.5"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va3-fd-o2D">
-                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Va3-fd-o2D" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                        <rect key="frame" x="10" y="5" width="394" height="108.5"/>
                                                                         <state key="normal" title="Classic" backgroundImage="MainMenuButton_Blue"/>
                                                                     </button>
                                                                 </subviews>
@@ -203,10 +203,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wK-wF-qne">
-                                                                <rect key="frame" x="0.0" y="122.5" width="414" height="117.5"/>
+                                                                <rect key="frame" x="0.0" y="123.5" width="414" height="118.5"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDm-5m-hw7">
-                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDm-5m-hw7" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                        <rect key="frame" x="10" y="5" width="394" height="108.5"/>
                                                                         <state key="normal" title="Arcade" backgroundImage="MainMenuButton_Purple"/>
                                                                     </button>
                                                                 </subviews>
@@ -218,10 +218,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Siv-BG-NbV">
-                                                                <rect key="frame" x="0.0" y="245" width="414" height="117.5"/>
+                                                                <rect key="frame" x="0.0" y="247" width="414" height="118.5"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByO-bD-qpg">
-                                                                        <rect key="frame" x="10" y="5" width="394" height="107.5"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ByO-bD-qpg" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                        <rect key="frame" x="10" y="5" width="394" height="108.5"/>
                                                                         <state key="normal" title="Hardcore" backgroundImage="MainMenuButton_Green"/>
                                                                     </button>
                                                                 </subviews>
@@ -242,59 +242,77 @@
                                                     <constraint firstAttribute="bottom" secondItem="bb0-dR-qkE" secondAttribute="bottom" id="m4v-CA-dqV"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtN-tn-u22" userLabel="Quick Stats Label View">
-                                                <rect key="frame" x="0.0" y="483.5" width="414" height="90.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-qf-OZi">
+                                                <rect key="frame" x="0.0" y="487.5" width="414" height="237.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Stats: Classic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-Ap-131" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="10" width="354" height="70.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dSx-U6-WHr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="237.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HtN-tn-u22" userLabel="Quick Stats Label View">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Stats: Classic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-Ap-131" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
+                                                                        <rect key="frame" x="30" y="10" width="354" height="79"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="EbG-Ap-131" secondAttribute="bottom" constant="10" id="TWA-1e-4cl"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="EbG-Ap-131" secondAttribute="trailing" constant="30" id="UWU-FM-5dN"/>
+                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="top" secondItem="HtN-tn-u22" secondAttribute="top" constant="10" id="VuP-43-fog"/>
+                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="leading" secondItem="HtN-tn-u22" secondAttribute="leading" constant="30" id="XoM-jD-Nb8"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dI-oN-2bH" userLabel="Quick Stats ScrollView">
+                                                                <rect key="frame" x="0.0" y="99" width="414" height="99"/>
+                                                                <subviews>
+                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-jl-HQO">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                                                        <viewLayoutGuide key="contentLayoutGuide" id="fji-IV-BzX"/>
+                                                                        <viewLayoutGuide key="frameLayoutGuide" id="QVo-kb-qpG"/>
+                                                                    </scrollView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="J2R-jl-HQO" firstAttribute="top" secondItem="5dI-oN-2bH" secondAttribute="top" id="5rT-B0-1FH"/>
+                                                                    <constraint firstItem="J2R-jl-HQO" firstAttribute="leading" secondItem="5dI-oN-2bH" secondAttribute="leading" id="DP1-u7-2ya"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="J2R-jl-HQO" secondAttribute="bottom" id="Oe3-74-QLV"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="J2R-jl-HQO" secondAttribute="trailing" id="cCD-Nm-OWt"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-kX-lgW" userLabel="PageControl View">
+                                                                <rect key="frame" x="0.0" y="198" width="414" height="39.5"/>
+                                                                <subviews>
+                                                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="4m6-UQ-JZ5">
+                                                                        <rect key="frame" x="5" y="5" width="404" height="29.5"/>
+                                                                    </pageControl>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="4m6-UQ-JZ5" firstAttribute="leading" secondItem="SFJ-kX-lgW" secondAttribute="leading" constant="5" id="Pzq-3l-Sdd"/>
+                                                                    <constraint firstItem="4m6-UQ-JZ5" firstAttribute="top" secondItem="SFJ-kX-lgW" secondAttribute="top" constant="5" id="miv-fj-R9G"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="4m6-UQ-JZ5" secondAttribute="trailing" constant="5" id="pHq-sn-ISj"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="4m6-UQ-JZ5" secondAttribute="bottom" constant="5" id="yaP-gB-PG1"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="HtN-tn-u22" firstAttribute="height" secondItem="SFJ-kX-lgW" secondAttribute="height" multiplier="2.5" id="8Mh-6y-BjA"/>
+                                                            <constraint firstItem="HtN-tn-u22" firstAttribute="height" secondItem="5dI-oN-2bH" secondAttribute="height" id="RPI-oz-W5s"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="EbG-Ap-131" secondAttribute="bottom" constant="10" id="TWA-1e-4cl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="EbG-Ap-131" secondAttribute="trailing" constant="30" id="UWU-FM-5dN"/>
-                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="top" secondItem="HtN-tn-u22" secondAttribute="top" constant="10" id="VuP-43-fog"/>
-                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="leading" secondItem="HtN-tn-u22" secondAttribute="leading" constant="30" id="XoM-jD-Nb8"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dI-oN-2bH" userLabel="Quick Stats ScrollView">
-                                                <rect key="frame" x="0.0" y="574" width="414" height="121"/>
-                                                <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-jl-HQO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
-                                                        <viewLayoutGuide key="contentLayoutGuide" id="fji-IV-BzX"/>
-                                                        <viewLayoutGuide key="frameLayoutGuide" id="QVo-kb-qpG"/>
-                                                    </scrollView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="J2R-jl-HQO" firstAttribute="top" secondItem="5dI-oN-2bH" secondAttribute="top" id="5rT-B0-1FH"/>
-                                                    <constraint firstItem="J2R-jl-HQO" firstAttribute="leading" secondItem="5dI-oN-2bH" secondAttribute="leading" id="DP1-u7-2ya"/>
-                                                    <constraint firstAttribute="bottom" secondItem="J2R-jl-HQO" secondAttribute="bottom" id="Oe3-74-QLV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="J2R-jl-HQO" secondAttribute="trailing" id="cCD-Nm-OWt"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFJ-kX-lgW" userLabel="PageControl View">
-                                                <rect key="frame" x="0.0" y="695" width="414" height="30"/>
-                                                <subviews>
-                                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="4m6-UQ-JZ5">
-                                                        <rect key="frame" x="5" y="5" width="404" height="20"/>
-                                                    </pageControl>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="4m6-UQ-JZ5" firstAttribute="leading" secondItem="SFJ-kX-lgW" secondAttribute="leading" constant="5" id="Pzq-3l-Sdd"/>
-                                                    <constraint firstItem="4m6-UQ-JZ5" firstAttribute="top" secondItem="SFJ-kX-lgW" secondAttribute="top" constant="5" id="miv-fj-R9G"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4m6-UQ-JZ5" secondAttribute="trailing" constant="5" id="pHq-sn-ISj"/>
-                                                    <constraint firstAttribute="bottom" secondItem="4m6-UQ-JZ5" secondAttribute="bottom" constant="5" id="yaP-gB-PG1"/>
+                                                    <constraint firstItem="dSx-U6-WHr" firstAttribute="top" secondItem="nWe-qf-OZi" secondAttribute="top" id="8NO-7X-KPA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dSx-U6-WHr" secondAttribute="bottom" id="NDf-hX-szM"/>
+                                                    <constraint firstItem="dSx-U6-WHr" firstAttribute="leading" secondItem="nWe-qf-OZi" secondAttribute="leading" id="tbt-s5-rcs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dSx-U6-WHr" secondAttribute="trailing" id="vRt-Jk-kIc"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="HtN-tn-u22" firstAttribute="height" secondItem="acD-Z3-vJz" secondAttribute="height" multiplier="0.75" id="5mQ-OK-0qn"/>
+                                            <constraint firstItem="nWe-qf-OZi" firstAttribute="height" secondItem="Lre-dF-GoI" secondAttribute="height" multiplier="0.65" id="Ef9-zU-3qO"/>
                                             <constraint firstItem="Lre-dF-GoI" firstAttribute="height" secondItem="acD-Z3-vJz" secondAttribute="height" multiplier="3" id="Y1Q-2E-17F"/>
-                                            <constraint firstItem="5dI-oN-2bH" firstAttribute="height" secondItem="SFJ-kX-lgW" secondAttribute="height" multiplier="4" id="Y4W-u1-Kqd"/>
-                                            <constraint firstItem="Lre-dF-GoI" firstAttribute="height" secondItem="5dI-oN-2bH" secondAttribute="height" multiplier="3" id="fPj-yM-nZI"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -324,6 +342,7 @@
                         <outlet property="classicButton" destination="Va3-fd-o2D" id="tdX-T4-T5h"/>
                         <outlet property="hardcoreButton" destination="ByO-bD-qpg" id="pZK-Ob-q47"/>
                         <outlet property="quickStatsTitleLabel" destination="EbG-Ap-131" id="tpa-eu-9h1"/>
+                        <outlet property="quickStatsView" destination="nWe-qf-OZi" id="Uf8-Kl-I5V"/>
                         <outlet property="singleGameTitleLabel" destination="I52-D8-zzx" id="ebM-xT-4qF"/>
                         <outlet property="statsPageControl" destination="4m6-UQ-JZ5" id="I2d-ea-hmd"/>
                         <outlet property="statsScrollView" destination="J2R-jl-HQO" id="UGd-LG-Gt7"/>
