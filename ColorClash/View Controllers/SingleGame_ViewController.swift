@@ -37,16 +37,9 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         quickStatsView.alpha = 0.0
         singleGameTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         quickStatsTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        
-        classicButton.titleLabel?.font = UIFont(name: "DelicateSansBold", size: 75.0)
-        classicButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        classicButton.titleEdgeInsets = UIEdgeInsets(top: 100.0, left: 100.0, bottom: 100.0, right: 100.0)
-        arcadeButton.titleLabel?.font = UIFont(name: "Abingdon", size: 75.0)
-        arcadeButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        arcadeButton.titleEdgeInsets = UIEdgeInsets(top: 100.0, left: 100.0, bottom: 100.0, right: 100.0)
-        hardcoreButton.titleLabel?.font = UIFont(name: "TheBattleContinuez", size: 75.0)
-        hardcoreButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        hardcoreButton.titleEdgeInsets = UIEdgeInsets(top: 100.0, left: 100.0, bottom: 100.0, right: 100.0)
+        classicButton.setupButton(font: "DelicateSansBold", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        arcadeButton.setupButton(font: "Abingdon", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
     }

@@ -18,6 +18,17 @@ class CustomButton: UIButton {
         }
     }
     
+    func setupButton(font: String, size: CGFloat, insets: CGFloat, shadowOpacity: Float, shadowRadius: CGFloat, shadowColor: CGFloat) {
+        titleLabel?.font = UIFont(name: font, size: size)
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
+        layer.masksToBounds = false
+        layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        layer.shadowRadius = shadowRadius
+    }
+    
     func fontToFitHeight() -> UIFont {
         var minFontSize: CGFloat = 20
         var maxFontSize: CGFloat = 200

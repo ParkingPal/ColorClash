@@ -62,11 +62,11 @@ class CustomLabel: UILabel {
     
     func setupLabel(font: String, size: CGFloat, shadowOpacity: Float, shadowRadius: CGFloat, shadowColor: CGFloat) {
         self.font = UIFont(name: font, size: size)
-        self.adjustsFontSizeToFitWidth = true
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
-        self.layer.shadowOpacity = shadowOpacity
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.layer.shadowRadius = shadowRadius
+        adjustsFontSizeToFitWidth = true
+        layer.masksToBounds = false
+        layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        layer.shadowRadius = shadowRadius
     }
 }
