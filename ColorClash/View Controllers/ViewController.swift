@@ -36,12 +36,21 @@ class ViewController: UIViewController {
             board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         }
         
-        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        let tile1 = Color(color: UIImage(named: "RedTileBevel.png")!, colorString: "Red", colorType: "Primary", value: 0, xCoord: 1, yCoord: 0, xPos: tileCoordsWithPositions[[1,0]]![0], yPos: tileCoordsWithPositions[[1,0]]![1], width: tileWidth, height: tileHeight)
+        board.addTile(tile:tile1, xPos: 1, yPos: 0)
+        gameBoardView.addSubview(tile1)
+        let tile2 = Color(color: UIImage(named: "YellowTileBevel.png")!, colorString: "Yellow", colorType: "Primary", value: 2, xCoord: 2, yCoord: 0, xPos: tileCoordsWithPositions[[2,0]]![0], yPos: tileCoordsWithPositions[[2,0]]![1], width: tileWidth, height: tileHeight)
+        board.addTile(tile:tile2, xPos: 2, yPos: 0)
+        gameBoardView.addSubview(tile2)
+        let tile3 = Color(color: UIImage(named: "YellowTileBevel.png")!, colorString: "Yellow", colorType: "Primary", value: 0, xCoord: 3, yCoord: 0, xPos: tileCoordsWithPositions[[3,0]]![0], yPos: tileCoordsWithPositions[[3,0]]![1], width: tileWidth, height: tileHeight)
+        board.addTile(tile:tile3, xPos: 3, yPos: 0)
+        gameBoardView.addSubview(tile3)
+        /*let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
         let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile2.growAndAppearTile()
-        self.gameBoardView.addSubview(newTile2)
+        self.gameBoardView.addSubview(newTile2)*/
         
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
