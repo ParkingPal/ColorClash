@@ -176,15 +176,14 @@ class Board {
                 
                 let canCombine = tilesCanCombine(direction: direction, tile: tile)
                 if canCombine {
-                    spaces += 1
                     if direction == .up {
-                        combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .down {
-                        combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .right {
-                        combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .left {
-                        combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     }
                 }
             }
@@ -220,9 +219,10 @@ class Board {
         return false
     }
     
-    func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+    func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) -> Int {
         let newColor = newTile as! Color
         let oldColor = oldTile as! Color
+        var spacesToAdd = 1
         
         let newColorString = colorHelper.getCombinedColorString(color1: oldColor.colorString, color2: newColor.colorString)
         newColor.colorString = newColorString
@@ -235,6 +235,7 @@ class Board {
             oldColor.pointScored()
             newColor.pointScored()
             score += 1
+            spacesToAdd += 1
         }
         
         oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
@@ -242,6 +243,7 @@ class Board {
         let musicPlayer = MusicPlayer.shared
         musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
         removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
+        return spacesToAdd
     }
     
     func tileCanMove(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
