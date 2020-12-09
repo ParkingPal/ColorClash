@@ -79,12 +79,20 @@ class Color: Tile {
     func moveTile(oldCoords: [CGFloat], newCoords: [CGFloat], tileSize: CGFloat, isCombined: Bool) {
         let move = BasicAnimation(keyPath: .position)
         let fade = BasicAnimation(keyPath: .opacity)
+        var diff: CGFloat = 0.0
+        
+        if oldCoords[0] != newCoords[0] {
+            diff = abs(oldCoords[0] - newCoords[0])
+        } else if oldCoords[1] != newCoords[1] {
+            diff = abs(oldCoords[1] - newCoords[1])
+        }
+        
         move.fromValue = CGPoint(x: oldCoords[0] + (tileSize/2), y: oldCoords[1] + (tileSize/2))
         fade.fromValue = 1
         move.toValue = CGPoint(x: newCoords[0] + (tileSize/2), y: newCoords[1] + (tileSize/2))
         fade.toValue = 0
         move.timingFunction = .easeOut
-        move.duration = 0.3
+        move.duration = Double(diff) / 640.0
         fade.duration = 0.3
         move.fillMode = .forwards
         fade.fillMode = .forwards

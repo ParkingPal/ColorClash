@@ -177,13 +177,13 @@ class Board {
                 let canCombine = tilesCanCombine(direction: direction, tile: tile)
                 if canCombine {
                     if direction == .up {
-                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .down {
-                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .right {
-                        spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .left {
-                        spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     }
                 }
             }
