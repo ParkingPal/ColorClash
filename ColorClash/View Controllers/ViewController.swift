@@ -36,15 +36,8 @@ class ViewController: UIViewController {
             board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         }
         
-        let tile1 = Color(color: UIImage(named: "RedTileBevel.png")!, colorString: "Red", colorType: "Primary", value: 0, xCoord: 1, yCoord: 0, xPos: tileCoordsWithPositions[[1,0]]![0], yPos: tileCoordsWithPositions[[1,0]]![1], width: tileWidth, height: tileHeight)
-        board.addTile(tile:tile1, xPos: 1, yPos: 0)
-        gameBoardView.addSubview(tile1)
-        let tile2 = Color(color: UIImage(named: "YellowTileBevel.png")!, colorString: "Yellow", colorType: "Primary", value: 2, xCoord: 2, yCoord: 0, xPos: tileCoordsWithPositions[[2,0]]![0], yPos: tileCoordsWithPositions[[2,0]]![1], width: tileWidth, height: tileHeight)
-        board.addTile(tile:tile2, xPos: 2, yPos: 0)
-        gameBoardView.addSubview(tile2)
-        let tile3 = Color(color: UIImage(named: "YellowTileBevel.png")!, colorString: "Yellow", colorType: "Primary", value: 0, xCoord: 3, yCoord: 0, xPos: tileCoordsWithPositions[[3,0]]![0], yPos: tileCoordsWithPositions[[3,0]]![1], width: tileWidth, height: tileHeight)
-        board.addTile(tile:tile3, xPos: 3, yPos: 0)
-        gameBoardView.addSubview(tile3)
+        addTileAtCoords(colorString: "Red", xCoord: 0, yCoord: 0)
+        addTileAtCoords(colorString: "Yellow", xCoord: 4, yCoord: 0)
         /*let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
@@ -55,6 +48,14 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
+    }
+    
+    func addTileAtCoords(colorString: String, xCoord: Int, yCoord: Int) {
+        let colorHelper = ColorHelper()
+        let value = colorHelper.getValueByColor(color: colorString)
+        let tile = Color(color: UIImage(named: colorString + "TileBevel.png")!, colorString: colorString, colorType: colorHelper.getTypeByValue(value: value), value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight)
+        board.addTile(tile:tile, xPos: xCoord, yPos: yCoord)
+        gameBoardView.addSubview(tile)
     }
     
     func createBoardGraphically() {

@@ -42,4 +42,14 @@ class ColorHelper {
             return getValueByColor(color: color1) + getValueByColor(color: color2) + 2
         }
     }
+    
+    func getTypeByValue(value: Int) -> String {
+        if value >= 0 && value < 3 {
+            return "Primary"
+        } else if value <= 5 {
+            return "Secondary"
+        } else {
+            return "Other"
+        }
+    }
 }
