@@ -176,6 +176,7 @@ class Board {
                 
                 let canCombine = tilesCanCombine(direction: direction, tile: tile)
                 if canCombine {
+                    spaces += 1
                     if direction == .up {
                         combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: tile.xCoord, oldYCoord: tile.yCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .down {
