@@ -167,7 +167,7 @@ class Board {
                         newXCoord = j + spaces
                         newYCoord = i
                     } else if (direction == .left) {
-                        newXCoord = j - spaces + 1
+                        newXCoord = j - spaces
                         newYCoord = i
                     }
                     
@@ -266,25 +266,5 @@ class Board {
         color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, color.yCoord]]!, tileSize: tileSize, isCombined: false)
         color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
         color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
-        
-        if tileCanMove(direction: direction, tile: tile) {
-            var newestXCoord = -1
-            var newestYCoord = -1
-            
-            if direction == .up {
-                newestXCoord = newXCoord
-                newestYCoord = newYCoord - 1
-            } else if direction == .down {
-                newestXCoord = newXCoord
-                newestYCoord = newYCoord + 1
-            } else if direction == .right {
-                newestXCoord = newXCoord + 1
-                newestYCoord = newYCoord
-            } else if direction == .left {
-                newestXCoord = newXCoord - 1
-                newestYCoord = newYCoord
-            }
-            moveTile(tile: tile, newXCoord: newestXCoord, newYCoord: newestYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
-        }
     }
 }
