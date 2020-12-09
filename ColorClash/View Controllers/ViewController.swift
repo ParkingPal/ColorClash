@@ -36,20 +36,19 @@ class ViewController: UIViewController {
             board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         }
         
-        addTileAtCoords(colorString: "Red", xCoord: 0, yCoord: 0)
-        addTileAtCoords(colorString: "Yellow", xCoord: 4, yCoord: 0)
-        /*let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
         let newTile2 = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile2.growAndAppearTile()
-        self.gameBoardView.addSubview(newTile2)*/
+        self.gameBoardView.addSubview(newTile2)
         
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
     }
     
+    //use for easy testing
     func addTileAtCoords(colorString: String, xCoord: Int, yCoord: Int) {
         let colorHelper = ColorHelper()
         let value = colorHelper.getValueByColor(color: colorString)
