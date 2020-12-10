@@ -485,13 +485,13 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jaz-S1-8JY">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0i-VF-dcY">
                                 <rect key="frame" x="207" y="30" width="0.0" height="0.0"/>
@@ -503,7 +503,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <constraints>
                             <constraint firstItem="jaz-S1-8JY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3oI-TX-ZyH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jaz-S1-8JY" secondAttribute="bottom" id="a0i-Z9-Flk"/>
+                            <constraint firstAttribute="bottom" secondItem="jaz-S1-8JY" secondAttribute="bottom" id="a0i-Z9-Flk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jaz-S1-8JY" secondAttribute="trailing" id="dSe-hl-jyr"/>
                             <constraint firstItem="Y0i-VF-dcY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fXb-q2-lEE"/>
                             <constraint firstItem="Y0i-VF-dcY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="npo-St-WNx"/>
