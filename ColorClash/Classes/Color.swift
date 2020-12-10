@@ -24,90 +24,59 @@ class Color: Tile {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //called when two secondary colors are matched together
     func pointScored() {
-        let fade = BasicAnimation(keyPath: .opacity)
-        fade.duration = 1.0
-        fade.fromValue = 1
-        fade.toValue = 0
-        fade.fillMode = .forwards
-        fade.timingFunction = .easeOut
-        fade.isRemovedOnCompletion = false
-        fade.beginTime = CACurrentMediaTime()
-        
-        let grow = CASpringAnimation(keyPath: "transform.scale")
-        grow.duration = 1.0
-        grow.fromValue = 1.0
-        grow.toValue = 3.0
-        grow.autoreverses = false
-        grow.repeatCount = 0
-        grow.initialVelocity = 0.5
-        grow.damping = 100.0
-        
-        layer.add(grow, forKey: nil)
-        fade.animate(in: layer)
-    }
-    
-    func growAndAppearTile() {
-        self.alpha = 1.0
-        let grow = CASpringAnimation(keyPath: "transform.scale")
-        grow.duration = 1.5
-        grow.fromValue = 0.1
-        grow.toValue = 1.0
-        grow.autoreverses = false
-        grow.repeatCount = 0
-        grow.initialVelocity = 0.3
-        grow.damping = 8.0
-        
-        layer.add(grow, forKey: nil)
-    }
-    
-    func combineTiles(newImage: UIImage) {
-        self.image = newImage
-        
-        let grow = CASpringAnimation(keyPath: "transform.scale")
-        grow.duration = 2.0
-        grow.fromValue = 0.1
-        grow.toValue = 1.0
-        grow.autoreverses = false
-        grow.repeatCount = 0
-        grow.initialVelocity = 0.6
-        grow.damping = 5.0
-        
-        layer.add(grow, forKey: nil)
-    }
-    
-    func moveTile(oldCoords: [CGFloat], newCoords: [CGFloat], tileSize: CGFloat, isCombined: Bool) {
-        let move = BasicAnimation(keyPath: .position)
-        let fade = BasicAnimation(keyPath: .opacity)
-        var diff: CGFloat = 0.0
-        
-        if oldCoords[0] != newCoords[0] {
-            diff = abs(oldCoords[0] - newCoords[0])
-        } else if oldCoords[1] != newCoords[1] {
-            diff = abs(oldCoords[1] - newCoords[1])
-        }
-        
-        move.fromValue = CGPoint(x: oldCoords[0] + (tileSize/2), y: oldCoords[1] + (tileSize/2))
-        fade.fromValue = 1
-        move.toValue = CGPoint(x: newCoords[0] + (tileSize/2), y: newCoords[1] + (tileSize/2))
-        fade.toValue = 0
-        move.timingFunction = .easeOut
-        move.duration = Double(diff) / 640.0
-        fade.duration = 0.3
-        move.fillMode = .forwards
-        fade.fillMode = .forwards
-        move.isRemovedOnCompletion = false
-        fade.isRemovedOnCompletion = false
-        move.beginTime = CACurrentMediaTime()
-        fade.beginTime = CACurrentMediaTime()
-        move.setAnimationDidStop { finished in
-            if isCombined {
+        UIView.animate(withDuration: 0.2, animations: {
+            //explode colors
+            self.layer.setAffineTransform(CGAffineTransform(scaleX: 2.5, y: 2.5))
+            self.alpha = 0.1
+        }) { (finished) in
+            //completely fade away
+            UIView.animate(withDuration: 0.1, animations: {
+                self.alpha = 0.0
+            }) { (finished) in
                 self.removeFromSuperview()
             }
         }
-        move.animate(in: layer)
-        if isCombined {
-            fade.animate(in: layer)
+    }
+    
+    func growAndAppearTile() {
+        alpha = 0.0
+        UIView.animate(withDuration: 0.18, delay: 0.05, options: UIView.AnimationOptions(), animations: {
+            self.layer.setAffineTransform(CGAffineTransform(scaleX: 1.2, y: 1.2))
+            self.alpha = 1.0
+        }) { (finished) in
+            UIView.animate(withDuration: 0.08, animations: { () -> Void in
+                self.layer.setAffineTransform(CGAffineTransform.identity)
+            })
+        }
+    }
+    
+    func moveTile(oldCoords: [CGFloat], newCoords: [CGFloat], tileSize: CGFloat, isCombined: Bool, newColor: Color, newImage: UIImage) {
+        let finalFrame = CGRect(x: newCoords[0], y: newCoords[1], width: tileSize, height: tileSize)
+        
+        UIView.animate(withDuration: 0.12, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: {
+            if isCombined {
+                self.alpha = 0.0
+                newColor.alpha = 0.0
+            }
+            self.frame = finalFrame
+        }) { (finished: Bool) in
+            if isCombined {
+                self.removeFromSuperview()
+                newColor.image = newImage
+                newColor.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
+                
+                UIView.animate(withDuration: 0.08, animations: {
+                    newColor.alpha = 1.0
+                    newColor.layer.setAffineTransform(CGAffineTransform(scaleX: 1.2, y: 1.2))
+                }) { (finished) in
+                    UIView.animate(withDuration: 0.08, animations: {
+                        newColor.layer.setAffineTransform(CGAffineTransform.identity)
+                    })
+                }
+                
+            }
         }
     }
 }

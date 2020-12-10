@@ -236,13 +236,13 @@ class Board {
             newColor.pointScored()
             score += 1
             spacesToAdd += 1
+        } else {
+            oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true, newColor: newColor, newImage: newImage)
+            removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
         }
         
-        oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true)
-        newColor.combineTiles(newImage: newImage)
         let musicPlayer = MusicPlayer.shared
         musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
-        removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
         return spacesToAdd
     }
     
@@ -266,7 +266,7 @@ class Board {
         color.xCoord = newXCoord
         color.yCoord = newYCoord
         addTile(tile: color, xPos: color.xCoord, yPos: color.yCoord)
-        color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, color.yCoord]]!, tileSize: tileSize, isCombined: false)
+        color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, color.yCoord]]!, tileSize: tileSize, isCombined: false, newColor: color, newImage: UIImage())
         color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
         color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
     }
