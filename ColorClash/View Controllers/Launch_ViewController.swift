@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Launch_ViewController: UIViewController {
 
@@ -13,6 +14,14 @@ class Launch_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func userSignedIn() -> Bool {
+        if Auth.auth().currentUser == nil {
+            return false
+        } else {
+            return true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -26,8 +35,12 @@ class Launch_ViewController: UIViewController {
             self.tmpLogo.alpha = 0.0
         } completion: { (done) in
             if done {
-                //will use this probably similar to Trivia Ace where it will check to see if they are a new user or not. For now, will just continue to VC
-                self.performSegue(withIdentifier: "toGame", sender: self)
+                if self.userSignedIn() {
+                    self.performSegue(withIdentifier: "toGame", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "toLogin", sender: self)
+                }
+                
             }
         }
 

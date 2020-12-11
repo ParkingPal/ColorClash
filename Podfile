@@ -7,6 +7,8 @@ target 'ColorClash' do
 
   # Pods for ColorClash
   pod 'Firebase/Analytics'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
   pod 'TheAnimation'
 
   target 'ColorClashTests' do
