@@ -173,6 +173,8 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
         self.performSegue(withIdentifier: "toGame", sender: self)
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
+    
     /*
      // MARK: - Navigation
      

@@ -317,7 +317,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="hoY-JK-Idl"/>
                     <connections>
                         <outlet property="signOutButton" destination="va0-7f-c1t" id="sWw-TA-McF"/>
-                        <segue destination="Sgk-jG-ceX" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" id="QYi-n3-FQx"/>
+                        <segue destination="Sgk-jG-ceX" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="QYi-n3-FQx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g50-PN-8PE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -637,7 +637,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="KOu-dR-AF4"/>
         <segue reference="QYi-n3-FQx"/>
-        <segue reference="NOI-gw-1xu"/>
+        <segue reference="Zny-cy-usp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueBackground" width="200" height="200"/>
