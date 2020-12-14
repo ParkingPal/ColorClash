@@ -117,8 +117,12 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
         } else {
             firstName = appleIDCredential.fullName?.givenName ?? "No First Name"
             lastName = appleIDCredential.fullName?.familyName ?? "No Last Name"
-            fullName = "\(firstName) \(lastName)"
         }
+        
+        let capFirstName = firstName.capitalizingFirstLetter()
+        let capLastName = lastName.capitalizingFirstLetter()
+        
+        fullName = "\(capFirstName) \(capLastName)"
         
         return (firstName, lastName, fullName)
     }
@@ -229,5 +233,14 @@ extension Login_ViewController: ASAuthorizationControllerDelegate {
         // Handle error.
         print("Sign in with Apple errored: \(error)")
     }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
     
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
 }
