@@ -38,7 +38,13 @@ class Board {
         }
     }
     
+    func isBoardFull() -> Bool {
+        
+        return false
+    }
+    
     func addTileRandomly(tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) -> Color {
+        
         var randomX: Int
         var randomY: Int
         repeat {

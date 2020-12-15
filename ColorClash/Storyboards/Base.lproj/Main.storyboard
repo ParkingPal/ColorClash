@@ -627,9 +627,11 @@
                     <navigationItem key="navigationItem" id="D7u-dH-KAw"/>
                     <connections>
                         <outlet property="scoreLabel" destination="Y0i-VF-dcY" id="Oen-LH-6IL"/>
+                        <segue destination="U8K-NE-U9m" kind="unwind" identifier="unwindToSingleGame" unwindAction="unwindToSingleGameMenuWithSegue:" id="Z0T-fP-LgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="U8K-NE-U9m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1126" y="2034"/>
         </scene>
