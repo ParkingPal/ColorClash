@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         createBoardGraphically()
         createGestures()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,5 +155,32 @@ class ViewController: UIViewController {
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
         scoreLabel.text = String(board.score)
+        
+        if gameEnded() {
+            print(scoreLabel.text = "Final Score: \(String(board.score))")
+            
+            for recognizer in self.view.gestureRecognizers ?? [] {
+                self.view.removeGestureRecognizer(recognizer)
+            }
+        }
+    }
+    
+    func gameEnded() -> Bool {
+        guard board.emptyTiles().isEmpty else {
+            return false
+        }
+        
+        for i in 0...xMax {
+            for j in 0...yMax {
+                if board.tileCanMove(direction: .down, tile: board.board[i][j]!) ||
+                    board.tileCanMove(direction: .right, tile: board.board[i][j]!) ||
+                    board.tilesCanCombine(direction: .down, tile: board.board[i][j]!) ||
+                    board.tilesCanCombine(direction: .right, tile: board.board[i][j]!) {
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
 }
