@@ -172,9 +172,9 @@ class ViewController: UIViewController {
         
         for i in 0...xMax {
             for j in 0...yMax {
-                if board.tileCanMove(direction: .down, tile: board.board[i][j]!) ||
+                if board.tileCanMove(direction: .up, tile: board.board[i][j]!) ||
                     board.tileCanMove(direction: .right, tile: board.board[i][j]!) ||
-                    board.tilesCanCombine(direction: .down, tile: board.board[i][j]!) ||
+                    board.tilesCanCombine(direction: .up, tile: board.board[i][j]!) ||
                     board.tilesCanCombine(direction: .right, tile: board.board[i][j]!) {
                     return false
                 }

@@ -514,7 +514,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Single Game" id="g7O-fe-X2o">
-                        <barButtonItem key="backBarButtonItem" title="Single Game" id="Uei-lw-IL7"/>
+                        <barButtonItem key="backBarButtonItem" title="Quit Game" id="Uei-lw-IL7"/>
                     </navigationItem>
                     <connections>
                         <outlet property="arcadeButton" destination="sDm-5m-hw7" id="JEC-KW-hRE"/>
