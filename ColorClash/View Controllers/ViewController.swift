@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GameDelegate {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -48,6 +48,16 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
+        
+        board.gameDelegate = self
+    }
+    
+    func gameIsOver() {
+        for recognizer in self.view.gestureRecognizers ?? []{
+            self.view.removeGestureRecognizer(recognizer)
+        }
+        
+        scoreLabel.text = "Final Score: \(String(board.score))"
     }
     
     //use for easy testing
@@ -149,38 +159,21 @@ class ViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        //move to moveTiles funtion
+        
+        if board.emptyTiles().isEmpty {
+            if board.gameEnded() == false {
+                handleTileMovement(gesture: gesture)
+            }
+        } else {
+            handleTileMovement(gesture: gesture)
+        }
+    }
+    
+    func handleTileMovement(gesture: UISwipeGestureRecognizer) {
         board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
         scoreLabel.text = String(board.score)
-        
-        if gameEnded() {
-            print(scoreLabel.text = "Final Score: \(String(board.score))")
-            
-            for recognizer in self.view.gestureRecognizers ?? [] {
-                self.view.removeGestureRecognizer(recognizer)
-            }
-        }
-    }
-    
-    func gameEnded() -> Bool {
-        guard board.emptyTiles().isEmpty else {
-            return false
-        }
-        
-        for i in 0...xMax {
-            for j in 0...yMax {
-                if board.tileCanMove(direction: .up, tile: board.board[i][j]!) ||
-                    board.tileCanMove(direction: .right, tile: board.board[i][j]!) ||
-                    board.tilesCanCombine(direction: .up, tile: board.board[i][j]!) ||
-                    board.tilesCanCombine(direction: .right, tile: board.board[i][j]!) {
-                    return false
-                }
-            }
-        }
-        
-        return true
     }
 }

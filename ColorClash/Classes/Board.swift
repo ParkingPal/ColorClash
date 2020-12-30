@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol GameDelegate {
+    func gameIsOver()
+}
+
 class Board {
     var colorHelper = ColorHelper()
     var board = [[Tile?]]()   //2d array of Tiles
@@ -15,6 +19,7 @@ class Board {
     var yMax: Int
     var score = 0
     var gameType: String
+    var gameDelegate: GameDelegate!
     
     init(xMax: Int, yMax: Int, gameType: String) {
         self.xMax = xMax
@@ -202,6 +207,29 @@ class Board {
                 }
             }
         }
+        
+        if gameEnded() {
+            gameDelegate.gameIsOver()
+        }
+    }
+    
+    func gameEnded() -> Bool {
+        guard emptyTiles().isEmpty else {
+            return false
+        }
+        
+        for i in 0...xMax {
+            for j in 0...yMax {
+                if tileCanMove(direction: .up, tile: board[i][j]!) ||
+                    tileCanMove(direction: .right, tile: board[i][j]!) ||
+                    tilesCanCombine(direction: .up, tile: board[i][j]!) ||
+                    tilesCanCombine(direction: .right, tile: board[i][j]!) {
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
     
     func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
@@ -284,4 +312,6 @@ class Board {
         color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
         color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
     }
+    
+    
 }
