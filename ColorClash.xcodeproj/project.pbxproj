@@ -38,6 +38,7 @@
 		4C8DC1F3256E240700ECCCD5 /* ColorClashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1F2256E240700ECCCD5 /* ColorClashUITests.swift */; };
 		4C8DC210256E28F400ECCCD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */; };
 		4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDA03525770863001DB53F /* MusicPlayer.swift */; };
+		4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D766259D499900E658F9 /* UserDocument.swift */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -103,6 +104,7 @@
 		4C8DC1F4256E240700ECCCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CDDA03525770863001DB53F /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		4CE7D766259D499900E658F9 /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -251,10 +253,11 @@
 				380F36C3256F570D00BA06C7 /* Board.swift */,
 				38C40525256E2A0F00DD10DE /* Color.swift */,
 				38BEC54B25787809003E6D19 /* ColorHelper.swift */,
+				4C3F441D257EFE1900012BE4 /* CustomButton.swift */,
+				4C3F4418257EED4000012BE4 /* CustomLabel.swift */,
 				380BC51C256E379B00A8652C /* Tile.swift */,
 				38765C3C257C3D86008435B5 /* Wall.swift */,
-				4C3F4418257EED4000012BE4 /* CustomLabel.swift */,
-				4C3F441D257EFE1900012BE4 /* CustomButton.swift */,
+				4CE7D766259D499900E658F9 /* UserDocument.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				4C3F441E257EFE1A00012BE4 /* CustomButton.swift in Sources */,
 				4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */,
 				4C3F444B257F669400012BE4 /* Levels_ViewController.swift in Sources */,
+				4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */,
 				38765C3D257C3D86008435B5 /* Wall.swift in Sources */,
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
 				4C3F4446257F666C00012BE4 /* Profile_ViewController.swift in Sources */,
