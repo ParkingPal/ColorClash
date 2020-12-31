@@ -17,8 +17,12 @@ class UserDocument {
     init() {}
     
     static func create(docSnap: Firebase.QueryDocumentSnapshot) {
+        let time = FieldValue.serverTimestamp()
+        
         UserDocument.docRef = docSnap.reference
         UserDocument.docData = docSnap.data()
+        UserDocument.docData["lastLogin"] = time
+        docSnap.reference.setData(["lastLogin": time], merge: true)
         UserDocument.isInitialized = true
     }
     
