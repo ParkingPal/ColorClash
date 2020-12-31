@@ -20,7 +20,7 @@ class Profile_ViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
         signOutButton.imageView?.contentMode = .scaleAspectFit
         settingsButton.imageView?.contentMode = .scaleAspectFit
-        nameLabel.text = "FirstName LastName"
+        nameLabel.text = UserDocument.docData["name"] as? String
         nameLabel.numberOfLines = 2
         nameLabel.font = UIFont(name: "Josefin Sans", size: 50.0)
         nameLabel.adjustsFontSizeToFitWidth = true
