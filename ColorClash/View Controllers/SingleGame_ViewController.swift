@@ -42,14 +42,16 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupLayout() {
+        let buttonWidth = classicButton.frame.width
+        let buttonHeight = classicButton.frame.height
         quickStatsView.alpha = 0.0
-        singleGameTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        quickStatsTitleLabel.setupLabel(font: "Arang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        classicButton.setupButton(font: "DelicateSansBold", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
-        arcadeButton.setupButton(font: "Abingdon", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        singleGameTitleLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        quickStatsTitleLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        classicButton.setupButton(font: "Vollkorn", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        arcadeButton.setupButton(font: "Abingdon", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         arcadeButton.alpha = 0.5
         arcadeButton.isEnabled = false
-        hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, insets: 100.0, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
         classicButton.tag = 0
@@ -113,9 +115,9 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             }
             
             header.text = headers[index]
-            header.setupLabel(font: "Arang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 3.0, shadowColor: 255.0)
+            header.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 3.0, shadowColor: 255.0)
             header.textColor = UIColor(red: 0/255, green: 52/255, blue: 96/255, alpha: 1.0)
-            score.setupLabel(font: "Arang", size: 60.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+            score.setupLabel(font: "aArang", size: 60.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
             score.textColor = UIColor(red: 0/255, green: 52/255, blue: 96/255, alpha: 1.0)
             header.textAlignment = .center
             score.textAlignment = .center

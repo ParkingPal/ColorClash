@@ -22,6 +22,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>VollkornMedium.ttf</string>
 		<string>Arang.ttf</string>
 		<string>AbingdonBold.ttf</string>
 		<string>AssassinNinja.ttf</string>

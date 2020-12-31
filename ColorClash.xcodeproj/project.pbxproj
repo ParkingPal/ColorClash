@@ -40,6 +40,7 @@
 		4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDA03525770863001DB53F /* MusicPlayer.swift */; };
 		4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D766259D499900E658F9 /* UserDocument.swift */; };
 		4CE7D76F259D4F7700E658F9 /* Loading_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */; };
+		4CE7D78C259D983800E658F9 /* VollkornMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CE7D78B259D983800E658F9 /* VollkornMedium.ttf */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -107,6 +108,7 @@
 		4CDDA03525770863001DB53F /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		4CE7D766259D499900E658F9 /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
 		4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading_ViewController.swift; sourceTree = "<group>"; };
+		4CE7D78B259D983800E658F9 /* VollkornMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VollkornMedium.ttf; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		4CF8A6F42579E717009B98D3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4CE7D78B259D983800E658F9 /* VollkornMedium.ttf */,
 				4C3F443D257F4A1A00012BE4 /* JosefinSansRegular.ttf */,
 				4C3F4435257F448700012BE4 /* ADrippingMarker.ttf */,
 				4C3F442D257F06FE00012BE4 /* DelicateSansBold.ttf */,
@@ -422,6 +425,7 @@
 				4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */,
 				4C8DC1DA256E240700ECCCD5 /* Assets.xcassets in Resources */,
 				4C8DC1D8256E240400ECCCD5 /* Main.storyboard in Resources */,
+				4CE7D78C259D983800E658F9 /* VollkornMedium.ttf in Resources */,
 				4C3F4436257F448800012BE4 /* ADrippingMarker.ttf in Resources */,
 				4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */,
 				4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */,
@@ -680,7 +684,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -735,7 +739,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -756,7 +760,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -780,7 +784,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

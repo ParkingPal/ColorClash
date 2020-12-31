@@ -11,19 +11,23 @@ import Firebase
 class Profile_ViewController: UIViewController {
 
     @IBOutlet weak var profilePic: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var settingsButton: CustomButton!
+    @IBOutlet weak var signOutButton: CustomButton!
+    @IBOutlet weak var customizeButton: CustomButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
-        signOutButton.imageView?.contentMode = .scaleAspectFit
-        settingsButton.imageView?.contentMode = .scaleAspectFit
-        nameLabel.text = UserDocument.docData["name"] as? String
-        nameLabel.numberOfLines = 2
-        nameLabel.font = UIFont(name: "Josefin Sans", size: 50.0)
-        nameLabel.adjustsFontSizeToFitWidth = true
+        self.navigationItem.title = UserDocument.docData["name"] as? String
+        setupButtons()
+    }
+    
+    func setupButtons() {
+        //customizeButton.setupButton(font: "Josefin Sans", size: 40.0, insets: 120.0, shadowOpacity: 3.0, shadowRadius: 10.0, shadowColor: 0.0)
+        //customizeButton.titleLabel?.setupLabel(font: "Josefin Sans", size: 40.0, shadowOpacity: 0.0, shadowRadius: 0.0, shadowColor: 0.0)
+        //customizeButton.titleLabel?.sizeToFit()
+        //signOutButton.imageView?.contentMode = .scaleAspectFit
+        //settingsButton.imageView?.contentMode = .scaleAspectFit
         signOutButton.addTarget(self, action: #selector(signOutButtonClicked), for: .touchUpInside)
     }
     
