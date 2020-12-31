@@ -39,13 +39,13 @@
                     </view>
                     <connections>
                         <outlet property="tmpLogo" destination="JQV-Ww-6Tg" id="Ah4-KE-qA9"/>
-                        <segue destination="VA2-yQ-NLE" kind="presentation" identifier="toGame" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="NOI-gw-1xu"/>
                         <segue destination="Sgk-jG-ceX" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ATB-YB-WFX"/>
+                        <segue destination="2tP-lh-SRX" kind="presentation" identifier="toLoading" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dJ2-wz-rD1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJh-Dg-WaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="-635"/>
+            <point key="canvasLocation" x="-1188" y="-680"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hjM-jU-tkz">
@@ -171,12 +171,40 @@
                     </view>
                     <connections>
                         <outlet property="signInView" destination="iCR-Aa-cxJ" id="hg4-0d-zU1"/>
-                        <segue destination="VA2-yQ-NLE" kind="presentation" identifier="toGame" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Zny-cy-usp"/>
+                        <segue destination="2tP-lh-SRX" kind="presentation" identifier="toLoading" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="1NP-s1-pXv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cg-h4-9Kb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1810.144927536232" y="34.821428571428569"/>
+            <point key="canvasLocation" x="-1930" y="35"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="Zy3-2b-ww5">
+            <objects>
+                <viewController id="2tP-lh-SRX" customClass="Loading_ViewController" customModule="ColorClash" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CbJ-4r-H2A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-Bl-eZf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jhO-b9-j3j"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="O4l-Bl-eZf" secondAttribute="bottom" id="M94-Sf-oYQ"/>
+                            <constraint firstItem="O4l-Bl-eZf" firstAttribute="leading" secondItem="jhO-b9-j3j" secondAttribute="leading" id="QGD-MB-9Ot"/>
+                            <constraint firstItem="O4l-Bl-eZf" firstAttribute="top" secondItem="CbJ-4r-H2A" secondAttribute="top" id="hoY-YZ-rAg"/>
+                            <constraint firstItem="jhO-b9-j3j" firstAttribute="trailing" secondItem="O4l-Bl-eZf" secondAttribute="trailing" id="rEV-7h-YgV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="VA2-yQ-NLE" kind="presentation" identifier="toGame" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="VG9-J3-IKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Gz-QI-8jc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1187" y="35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3TZ-8Y-fYS">
@@ -758,8 +786,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="KOu-dR-AF4"/>
-        <segue reference="QYi-n3-FQx"/>
-        <segue reference="Zny-cy-usp"/>
+        <segue reference="1NP-s1-pXv"/>
+        <segue reference="ATB-YB-WFX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueBackground" width="200" height="200"/>

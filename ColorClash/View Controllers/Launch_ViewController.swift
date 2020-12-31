@@ -36,7 +36,7 @@ class Launch_ViewController: UIViewController {
         } completion: { (done) in
             if done {
                 if self.userSignedIn() {
-                    self.performSegue(withIdentifier: "toGame", sender: self)
+                    self.performSegue(withIdentifier: "toLoading", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "toLogin", sender: self)
                 }

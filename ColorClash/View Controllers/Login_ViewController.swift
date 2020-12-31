@@ -170,7 +170,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
     }
     
     @objc func loginTransition() {
-        self.performSegue(withIdentifier: "toGame", sender: self)
+        self.performSegue(withIdentifier: "toLoading", sender: self)
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}

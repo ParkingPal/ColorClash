@@ -39,6 +39,7 @@
 		4C8DC210256E28F400ECCCD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */; };
 		4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDA03525770863001DB53F /* MusicPlayer.swift */; };
 		4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D766259D499900E658F9 /* UserDocument.swift */; };
+		4CE7D76F259D4F7700E658F9 /* Loading_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -105,6 +106,7 @@
 		4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CDDA03525770863001DB53F /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		4CE7D766259D499900E658F9 /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
+		4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading_ViewController.swift; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -265,14 +267,15 @@
 		4CF8A6E82579E214009B98D3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
 				4CF8A6D92579E19A009B98D3 /* Launch_ViewController.swift */,
-				4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */,
-				4C3F4445257F666C00012BE4 /* Profile_ViewController.swift */,
-				4C3F444A257F669400012BE4 /* Levels_ViewController.swift */,
 				4C3F444F257F66B800012BE4 /* Leaderboards_ViewController.swift */,
-				4C3F4454257F66C900012BE4 /* Store_ViewController.swift */,
+				4C3F444A257F669400012BE4 /* Levels_ViewController.swift */,
+				4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */,
 				4C4E26962582F71800C133F7 /* Login_ViewController.swift */,
+				4C3F4445257F666C00012BE4 /* Profile_ViewController.swift */,
+				4C69EA56257B682E00C3D2F2 /* SingleGame_ViewController.swift */,
+				4C3F4454257F66C900012BE4 /* Store_ViewController.swift */,
+				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				4C3F441E257EFE1A00012BE4 /* CustomButton.swift in Sources */,
 				4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */,
 				4C3F444B257F669400012BE4 /* Levels_ViewController.swift in Sources */,
+				4CE7D76F259D4F7700E658F9 /* Loading_ViewController.swift in Sources */,
 				4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */,
 				38765C3D257C3D86008435B5 /* Wall.swift in Sources */,
 				38C40526256E2A0F00DD10DE /* Color.swift in Sources */,
