@@ -23,6 +23,11 @@ class Profile_ViewController: UIViewController {
     }
     
     func setupButtons() {
+        let buttonWidth = customizeButton.frame.width
+        let buttonHeight = customizeButton.frame.height
+        customizeButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        settingsButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        signOutButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         //customizeButton.setupButton(font: "Josefin Sans", size: 40.0, insets: 120.0, shadowOpacity: 3.0, shadowRadius: 10.0, shadowColor: 0.0)
         //customizeButton.titleLabel?.setupLabel(font: "Josefin Sans", size: 40.0, shadowOpacity: 0.0, shadowRadius: 0.0, shadowColor: 0.0)
         //customizeButton.titleLabel?.sizeToFit()

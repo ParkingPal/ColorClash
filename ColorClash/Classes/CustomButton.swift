@@ -19,9 +19,10 @@ class CustomButton: UIButton {
     }
     
     func setupButton(font: String, size: CGFloat, horizontalInsets: CGFloat, verticalInsets: CGFloat, shadowOpacity: Float, shadowRadius: CGFloat, shadowColor: CGFloat) {
+        imageView?.contentMode = .scaleAspectFit
         titleLabel?.font = UIFont(name: font, size: size)
         titleLabel?.adjustsFontSizeToFitWidth = true
-        titleEdgeInsets = UIEdgeInsets(top: verticalInsets, left: horizontalInsets, bottom: verticalInsets, right: horizontalInsets)
+        contentEdgeInsets = UIEdgeInsets(top: verticalInsets, left: horizontalInsets, bottom: verticalInsets, right: horizontalInsets)
         layer.masksToBounds = false
         layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
         layer.shadowOpacity = shadowOpacity
