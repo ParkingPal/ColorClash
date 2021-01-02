@@ -208,9 +208,9 @@ class Board {
             }
         }
         
-        if gameEnded() {
+        /*if gameEnded() {
             gameDelegate.gameIsOver()
-        }
+        }*/
     }
     
     func gameEnded() -> Bool {
@@ -220,16 +220,48 @@ class Board {
         
         for i in 0...xMax {
             for j in 0...yMax {
-                if tileCanMove(direction: .up, tile: board[i][j]!) ||
-                    tileCanMove(direction: .right, tile: board[i][j]!) ||
-                    tilesCanCombine(direction: .up, tile: board[i][j]!) ||
-                    tilesCanCombine(direction: .right, tile: board[i][j]!) {
+                if tilesCanCombine(direction: .up, tile: board[i][j]!)/* ||
+                    tilesCanCombine(direction: .down, tile: board[i][j]!)*/ ||
+                    tilesCanCombine(direction: .right, tile: board[j][i]!)/* ||
+                    tilesCanCombine(direction: .left, tile: board[j][i]!)*/{
                     return false
                 }
             }
         }
         
         return true
+    }
+    
+    func availableDirections() -> [String]{
+        var directions = [String]()
+        
+        if emptyTiles().isEmpty {
+            for i in 0...xMax {
+                for j in 0...yMax {
+                    if tilesCanCombine(direction: .up, tile: board[i][j]!){
+                        if !directions.contains("Up") {
+                            directions.append("Up")
+                        }
+                    } else if tilesCanCombine(direction: .down, tile: board[i][j]!){
+                        if !directions.contains("Down") {
+                            directions.append("Down")
+                        }
+                    } else if tilesCanCombine(direction: .right, tile: board[j][i]!){
+                        if !directions.contains("Right") {
+                            directions.append("Right")
+                        }
+                    } else if tilesCanCombine(direction: .left, tile: board[j][i]!){
+                        if !directions.contains("Left") {
+                            directions.append("Left")
+                        }
+                    }
+                }
+            }
+        } else {
+            directions = ["Up", "Down", "Left", "Right"]
+        }
+        
+        return directions
     }
     
     func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {

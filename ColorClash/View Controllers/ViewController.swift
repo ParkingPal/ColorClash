@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, GameDelegate {
     
@@ -57,7 +58,13 @@ class ViewController: UIViewController, GameDelegate {
             self.view.removeGestureRecognizer(recognizer)
         }
         
+        Firestore.firestore().collection("Games").document().setData(["authID": Auth.auth().currentUser!.uid, "score": board.score, "timeFinished": FieldValue.serverTimestamp()], merge: true)
+        
         scoreLabel.text = "Final Score: \(String(board.score))"
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+        }
     }
     
     //use for easy testing
@@ -175,5 +182,32 @@ class ViewController: UIViewController, GameDelegate {
         newTile.growAndAppearTile()
         self.gameBoardView.addSubview(newTile)
         scoreLabel.text = String(board.score)
+        
+        if board.gameEnded() {
+            gameIsOver()
+        }
+        
+        for recognizer in self.view.gestureRecognizers ?? []{
+            self.view.removeGestureRecognizer(recognizer)
+        }
+        
+        let directions = board.availableDirections()
+        for direction in directions {
+            let d = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+            switch direction {
+            case "Up":
+                d.direction = .up
+            case "Down":
+                d.direction = .down
+            case "Right":
+                d.direction = .right
+            case "Left":
+                d.direction = .left
+            default:
+                break
+            }
+            
+            self.view.addGestureRecognizer(d)
+        }
     }
 }

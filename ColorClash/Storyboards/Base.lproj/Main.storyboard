@@ -746,7 +746,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="U8K-NE-U9m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="2034"/>
+            <point key="canvasLocation" x="-1126" y="2084"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

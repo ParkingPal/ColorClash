@@ -38,7 +38,7 @@ class Tile: UIImageView {
     func getTypeByValue(value: Int) -> String {
         if value >= 0 && value < 3 {
             return "Primary"
-        } else if value < 7 {
+        } else if value < 6 {
             return "Secondary"
         } else {
             return "Error -> Unknown Type"
