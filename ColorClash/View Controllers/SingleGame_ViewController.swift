@@ -142,10 +142,23 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setTextField(sender: CustomButton) {
-        picker.selectRow(0, inComponent: 0, animated: true)
-        selectedSize = boardSize[picker.selectedRow(inComponent: 0)]
-        textField.text = String(sender.tag)
-        textField.becomeFirstResponder()
+        if UserDocument.docData["customTableUnlocked"] as! Bool {
+            picker.selectRow(0, inComponent: 0, animated: true)
+            selectedSize = boardSize[picker.selectedRow(inComponent: 0)]
+            textField.text = String(sender.tag)
+            textField.becomeFirstResponder()
+        } else {
+            selectedSize = 4
+            switch sender.tag {
+            case 0:
+                performSegue(withIdentifier: "toClassic", sender: self)
+            case 1:
+                break
+            case 2:
+                performSegue(withIdentifier: "toHardcore", sender: self)
+            default: break
+            }
+        }
     }
     
     @objc func classicButtonClicked(sender: CustomButton) {
