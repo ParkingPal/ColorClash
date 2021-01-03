@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, GameDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
@@ -46,28 +46,9 @@ class ViewController: UIViewController, GameDelegate {
         newTile2.growAndAppearTile()
         self.gameBoardView.addSubview(newTile2)
         
-        /*addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 0)
-        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 0)
-        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 0)
-        addTileAtCoords(colorString: "Purple", xCoord: 3, yCoord: 0)
-        addTileAtCoords(colorString: "Purple", xCoord: 0, yCoord: 1)
-        addTileAtCoords(colorString: "Green", xCoord: 1, yCoord: 1)
-        addTileAtCoords(colorString: "Purple", xCoord: 2, yCoord: 1)
-        addTileAtCoords(colorString: "Green", xCoord: 3, yCoord: 1)
-        addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 2)
-        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 2)
-        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 2)
-        addTileAtCoords(colorString: "Purple", xCoord: 3, yCoord: 2)
-        addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 3)
-        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 3)
-        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 3)
-        //addTileAtCoords(colorString: "Green", xCoord: 3, yCoord: 3)*/
-        
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
-        
-        board.gameDelegate = self
     }
     
     func gameIsOver() {
@@ -183,18 +164,6 @@ class ViewController: UIViewController, GameDelegate {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        
-        handleTileMovement(gesture: gesture)
-        /*if board.emptyTiles().isEmpty {
-            if board.gameEnded() == false {
-                handleTileMovement(gesture: gesture)
-            }
-        } else {
-            handleTileMovement(gesture: gesture)
-        }*/
-    }
-    
-    func handleTileMovement(gesture: UISwipeGestureRecognizer) {
         let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         if isValidMove {
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
@@ -206,28 +175,5 @@ class ViewController: UIViewController, GameDelegate {
                 gameIsOver()
             }
         }
-        
-        /*for recognizer in self.view.gestureRecognizers ?? []{
-            self.view.removeGestureRecognizer(recognizer)
-        }
-        
-        let directions = board.availableDirections()
-        for direction in directions {
-            let d = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-            switch direction {
-            case "Up":
-                d.direction = .up
-            case "Down":
-                d.direction = .down
-            case "Right":
-                d.direction = .right
-            case "Left":
-                d.direction = .left
-            default:
-                break
-            }
-            
-            self.view.addGestureRecognizer(d)
-        }*/
     }
 }

@@ -8,10 +8,6 @@
 import Foundation
 import UIKit
 
-protocol GameDelegate {
-    func gameIsOver()
-}
-
 class Board {
     var colorHelper = ColorHelper()
     var board = [[Tile?]]()   //2d array of Tiles
@@ -19,7 +15,6 @@ class Board {
     var yMax: Int
     var score = 0
     var gameType: String
-    var gameDelegate: GameDelegate!
     
     init(xMax: Int, yMax: Int, gameType: String) {
         self.xMax = xMax
@@ -212,9 +207,6 @@ class Board {
         }
         
         return isValidMove
-        /*if gameEnded() {
-            gameDelegate.gameIsOver()
-        }*/
     }
     
     func gameEnded() -> Bool {
@@ -224,48 +216,14 @@ class Board {
         
         for i in 0...xMax {
             for j in 0...yMax {
-                if tilesCanCombine(direction: .up, tile: board[i][j]!)/* ||
-                    tilesCanCombine(direction: .down, tile: board[i][j]!)*/ ||
-                    tilesCanCombine(direction: .right, tile: board[i][j]!)/* ||
-                    tilesCanCombine(direction: .left, tile: board[j][i]!)*/{
+                if tilesCanCombine(direction: .up, tile: board[i][j]!) ||
+                    tilesCanCombine(direction: .right, tile: board[i][j]!){
                     return false
                 }
             }
         }
         
         return true
-    }
-    
-    func availableDirections() -> [String]{
-        var directions = [String]()
-        
-        if emptyTiles().isEmpty {
-            for i in 0...xMax {
-                for j in 0...yMax {
-                    if tilesCanCombine(direction: .up, tile: board[i][j]!){
-                        if !directions.contains("Up") {
-                            directions.append("Up")
-                        }
-                    } else if tilesCanCombine(direction: .down, tile: board[i][j]!){
-                        if !directions.contains("Down") {
-                            directions.append("Down")
-                        }
-                    } else if tilesCanCombine(direction: .right, tile: board[j][i]!){
-                        if !directions.contains("Right") {
-                            directions.append("Right")
-                        }
-                    } else if tilesCanCombine(direction: .left, tile: board[j][i]!){
-                        if !directions.contains("Left") {
-                            directions.append("Left")
-                        }
-                    }
-                }
-            }
-        } else {
-            directions = ["Up", "Down", "Left", "Right"]
-        }
-        
-        return directions
     }
     
     func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
@@ -348,6 +306,4 @@ class Board {
         color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
         color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
     }
-    
-    
 }
