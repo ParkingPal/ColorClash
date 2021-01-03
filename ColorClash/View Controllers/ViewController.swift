@@ -46,6 +46,23 @@ class ViewController: UIViewController, GameDelegate {
         newTile2.growAndAppearTile()
         self.gameBoardView.addSubview(newTile2)
         
+        /*addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 0)
+        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 0)
+        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 0)
+        addTileAtCoords(colorString: "Purple", xCoord: 3, yCoord: 0)
+        addTileAtCoords(colorString: "Purple", xCoord: 0, yCoord: 1)
+        addTileAtCoords(colorString: "Green", xCoord: 1, yCoord: 1)
+        addTileAtCoords(colorString: "Purple", xCoord: 2, yCoord: 1)
+        addTileAtCoords(colorString: "Green", xCoord: 3, yCoord: 1)
+        addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 2)
+        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 2)
+        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 2)
+        addTileAtCoords(colorString: "Purple", xCoord: 3, yCoord: 2)
+        addTileAtCoords(colorString: "Green", xCoord: 0, yCoord: 3)
+        addTileAtCoords(colorString: "Purple", xCoord: 1, yCoord: 3)
+        addTileAtCoords(colorString: "Green", xCoord: 2, yCoord: 3)
+        //addTileAtCoords(colorString: "Green", xCoord: 3, yCoord: 3)*/
+        
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
@@ -58,7 +75,7 @@ class ViewController: UIViewController, GameDelegate {
             self.view.removeGestureRecognizer(recognizer)
         }
         
-        Firestore.firestore().collection("Games").document().setData(["authID": Auth.auth().currentUser!.uid, "score": board.score, "timeFinished": FieldValue.serverTimestamp()], merge: true)
+        Firestore.firestore().collection("Games").document().setData(["authID": Auth.auth().currentUser!.uid, "score": board.score, "gameType": board.gameType, "boardSize": xMax + 1, "timeFinished": FieldValue.serverTimestamp()], merge: true)
         
         scoreLabel.text = "Final Score: \(String(board.score))"
         
@@ -167,27 +184,30 @@ class ViewController: UIViewController, GameDelegate {
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         
-        if board.emptyTiles().isEmpty {
+        handleTileMovement(gesture: gesture)
+        /*if board.emptyTiles().isEmpty {
             if board.gameEnded() == false {
                 handleTileMovement(gesture: gesture)
             }
         } else {
             handleTileMovement(gesture: gesture)
-        }
+        }*/
     }
     
     func handleTileMovement(gesture: UISwipeGestureRecognizer) {
-        board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
-        let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-        newTile.growAndAppearTile()
-        self.gameBoardView.addSubview(newTile)
-        scoreLabel.text = String(board.score)
-        
-        if board.gameEnded() {
-            gameIsOver()
+        let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
+        if isValidMove {
+            let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+            newTile.growAndAppearTile()
+            self.gameBoardView.addSubview(newTile)
+            scoreLabel.text = String(board.score)
+            
+            if board.gameEnded() {
+                gameIsOver()
+            }
         }
         
-        for recognizer in self.view.gestureRecognizers ?? []{
+        /*for recognizer in self.view.gestureRecognizers ?? []{
             self.view.removeGestureRecognizer(recognizer)
         }
         
@@ -208,6 +228,6 @@ class ViewController: UIViewController, GameDelegate {
             }
             
             self.view.addGestureRecognizer(d)
-        }
+        }*/
     }
 }

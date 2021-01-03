@@ -111,7 +111,8 @@ class Board {
         board[xPos][yPos] = nil
     }
     
-    func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) {
+    func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) -> Bool {
+        var isValidMove = false
         var loopIfrom = 0
         var loopIthrough = xMax
         var loopByI = 1
@@ -170,6 +171,7 @@ class Board {
                     continue
                 }
                 if tileCanMove(direction: direction, tile: tile) {
+                    isValidMove = true
                     var newXCoord = -1
                     var newYCoord = -1
                     if spaces < 0 {
@@ -195,6 +197,7 @@ class Board {
                 
                 let canCombine = tilesCanCombine(direction: direction, tile: tile)
                 if canCombine {
+                    isValidMove = true
                     if direction == .up {
                         spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .down {
@@ -208,6 +211,7 @@ class Board {
             }
         }
         
+        return isValidMove
         /*if gameEnded() {
             gameDelegate.gameIsOver()
         }*/
@@ -222,7 +226,7 @@ class Board {
             for j in 0...yMax {
                 if tilesCanCombine(direction: .up, tile: board[i][j]!)/* ||
                     tilesCanCombine(direction: .down, tile: board[i][j]!)*/ ||
-                    tilesCanCombine(direction: .right, tile: board[j][i]!)/* ||
+                    tilesCanCombine(direction: .right, tile: board[i][j]!)/* ||
                     tilesCanCombine(direction: .left, tile: board[j][i]!)*/{
                     return false
                 }
