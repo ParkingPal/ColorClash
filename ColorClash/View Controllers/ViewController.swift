@@ -10,7 +10,11 @@ import Firebase
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var movesTitleLabel: CustomLabel!
+    @IBOutlet weak var scoreTitleLabel: CustomLabel!
+    @IBOutlet weak var scoreLabel: CustomLabel!
+    @IBOutlet weak var movesLabel: CustomLabel!
+    @IBOutlet weak var movesView: UIView!
     
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
@@ -19,14 +23,20 @@ class ViewController: UIViewController {
     //we need to set up the initialization later so the xMax and yMax below are the same as the xMax and yMax in the Board initilization...so we don't have to manually put in both
     var xMax = 0
     var yMax = 0
+    var movesRemaining = 100
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax: 0, yMax: 0, gameType: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLabels()
         createBoardGraphically()
         createGestures()
+        
+        if board.gameType != "Classic" {
+            movesView.alpha = 0.0
+        }
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
@@ -49,6 +59,14 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
         }
+    }
+    
+    func setupLabels() {
+        movesTitleLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        movesTitleLabel.numberOfLines = 2
+        movesLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        scoreTitleLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
+        scoreLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
     }
     
     func gameIsOver() {
@@ -166,12 +184,18 @@ class ViewController: UIViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         if isValidMove {
+            
+            if board.gameType == "Classic" {
+                movesRemaining -= 1
+                movesLabel.text = String(movesRemaining)
+            }
+            
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
             newTile.growAndAppearTile()
             self.gameBoardView.addSubview(newTile)
             scoreLabel.text = String(board.score)
             
-            if board.gameEnded() {
+            if board.gameEnded() || (board.gameType == "Classic" && movesRemaining == 0) {
                 gameIsOver()
             }
         }
