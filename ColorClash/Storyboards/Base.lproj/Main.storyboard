@@ -542,17 +542,17 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Stats: Classic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbG-Ap-131" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
-                                                                        <rect key="frame" x="30" y="10" width="354" height="79"/>
+                                                                        <rect key="frame" x="20" y="5" width="374" height="89"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="EbG-Ap-131" secondAttribute="bottom" constant="10" id="TWA-1e-4cl"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="EbG-Ap-131" secondAttribute="trailing" constant="30" id="UWU-FM-5dN"/>
-                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="top" secondItem="HtN-tn-u22" secondAttribute="top" constant="10" id="VuP-43-fog"/>
-                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="leading" secondItem="HtN-tn-u22" secondAttribute="leading" constant="30" id="XoM-jD-Nb8"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="EbG-Ap-131" secondAttribute="bottom" constant="5" id="A6P-3D-oYI"/>
+                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="top" secondItem="HtN-tn-u22" secondAttribute="top" constant="5" id="ekl-XA-Gn7"/>
+                                                                    <constraint firstItem="EbG-Ap-131" firstAttribute="leading" secondItem="HtN-tn-u22" secondAttribute="leading" constant="20" id="tyk-C0-e8X"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="EbG-Ap-131" secondAttribute="trailing" constant="20" id="zrL-KD-dX4"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dI-oN-2bH" userLabel="Quick Stats ScrollView">

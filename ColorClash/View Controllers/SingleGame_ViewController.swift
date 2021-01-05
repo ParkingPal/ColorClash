@@ -26,7 +26,8 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     var picker = UIPickerView()
     var textField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 0, height: 0))
     var selectedSize = 0
-    var timer = Timer()
+    var docTimer = Timer()
+    var statsTimer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,19 +38,38 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        statsTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(changeStats), userInfo: nil, repeats: true)
         setupPicker()
         if isStackViewLoaded == false {
-            timer = Timer(timeInterval: 1.0, target: self, selector: #selector(checkDocumentInitilization), userInfo: nil, repeats: true)
-            setupScrollView()
+            docTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkDocumentInitilization), userInfo: nil, repeats: true)
         }
     }
     
     @objc func checkDocumentInitilization() {
         if SingleGameScoresDocument.isInitialized {
             setupScrollView()
-        } else {
-            timer.invalidate()
+            docTimer.invalidate()
         }
+    }
+    
+    @objc func changeStats() {
+        UIView.animate(withDuration: 0.5) {
+            self.quickStatsView.alpha = 0.0
+        }
+        
+        for v in statsScrollView.subviews {
+            v.removeFromSuperview()
+        }
+        
+        if quickStatsTitleLabel.text == "Quick Stats: Classic" {
+            quickStatsTitleLabel.text = "Quick Stats: Arcade"
+        } else if quickStatsTitleLabel.text == "Quick Stats: Arcade" {
+            quickStatsTitleLabel.text = "Quick Stats: Hardcore"
+        } else if quickStatsTitleLabel.text == "Quick Stats: Hardcore" {
+            quickStatsTitleLabel.text = "Quick Stats: Classic"
+        }
+        
+        setupScrollView()
     }
     
     func createSingleGameScoresDocument() {
@@ -212,9 +232,13 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         statsPageControl.currentPage = Int(pageNumber)
+        statsTimer.invalidate()
+        statsTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(changeStats), userInfo: nil, repeats: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        statsTimer.invalidate()
+        
         let gameVC = segue.destination as! ViewController
         gameVC.xMax = selectedSize - 1
         gameVC.yMax = selectedSize - 1
