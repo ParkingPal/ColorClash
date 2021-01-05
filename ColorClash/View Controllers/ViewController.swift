@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax: 0, yMax: 0, gameType: "")
-    var singleGame = SingleGame(authID: Auth.auth().currentUser!.uid, boardSize: 0, gameType: "", score: 0)
+    var singleGame = SingleGame(authID: Auth.auth().currentUser!.uid, boardSize: 0, gameType: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +78,8 @@ class ViewController: UIViewController {
         }
         
         Firestore.firestore().collection("Games").document().setData(["authID": Auth.auth().currentUser!.uid, "score": board.score, "gameType": board.gameType, "boardSize": xMax + 1, "timeFinished": FieldValue.serverTimestamp()], merge: true)
+        
+        singleGame.gameOver(score: board.score)
         
         scoreLabel.text = "Final Score: \(String(board.score))"
         

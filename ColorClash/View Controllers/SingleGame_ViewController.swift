@@ -233,7 +233,13 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func unwindToSingleGameMenu(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToSingleGameMenu(segue: UIStoryboardSegue) {
+        for v in statsScrollView.subviews {
+            v.removeFromSuperview()
+        }
+        
+        setupScrollView()
+    }
 }
 
 extension SingleGame_ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
