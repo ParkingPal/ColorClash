@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
 
@@ -19,16 +20,17 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var quickStatsView: UIView!
     
     var headers: [String] = ["High Score", "Average Score", "Games Played"]
-    var scores: [Double] = [64, 22.3, 10]
     let boardSize: [Int] = [4, 5, 6, 7, 8, 9, 10]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     var isStackViewLoaded = false
     var picker = UIPickerView()
     var textField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 0, height: 0))
     var selectedSize = 0
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSingleGameScoresDocument()
         setupLayout()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
     }
@@ -37,7 +39,36 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidAppear(animated)
         setupPicker()
         if isStackViewLoaded == false {
+            timer = Timer(timeInterval: 1.0, target: self, selector: #selector(checkDocumentInitilization), userInfo: nil, repeats: true)
             setupScrollView()
+        }
+    }
+    
+    @objc func checkDocumentInitilization() {
+        if SingleGameScoresDocument.isInitialized {
+            setupScrollView()
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    func createSingleGameScoresDocument() {
+        if !SingleGameScoresDocument.isInitialized {
+            let db = Firestore.firestore()
+            
+            db.collection("SG_Scores").whereField("authID", isEqualTo: Auth.auth().currentUser!.uid)
+                .getDocuments { (querySnapshot, error) in
+                    if let error = error {
+                        print("Error getting documents: \(error)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            let documentCount = (querySnapshot?.documents.count)!
+                            if documentCount == 1 {
+                                SingleGameScoresDocument.create(docSnap: document)
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -99,6 +130,11 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupScrollView() {
+        var displayedGameType = ""
+        if let range = quickStatsTitleLabel.text?.range(of: ": ") {
+            displayedGameType = quickStatsTitleLabel.text![range.upperBound...].lowercased()
+        }
+        
         for index in 0 ..< headers.count {
             frame.origin.x = statsScrollView.frame.width * CGFloat(index)
             frame.size = statsScrollView.frame.size
@@ -107,11 +143,15 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             let header = CustomLabel(frame: frame)
             let score = CustomLabel(frame: frame)
             
-            let isInteger = floor(scores[index]) == scores[index]
-            if isInteger {
-                score.text = String(Int(scores[index]))
-            } else {
-                score.text = String(scores[index])
+            switch index {
+            case 0:
+                score.text = String(SingleGameScoresDocument.docData["\(displayedGameType)HS"] as! Int)
+            case 1:
+                score.text = String(((SingleGameScoresDocument.docData["\(displayedGameType)AS"] as! Double) * 10).rounded() / 10)
+            case 2:
+                score.text = String(SingleGameScoresDocument.docData["\(displayedGameType)GP"] as! Int)
+            default:
+                break
             }
             
             header.text = headers[index]

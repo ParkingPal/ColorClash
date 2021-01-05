@@ -139,6 +139,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                 print("Error getting User Documents: \(error)")
             } else {
                 var documentCount: Int = 0
+                let singleGameScoresRef = Firestore.firestore().collection("SG_Scores").document("\(Auth.auth().currentUser!.uid)")
                 
                 for _ in querySnapshot!.documents {
                     documentCount = querySnapshot!.documents.count
@@ -162,11 +163,45 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                             print("User Document successfully written!")
                         }
                     }
+                    
+                    self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef)
                 } else {
                     Firestore.firestore().collection("Users").document("\(Auth.auth().currentUser!.uid)").setData(["lastLogin": FieldValue.serverTimestamp()], merge: true)
+
+                    singleGameScoresRef.getDocument { (document, error) in
+                        if let error = error {
+                            print("Error getting Single Game Scores Document: \(error)")
+                        } else {
+                            if let document = document, document.exists {
+                                print("Single Game Scores Document exists")
+                            } else {
+                                self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef)
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+    
+    func createSingleGameScoresDocumentFB(docRef: DocumentReference) {
+        var data: [String: Any]
+        
+        data = ["authID": Auth.auth().currentUser!.uid,
+                "boardSize": 4,
+                "classicGP": 0,
+                "classicHS": 0,
+                "classicAS": 0.0,
+                "hardcoreGP": 0,
+                "hardcoreHS": 0,
+                "hardcoreAS": 0.0,
+                "arcadeGP": 0,
+                "arcadeHS": 0,
+                "arcadeAS": 0.0,
+                "totalGP": 0
+        ]
+        
+        docRef.setData(data, merge: true)
     }
     
     @objc func loginTransition() {
@@ -174,17 +209,6 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 @available(iOS 13.0, *)

@@ -41,6 +41,8 @@
 		4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D766259D499900E658F9 /* UserDocument.swift */; };
 		4CE7D76F259D4F7700E658F9 /* Loading_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */; };
 		4CE7D78C259D983800E658F9 /* VollkornMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CE7D78B259D983800E658F9 /* VollkornMedium.ttf */; };
+		4CE7D79425A41B8E00E658F9 /* SingleGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D79325A41B8B00E658F9 /* SingleGame.swift */; };
+		4CE7D79925A41DF700E658F9 /* SingleGameScoresDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -109,6 +111,8 @@
 		4CE7D766259D499900E658F9 /* UserDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDocument.swift; sourceTree = "<group>"; };
 		4CE7D76E259D4F7700E658F9 /* Loading_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading_ViewController.swift; sourceTree = "<group>"; };
 		4CE7D78B259D983800E658F9 /* VollkornMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VollkornMedium.ttf; sourceTree = "<group>"; };
+		4CE7D79325A41B8B00E658F9 /* SingleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame.swift; sourceTree = "<group>"; };
+		4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGameScoresDocument.swift; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				380BC51C256E379B00A8652C /* Tile.swift */,
 				38765C3C257C3D86008435B5 /* Wall.swift */,
 				4CE7D766259D499900E658F9 /* UserDocument.swift */,
+				4CE7D79325A41B8B00E658F9 /* SingleGame.swift */,
+				4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -577,6 +583,8 @@
 				4C3F4419257EED4000012BE4 /* CustomLabel.swift in Sources */,
 				4C69EA57257B682E00C3D2F2 /* SingleGame_ViewController.swift in Sources */,
 				4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */,
+				4CE7D79425A41B8E00E658F9 /* SingleGame.swift in Sources */,
+				4CE7D79925A41DF700E658F9 /* SingleGameScoresDocument.swift in Sources */,
 				4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
 			);

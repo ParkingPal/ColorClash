@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax: 0, yMax: 0, gameType: "")
+    var singleGame = SingleGame(authID: Auth.auth().currentUser!.uid, boardSize: 0, gameType: "", score: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,8 @@ class ViewController: UIViewController {
             movesView.alpha = 0.0
         }
         
+        singleGame.boardSize = xMax + 1
+        singleGame.gameType = board.gameType.lowercased()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
