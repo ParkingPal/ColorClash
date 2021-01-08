@@ -190,7 +190,7 @@ class Board {
                 } else {
                     tile = board[j][i]!
                 }
-                if tile.type == "Wall" {
+                if tile.type == "Wall"/* || tile.type == "Hazard"*/ {
                     spaces = 0
                     continue
                 }
@@ -326,13 +326,12 @@ class Board {
     }
     
     func moveTile(tile: Tile, newXCoord: Int, newYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat, direction: UISwipeGestureRecognizer.Direction, spaces: Int) {
-        let color = tile as! Color
-        removeTile(xPos: color.xCoord, yPos: color.yCoord)
-        color.xCoord = newXCoord
-        color.yCoord = newYCoord
-        addTile(tile: color, xPos: color.xCoord, yPos: color.yCoord)
-        color.moveTile(oldCoords: [color.xPos, color.yPos], newCoords: tileCoordsWithPositions[[color.xCoord, color.yCoord]]!, tileSize: tileSize, isCombined: false, newColor: color, newImage: UIImage())
-        color.xPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![0]
-        color.yPos = tileCoordsWithPositions[[color.xCoord, color.yCoord]]![1]
+        removeTile(xPos: tile.xCoord, yPos: tile.yCoord)
+        tile.xCoord = newXCoord
+        tile.yCoord = newYCoord
+        addTile(tile: tile, xPos: tile.xCoord, yPos: tile.yCoord)
+        tile.moveTile(oldCoords: [tile.xPos, tile.yPos], newCoords: tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]!, tileSize: tileSize, isCombined: false, newColor: tile, newImage: UIImage())
+        tile.xPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![0]
+        tile.yPos = tileCoordsWithPositions[[tile.xCoord, tile.yCoord]]![1]
     }
 }
