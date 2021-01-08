@@ -50,6 +50,10 @@ class ViewController: UIViewController {
         
         if board.gameType == "Hardcore" {
             board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+            let hazard = board.addHazard(moveNumber: movesRemaining, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hazardTapped(tapGestureRecognizer:)))
+            hazard.addGestureRecognizer(tapGestureRecognizer)
         }
         
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
@@ -85,6 +89,22 @@ class ViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+        }
+    }
+    
+    @objc func hazardTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let hazard = tapGestureRecognizer.view as! Hazard
+        let removes = UserDocument.docData["removes"] as! Int
+        
+        if removes > 0 {
+            let newTotal = removes - 1
+            UserDocument.docData["removes"] = newTotal
+            Firestore.firestore().collection("Users").document("\(Auth.auth().currentUser!.uid)").setData(["removes": newTotal], merge: true)
+            
+            board.removeTile(xPos: hazard.xCoord, yPos: hazard.yCoord)
+            hazard.removeFromSuperview()
+        } else {
+            print("You have no removes available")
         }
     }
     

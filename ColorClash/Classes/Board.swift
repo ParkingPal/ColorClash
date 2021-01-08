@@ -38,6 +38,35 @@ class Board {
         }
     }
     
+    func addHazard(moveNumber: Int, gameBoardView: UIView, tileCoordsWithPositions: [[Int]:[CGFloat]], tileWidth: CGFloat, tileHeight: CGFloat) -> Hazard {
+        var randomX: Int
+        var randomY: Int
+        let hazardValue = determineHazardToAdd(moveNumber: moveNumber)
+        
+        repeat {
+            randomX = Int.random(in: 0...xMax)
+            randomY = Int.random(in: 0...yMax)
+        } while isTileOccupied(xPos: randomX, yPos: randomY)
+        
+        let newHazard = Hazard(xCoord: randomX, yCoord: randomY, xPos: tileCoordsWithPositions[[randomX,randomY]]![0], yPos: tileCoordsWithPositions[[randomX,randomY]]![1], width: tileWidth, height: tileHeight)
+        newHazard.isUserInteractionEnabled = true
+        
+        if hazardValue == 0 {
+            newHazard.image = UIImage(named: "BlackTileBevel.png")
+        }
+        
+        addTile(tile: newHazard, xPos: newHazard.xCoord, yPos: newHazard.yCoord)
+        gameBoardView.addSubview(newHazard)
+        
+        return newHazard
+    }
+    
+    func determineHazardToAdd(moveNumber: Int) -> Int {
+        //future function that will help determine which hazard to add based on what moves number it is
+        //harder hazards to overcome will be more likely to appear later into the game, etc
+        return 0
+    }
+    
     func emptyTiles() -> [(Int, Int)] {
         var buffer : [(Int, Int)] = []
         for i in 0...xMax {

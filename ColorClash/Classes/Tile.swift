@@ -40,7 +40,7 @@ class Tile: UIImageView {
             return "Wall"
         } else if value >= 0 && value < 3 {
             return "Primary"
-        } else if value < 6 {
+        } else if value >= 3 && value < 6 {
             return "Secondary"
         } else {
             return "Error -> Unknown Type"
