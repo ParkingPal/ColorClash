@@ -11,7 +11,7 @@ import UIKit
 class Wall: Tile {
     init(xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
         super.init(type:"Wall", value: -1, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
-        super.image = UIImage(named: "BlackTileBevel.png")
+        super.image = UIImage(named: "BrownTileBevel.png")
     }
     
     required init?(coder: NSCoder) {
