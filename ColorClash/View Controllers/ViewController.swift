@@ -10,11 +10,8 @@ import Firebase
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var movesTitleLabel: CustomLabel!
     @IBOutlet weak var scoreTitleLabel: CustomLabel!
     @IBOutlet weak var scoreLabel: CustomLabel!
-    @IBOutlet weak var movesLabel: CustomLabel!
-    @IBOutlet weak var movesView: UIView!
     
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
@@ -23,7 +20,7 @@ class ViewController: UIViewController {
     //we need to set up the initialization later so the xMax and yMax below are the same as the xMax and yMax in the Board initilization...so we don't have to manually put in both
     var xMax = 0
     var yMax = 0
-    var movesRemaining = 100
+    var movesTotal = 0
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax: 0, yMax: 0, gameType: "")
@@ -35,10 +32,6 @@ class ViewController: UIViewController {
         createBoardGraphically()
         createGestures()
         
-        if board.gameType != "Classic" {
-            movesView.alpha = 0.0
-        }
-        
         singleGame.boardSize = xMax + 1
         singleGame.gameType = board.gameType.lowercased()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -48,12 +41,16 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         addTileViewsToArray()
         
-        if board.gameType == "Hardcore" {
-            board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-            let hazard = board.addHazard(moveNumber: movesRemaining, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
-            
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hazardTapped(tapGestureRecognizer:)))
-            hazard.addGestureRecognizer(tapGestureRecognizer)
+        switch board.gameType {
+        case "Classic":
+            addWalls()
+        case "Arcade":
+            addHazard()
+        case "Hardcore":
+            addWalls()
+            addHazard()
+        default:
+            break
         }
         
         let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
@@ -68,10 +65,18 @@ class ViewController: UIViewController {
         }
     }
     
+    func addWalls() {
+        board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+    }
+    
+    func addHazard() {
+        let hazard = board.addHazard(moveNumber: movesTotal, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hazardTapped(tapGestureRecognizer:)))
+        hazard.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     func setupLabels() {
-        movesTitleLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        movesTitleLabel.numberOfLines = 2
-        movesLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         scoreTitleLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         scoreLabel.setupLabel(font: "aArang", size: 40.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
     }
@@ -210,9 +215,10 @@ class ViewController: UIViewController {
         let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         if isValidMove {
             
-            if board.gameType == "Classic" {
-                movesRemaining -= 1
-                movesLabel.text = String(movesRemaining)
+            movesTotal += 1
+            
+            if movesTotal.isMultiple(of: 20) {
+                addHazard()
             }
             
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
@@ -220,7 +226,7 @@ class ViewController: UIViewController {
             self.gameBoardView.addSubview(newTile)
             scoreLabel.text = String(board.score)
             
-            if board.gameEnded() || (board.gameType == "Classic" && movesRemaining == 0) {
+            if board.gameEnded() {
                 gameIsOver()
             }
         }

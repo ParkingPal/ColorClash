@@ -100,12 +100,12 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         quickStatsTitleLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
         classicButton.setupButton(font: "Vollkorn", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         arcadeButton.setupButton(font: "Abingdon", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
-        arcadeButton.alpha = 0.5
-        arcadeButton.isEnabled = false
         hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
         classicButton.tag = 0
+        arcadeButton.addTarget(self, action: #selector(arcadeButtonClicked), for: .touchUpInside)
+        arcadeButton.tag = 1
         hardcoreButton.addTarget(self, action: #selector(hardcoreButtonClicked), for: .touchUpInside)
         hardcoreButton.tag = 2
     }
@@ -213,7 +213,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
             case 0:
                 performSegue(withIdentifier: "toClassic", sender: self)
             case 1:
-                break
+                performSegue(withIdentifier: "toArcade", sender: self)
             case 2:
                 performSegue(withIdentifier: "toHardcore", sender: self)
             default: break
@@ -222,6 +222,10 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func classicButtonClicked(sender: CustomButton) {
+        setTextField(sender: sender)
+    }
+    
+    @objc func arcadeButtonClicked(sender: CustomButton) {
         setTextField(sender: sender)
     }
     

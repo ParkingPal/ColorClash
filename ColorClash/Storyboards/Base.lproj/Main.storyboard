@@ -640,6 +640,7 @@
                         <outlet property="statsScrollView" destination="J2R-jl-HQO" id="UGd-LG-Gt7"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toClassic" id="ueF-5Q-9m7"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toHardcore" id="KOu-dR-AF4"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toArcade" id="93T-b0-MpV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohu-Q6-1hx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -790,56 +791,6 @@
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-qW-jSW">
                                                                 <rect key="frame" x="276" y="0.0" width="138" height="129"/>
-                                                                <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TLp-AU-G5F">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="129"/>
-                                                                        <subviews>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWy-A1-QNI">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="138" height="51.5"/>
-                                                                                <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves Remaining:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-ni-831" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
-                                                                                        <rect key="frame" x="5" y="5" width="128" height="41.5"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
-                                                                                </subviews>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="LLU-ni-831" firstAttribute="top" secondItem="iWy-A1-QNI" secondAttribute="top" constant="5" id="Fgo-IY-eRJ"/>
-                                                                                    <constraint firstItem="LLU-ni-831" firstAttribute="leading" secondItem="iWy-A1-QNI" secondAttribute="leading" constant="5" id="eMR-dD-VY7"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="LLU-ni-831" secondAttribute="trailing" constant="5" id="lhP-P2-8kR"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="LLU-ni-831" secondAttribute="bottom" constant="5" id="n9k-Fg-afp"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APQ-ZZ-eAc">
-                                                                                <rect key="frame" x="0.0" y="51.5" width="138" height="77.5"/>
-                                                                                <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-ak-ZPP" customClass="CustomLabel" customModule="ColorClash" customModuleProvider="target">
-                                                                                        <rect key="frame" x="5" y="5" width="128" height="67.5"/>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                        <color key="textColor" red="0.0" green="0.20392156859999999" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
-                                                                                </subviews>
-                                                                                <constraints>
-                                                                                    <constraint firstItem="QeY-ak-ZPP" firstAttribute="leading" secondItem="APQ-ZZ-eAc" secondAttribute="leading" constant="5" id="11G-GU-7in"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="QeY-ak-ZPP" secondAttribute="trailing" constant="5" id="Dc9-Q1-f66"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="QeY-ak-ZPP" secondAttribute="bottom" constant="5" id="OJB-gB-i8f"/>
-                                                                                    <constraint firstItem="QeY-ak-ZPP" firstAttribute="top" secondItem="APQ-ZZ-eAc" secondAttribute="top" constant="5" id="am8-CY-eBD"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                        </subviews>
-                                                                        <constraints>
-                                                                            <constraint firstItem="APQ-ZZ-eAc" firstAttribute="height" secondItem="iWy-A1-QNI" secondAttribute="height" multiplier="1.5" id="Lap-uX-f53"/>
-                                                                        </constraints>
-                                                                    </stackView>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="TLp-AU-G5F" firstAttribute="leading" secondItem="SHa-qW-jSW" secondAttribute="leading" id="4nv-Nz-PXi"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="TLp-AU-G5F" secondAttribute="trailing" id="Aup-ui-fC6"/>
-                                                                    <constraint firstItem="TLp-AU-G5F" firstAttribute="top" secondItem="SHa-qW-jSW" secondAttribute="top" id="hUF-yF-KTw"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="TLp-AU-G5F" secondAttribute="bottom" id="vEr-Sy-VXo"/>
-                                                                </constraints>
                                                             </view>
                                                         </subviews>
                                                     </stackView>
@@ -882,9 +833,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="D7u-dH-KAw"/>
                     <connections>
-                        <outlet property="movesLabel" destination="QeY-ak-ZPP" id="yfa-DN-boH"/>
-                        <outlet property="movesTitleLabel" destination="LLU-ni-831" id="XNg-fr-NRo"/>
-                        <outlet property="movesView" destination="SHa-qW-jSW" id="j11-ch-rCA"/>
                         <outlet property="scoreLabel" destination="Y0i-VF-dcY" id="Oen-LH-6IL"/>
                         <outlet property="scoreTitleLabel" destination="E3Z-CN-ujK" id="CqI-5v-kuu"/>
                         <segue destination="U8K-NE-U9m" kind="unwind" identifier="unwindToSingleGame" unwindAction="unwindToSingleGameMenuWithSegue:" id="Z0T-fP-LgK"/>
@@ -897,7 +845,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="KOu-dR-AF4"/>
+        <segue reference="93T-b0-MpV"/>
         <segue reference="1NP-s1-pXv"/>
         <segue reference="QYi-n3-FQx"/>
     </inferredMetricsTieBreakers>
