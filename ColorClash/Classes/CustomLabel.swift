@@ -15,6 +15,44 @@ class CustomLabel: UILabel {
         font = fontToFitHeight()
     }
     
+    func fontToFitWidth() -> UIFont {
+        var minFontSize: CGFloat = 20
+        var maxFontSize: CGFloat = 200
+        var fontSizeAverage: CGFloat = 0
+        var textAndLabelWidthDiff: CGFloat = 0
+        
+        while (minFontSize <= maxFontSize) {
+            fontSizeAverage = minFontSize + (maxFontSize - minFontSize) / 2
+            
+            guard text?.count ?? 0 > 0 else {
+                break
+            }
+            
+            if let labelText: NSString = text as NSString? {
+                let labelWidth = frame.size.width
+                
+                let testStringWidth = labelText.size(withAttributes: [NSAttributedString.Key.font: font.withSize(fontSizeAverage)]).width
+                textAndLabelWidthDiff = labelWidth - testStringWidth
+                
+                if (fontSizeAverage == minFontSize || fontSizeAverage == maxFontSize) {
+                    if (textAndLabelWidthDiff < 0) {
+                        return font.withSize(fontSizeAverage - 1)
+                    }
+                    return font.withSize(fontSizeAverage)
+                }
+                
+                if (textAndLabelWidthDiff < 0) {
+                    maxFontSize = fontSizeAverage - 1
+                } else if (textAndLabelWidthDiff > 0) {
+                    minFontSize = fontSizeAverage + 1
+                } else {
+                    return font.withSize(fontSizeAverage)
+                }
+            }
+        }
+        return font.withSize(fontSizeAverage)
+    }
+    
     func fontToFitHeight() -> UIFont {
         var minFontSize: CGFloat = 20
         var maxFontSize: CGFloat = 200

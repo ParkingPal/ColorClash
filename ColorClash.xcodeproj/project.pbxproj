@@ -44,6 +44,7 @@
 		4CE7D79425A41B8E00E658F9 /* SingleGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D79325A41B8B00E658F9 /* SingleGame.swift */; };
 		4CE7D79925A41DF700E658F9 /* SingleGameScoresDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */; };
 		4CE7D7A125A8004D00E658F9 /* Hazard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7D7A025A8004C00E658F9 /* Hazard.swift */; };
+		4CF2859725AC1D65004FC644 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2859625AC1D63004FC644 /* CustomTableCell.swift */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -115,6 +116,7 @@
 		4CE7D79325A41B8B00E658F9 /* SingleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGame.swift; sourceTree = "<group>"; };
 		4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleGameScoresDocument.swift; sourceTree = "<group>"; };
 		4CE7D7A025A8004C00E658F9 /* Hazard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hazard.swift; sourceTree = "<group>"; };
+		4CF2859625AC1D63004FC644 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				4CE7D79325A41B8B00E658F9 /* SingleGame.swift */,
 				4CE7D79825A41DF700E658F9 /* SingleGameScoresDocument.swift */,
 				4CE7D7A025A8004C00E658F9 /* Hazard.swift */,
+				4CF2859625AC1D63004FC644 /* CustomTableCell.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				4C3F4446257F666C00012BE4 /* Profile_ViewController.swift in Sources */,
 				4C3F4455257F66C900012BE4 /* Store_ViewController.swift in Sources */,
 				4C3F4450257F66B800012BE4 /* Leaderboards_ViewController.swift in Sources */,
+				4CF2859725AC1D65004FC644 /* CustomTableCell.swift in Sources */,
 				380F36C4256F570D00BA06C7 /* Board.swift in Sources */,
 				38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */,
 				4C4E26972582F71800C133F7 /* Login_ViewController.swift in Sources */,
