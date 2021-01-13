@@ -37,6 +37,7 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
         self.navigationItem.title = UserDocument.docData["name"] as? String
         setupButtons()
+        setupLabels()
         setupTapGestures()
         //setupScrollView()
     }
@@ -61,6 +62,16 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         settingsButton.alpha = 0.5
         signOutButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         signOutButton.addTarget(self, action: #selector(signOutButtonClicked), for: .touchUpInside)
+    }
+    
+    func setupLabels() {
+        statsHeaderLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        classicLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        classicLabel.isUserInteractionEnabled = true
+        arcadeLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        arcadeLabel.isUserInteractionEnabled = true
+        hardcoreLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        hardcoreLabel.isUserInteractionEnabled = true
     }
     
     func setupTapGestures() {
@@ -102,13 +113,6 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         arcadeTableView.tag = 1
         let hardcoreTableView = UITableView(frame: frame)
         hardcoreTableView.tag = 2
-        statsHeaderLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        classicLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        classicLabel.isUserInteractionEnabled = true
-        arcadeLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        arcadeLabel.isUserInteractionEnabled = true
-        hardcoreLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
-        hardcoreLabel.isUserInteractionEnabled = true
 
         for index in 0 ..< gameTypes {
             frame.origin.x = statsScrollView.frame.width * CGFloat(index)
@@ -144,8 +148,6 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
                     headingTableView.widthAnchor.constraint(equalTo: hardcoreTableView.widthAnchor, multiplier: 2.5)
                 ])
             }
-            
-            
             
             for row in 0 ..< statsNum {
                 switch index {
