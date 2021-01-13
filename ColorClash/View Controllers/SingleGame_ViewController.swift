@@ -45,6 +45,11 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        statsTimer.invalidate()
+    }
+    
     @objc func checkDocumentInitilization() {
         if SingleGameScoresDocument.isInitialized {
             setupScrollView()
