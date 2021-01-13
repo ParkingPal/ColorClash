@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     var board = Board(xMax: 0, yMax: 0, gameType: "")
     var singleGame = SingleGame(authID: Auth.auth().currentUser!.uid, boardSize: 0, gameType: "")
     
+    var hazardOwed = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
@@ -218,7 +220,14 @@ class ViewController: UIViewController {
             movesTotal += 1
             
             if movesTotal.isMultiple(of: 20) {
+                if board.emptyTiles().isEmpty {
+                    hazardOwed = true
+                } else {
+                    addHazard()
+                }
+            } else if hazardOwed == true {
                 addHazard()
+                hazardOwed = false
             }
             
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
