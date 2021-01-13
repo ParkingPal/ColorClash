@@ -37,6 +37,7 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
         self.navigationItem.title = UserDocument.docData["name"] as? String
         setupButtons()
+        setupTapGestures()
         //setupScrollView()
     }
     
@@ -62,6 +63,28 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         signOutButton.addTarget(self, action: #selector(signOutButtonClicked), for: .touchUpInside)
     }
     
+    func setupTapGestures() {
+        classicLabel.tag = 0
+        arcadeLabel.tag = 1
+        hardcoreLabel.tag = 2
+        let classicTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+        let arcadeTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+        let hardcoreTap = UITapGestureRecognizer(target: self, action: #selector(labelTapped(sender:)))
+        classicLabel.addGestureRecognizer(classicTap)
+        arcadeLabel.addGestureRecognizer(arcadeTap)
+        hardcoreLabel.addGestureRecognizer(hardcoreTap)
+    }
+    
+    @objc func labelTapped(sender: UITapGestureRecognizer) {
+        let backgroundColor = UIColor(red: 0/255, green: 52/255, blue: 96/255, alpha: 1.0)
+        var frame: CGRect = statsScrollView.frame
+        frame.origin.y = 0
+        frame.origin.x = frame.size.width * CGFloat(sender.view!.tag)
+        pageControl.currentPage = sender.view!.tag
+        highlightedSectionHelper(value: sender.view!.tag, color: backgroundColor)
+        statsScrollView.scrollRectToVisible(frame, animated: true)
+    }
+    
     @objc func signOutButtonClicked() {
         do {
             try Auth.auth().signOut()
@@ -81,8 +104,11 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         hardcoreTableView.tag = 2
         statsHeaderLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
         classicLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        classicLabel.isUserInteractionEnabled = true
         arcadeLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        arcadeLabel.isUserInteractionEnabled = true
         hardcoreLabel.setupLabel(font: "aArang", size: 20.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
+        hardcoreLabel.isUserInteractionEnabled = true
 
         for index in 0 ..< gameTypes {
             frame.origin.x = statsScrollView.frame.width * CGFloat(index)
@@ -170,14 +196,17 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
         let backgroundColor = UIColor(red: 0/255, green: 52/255, blue: 96/255, alpha: 1.0)
-        
-        switch pageNumber {
+        highlightedSectionHelper(value: Int(pageNumber), color: backgroundColor)
+    }
+    
+    func highlightedSectionHelper(value: Int, color: UIColor) {
+        switch value {
         case 0:
-            animateLabelTransition(classicColor: backgroundColor, arcadeColor: .clear, hardcoreColor: .clear)
+            animateLabelTransition(classicColor: color, arcadeColor: .clear, hardcoreColor: .clear)
         case 1:
-            animateLabelTransition(classicColor: .clear, arcadeColor: backgroundColor, hardcoreColor: .clear)
+            animateLabelTransition(classicColor: .clear, arcadeColor: color, hardcoreColor: .clear)
         case 2:
-            animateLabelTransition(classicColor: .clear, arcadeColor: .clear, hardcoreColor: backgroundColor)
+            animateLabelTransition(classicColor: .clear, arcadeColor: .clear, hardcoreColor: color)
         default:
             break
         }
