@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 class ViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
     var singleGame = SingleGame(authID: Auth.auth().currentUser!.uid, boardSize: 0, gameType: "")
     
     var hazardOwed = false
+    var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,12 @@ class ViewController: UIViewController {
         singleGame.boardSize = xMax + 1
         singleGame.gameType = board.gameType.lowercased()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView.delegate = self
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +72,19 @@ class ViewController: UIViewController {
         
         UIView.animate(withDuration: 0.5) {
             self.gameBoardView.alpha = 1.0
+        }
+    }
+    
+    func addBannerView(_ bannerView: GADBannerView, board: UIView) {
+        let distance = view.frame.size.height - (board.frame.size.height + board.frame.origin.y)
+        bannerView.alpha = 0.0
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0), NSLayoutConstraint(item: bannerView, attribute: .top, relatedBy: .equal, toItem: board, attribute: .bottom, multiplier: 1, constant: distance/3)])
+        
+        UIView.animate(withDuration: 0.5) {
+            bannerView.alpha = 1.0
         }
     }
     
@@ -239,5 +260,40 @@ class ViewController: UIViewController {
                 gameIsOver()
             }
         }
+    }
+}
+
+extension ViewController: GADBannerViewDelegate {
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      addBannerView(bannerView, board: gameBoardView)
+    }
+
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+        didFailToReceiveAdWithError error: GADRequestError) {
+      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("adViewWillPresentScreen")
+    }
+
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewWillDismissScreen")
+    }
+
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewDidDismissScreen")
+    }
+
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+      print("adViewWillLeaveApplication")
     }
 }
