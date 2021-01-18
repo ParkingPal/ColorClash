@@ -219,7 +219,10 @@ class Board {
                     moveTile(tile: tile, newXCoord: newXCoord, newYCoord: newYCoord, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize, direction: direction, spaces: spaces)
                 }
                 
-                let canCombine = tilesCanCombine(direction: direction, tile: tile)
+                let combine = tilesCanCombine(direction: direction, tile: tile)
+                let canCombine = combine.0
+                let combineType = combine.1
+                
                 if canCombine {
                     isValidMove = true
                     if direction == .up {
@@ -230,6 +233,10 @@ class Board {
                         spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                     } else if direction == .left {
                         spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    }
+                    
+                    if combineType == "Secondary" {
+                        checkForHazard(tile: tile, direction: direction)
                     }
                 }
             }
@@ -245,8 +252,8 @@ class Board {
         
         for i in 0...xMax {
             for j in 0...yMax {
-                if tilesCanCombine(direction: .up, tile: board[i][j]!) ||
-                    tilesCanCombine(direction: .right, tile: board[i][j]!){
+                if tilesCanCombine(direction: .up, tile: board[i][j]!).0 ||
+                    tilesCanCombine(direction: .right, tile: board[i][j]!).0 {
                     return false
                 }
             }
@@ -255,7 +262,7 @@ class Board {
         return true
     }
     
-    func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> Bool {
+    func tilesCanCombine(direction: UISwipeGestureRecognizer.Direction, tile: Tile) -> (Bool, String) {
         var checkTile:Tile? = nil
         var checkType:String? = nil
         let tileType = tile.getTypeByValue(value: tile.value)
@@ -275,13 +282,102 @@ class Board {
         
         if checkType == tileType {
             if tileType == "Primary" && checkType == "Primary" && checkTile!.value != tile.value {
-                return true
+                return (true, "Primary")
             } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value) {
-                return true
+                return (true, "Secondary")
             }
         }
         
-        return false
+        return (false, "Nothing")
+    }
+    
+    func checkForHazard(tile: Tile, direction: UISwipeGestureRecognizer.Direction) {
+        var combinedTile = tile
+        
+        switch direction {
+        case .left:
+            combinedTile.xCoord = tile.xCoord - 1
+        case .right:
+            combinedTile.xCoord = tile.xCoord + 1
+        case .up:
+            combinedTile.yCoord = tile.yCoord - 1
+        case .down:
+            combinedTile.yCoord = tile.yCoord + 1
+        default:
+            break
+        }
+        
+        /// Check to see if the tile is on an edge, or if it is on a corner
+        if combinedTile.yCoord == 0 && combinedTile.xCoord > 0 && combinedTile.xCoord < xMax{
+            checkHazardDown(tile: combinedTile)
+            checkHazardLeft(tile: combinedTile)
+            checkHazardRight(tile: combinedTile)
+        } else if combinedTile.xCoord == 0 && combinedTile.yCoord > 0 && combinedTile.yCoord < yMax {
+            checkHazardRight(tile: combinedTile)
+            checkHazardUp(tile: combinedTile)
+            checkHazardDown(tile: combinedTile)
+        } else if combinedTile.yCoord == yMax && combinedTile.xCoord < xMax && combinedTile.xCoord > 0 {
+            checkHazardUp(tile: combinedTile)
+            checkHazardLeft(tile: combinedTile)
+            checkHazardRight(tile: combinedTile)
+        } else if combinedTile.xCoord == xMax && combinedTile.yCoord < yMax && combinedTile.yCoord > 0 {
+            checkHazardLeft(tile: combinedTile)
+            checkHazardUp(tile: combinedTile)
+            checkHazardDown(tile: combinedTile)
+        } else if combinedTile.xCoord == 0 && combinedTile.yCoord == 0 {
+            checkHazardRight(tile: tile)
+            checkHazardDown(tile: tile)
+        } else if combinedTile.xCoord == 0 && combinedTile.yCoord == yMax {
+            checkHazardUp(tile: tile)
+            checkHazardRight(tile: tile)
+        } else if combinedTile.xCoord == xMax && combinedTile.yCoord == 0 {
+            checkHazardDown(tile: tile)
+            checkHazardLeft(tile: tile)
+        } else if combinedTile.xCoord == xMax && combinedTile.yCoord == yMax {
+            checkHazardUp(tile: tile)
+            checkHazardLeft(tile: tile)
+        } else {
+            checkHazardLeft(tile: combinedTile)
+            checkHazardRight(tile: combinedTile)
+            checkHazardUp(tile: combinedTile)
+            checkHazardDown(tile: combinedTile)
+        }
+    }
+    
+    func checkHazardLeft(tile: Tile) {
+        if let checkedTile = board[tile.xCoord - 1][tile.yCoord] {
+            if checkedTile.type == "Hazard" {
+                removeTile(xPos: checkedTile.xCoord, yPos: checkedTile.yCoord)
+                checkedTile.removeFromSuperview()
+            }
+        }
+    }
+    
+    func checkHazardRight(tile: Tile) {
+        if let checkedTile = board[tile.xCoord + 1][tile.yCoord] {
+            if checkedTile.type == "Hazard" {
+                removeTile(xPos: checkedTile.xCoord, yPos: checkedTile.yCoord)
+                checkedTile.removeFromSuperview()
+            }
+        }
+    }
+    
+    func checkHazardUp(tile: Tile) {
+        if let checkedTile = board[tile.xCoord][tile.yCoord - 1] {
+            if checkedTile.type == "Hazard" {
+                removeTile(xPos: checkedTile.xCoord, yPos: checkedTile.yCoord)
+                checkedTile.removeFromSuperview()
+            }
+        }
+    }
+    
+    func checkHazardDown(tile: Tile) {
+        if let checkedTile = board[tile.xCoord][tile.yCoord + 1] {
+            if checkedTile.type == "Hazard" {
+                removeTile(xPos: checkedTile.xCoord, yPos: checkedTile.yCoord)
+                checkedTile.removeFromSuperview()
+            }
+        }
     }
     
     func combineTiles(newTile: Tile, oldTile: Tile, oldXCoord: Int, oldYCoord: Int, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) -> Int {
