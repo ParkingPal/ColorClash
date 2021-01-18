@@ -230,7 +230,7 @@ class Board {
                     let color = (tile as! Color)
                     isValidMove = true
                     
-                    if (tile as! Color).moveCombined != movesTotal {
+                    if color.moveCombined != movesTotal || color.moveCombined == 0 {
                         if direction == .up {
                             spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
                         } else if direction == .down {
