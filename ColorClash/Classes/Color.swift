@@ -12,10 +12,12 @@ import TheAnimation
 class Color: Tile {
     var color: UIImage
     var colorString: String
+    var moveCombined: Int
     
-    init(color: UIImage, colorString: String, colorType: String, value: Int, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat) {
+    init(color: UIImage, colorString: String, colorType: String, value: Int, xCoord: Int, yCoord: Int, xPos: CGFloat, yPos: CGFloat, width: CGFloat, height: CGFloat, moveCombined: Int) {
         self.color = color
         self.colorString = colorString
+        self.moveCombined = moveCombined
         super.init(type:"Color", value: value, xCoord:xCoord, yCoord:yCoord, xPos:xPos, yPos:yPos, width:width, height:height)
         self.image = color
     }

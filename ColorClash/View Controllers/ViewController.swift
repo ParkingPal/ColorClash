@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     //we need to set up the initialization later so the xMax and yMax below are the same as the xMax and yMax in the Board initilization...so we don't have to manually put in both
     var xMax = 0
     var yMax = 0
-    var movesTotal = 0
+    var hazardMultiple = 10
+    var scoreMultiple = 5
     
     var tileCoordsWithPositions = [[Int]:[CGFloat]]()
     var board = Board(xMax: 0, yMax: 0, gameType: "")
@@ -93,7 +94,7 @@ class ViewController: UIViewController {
     }
     
     func addHazard() {
-        let hazard = board.addHazard(moveNumber: movesTotal, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        let hazard = board.addHazard(moveNumber: board.movesTotal, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hazardTapped(tapGestureRecognizer:)))
         hazard.addGestureRecognizer(tapGestureRecognizer)
@@ -140,7 +141,7 @@ class ViewController: UIViewController {
     func addTileAtCoords(colorString: String, xCoord: Int, yCoord: Int) {
         let colorHelper = ColorHelper()
         let value = colorHelper.getValueByColor(color: colorString)
-        let tile = Color(color: UIImage(named: colorString + "TileBevel.png")!, colorString: colorString, colorType: colorHelper.getTypeByValue(value: value), value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight)
+        let tile = Color(color: UIImage(named: colorString + "TileBevel.png")!, colorString: colorString, colorType: colorHelper.getTypeByValue(value: value), value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight, moveCombined: 0)
         board.addTile(tile:tile, xPos: xCoord, yPos: yCoord)
         gameBoardView.addSubview(tile)
     }
@@ -238,10 +239,14 @@ class ViewController: UIViewController {
         let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         if isValidMove {
             
-            movesTotal += 1
+            board.movesTotal += 1
             
-            if movesTotal.isMultiple(of: 20) {
-                if board.emptyTiles().isEmpty {
+            if board.score.isMultiple(of: scoreMultiple) && hazardMultiple > 1 && board.scoreChanged {
+                hazardMultiple -= 1
+            }
+            
+            if board.movesTotal.isMultiple(of: hazardMultiple) {
+                if board.emptyTiles().isEmpty || board.emptyTiles().count == 1 {
                     hazardOwed = true
                 } else {
                     addHazard()

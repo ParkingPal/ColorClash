@@ -15,6 +15,8 @@ class Board {
     var yMax: Int
     var score = 0
     var gameType: String
+    var scoreChanged = false
+    var movesTotal = 0
     
     init(xMax: Int, yMax: Int, gameType: String) {
         self.xMax = xMax
@@ -102,7 +104,7 @@ class Board {
         
         let colorInfo = pickRandomTileColor()
         
-        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", value: colorInfo.2, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight)
+        let tile = Color(color: colorInfo.0, colorString: colorInfo.1, colorType: "Primary", value: colorInfo.2, xCoord: randomX, yCoord: randomY, xPos: tileX, yPos: tileY, width: tileWidth, height: tileHeight, moveCombined: 0)
         addTile(tile:tile, xPos:randomX, yPos:randomY)
         return tile
     }
@@ -196,6 +198,7 @@ class Board {
                 }
                 if tileCanMove(direction: direction, tile: tile) {
                     isValidMove = true
+                    scoreChanged = false
                     var newXCoord = -1
                     var newYCoord = -1
                     if spaces < 0 {
@@ -224,16 +227,22 @@ class Board {
                 let combineType = combine.1
                 
                 if canCombine {
+                    let color = (tile as! Color)
                     isValidMove = true
-                    if direction == .up {
-                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if direction == .down {
-                        spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if direction == .right {
-                        spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
-                    } else if direction == .left {
-                        spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                    
+                    if (tile as! Color).moveCombined != movesTotal {
+                        if direction == .up {
+                            spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord - 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        } else if direction == .down {
+                            spaces += combineTiles(newTile: board[tile.xCoord][tile.yCoord + 1]!, oldTile: tile, oldXCoord: i, oldYCoord: j, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        } else if direction == .right {
+                            spaces += combineTiles(newTile: board[tile.xCoord + 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        } else if direction == .left {
+                            spaces += combineTiles(newTile: board[tile.xCoord - 1][tile.yCoord]!, oldTile: tile, oldXCoord: j, oldYCoord: i, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileSize)
+                        }
                     }
+                    
+                    color.moveCombined = movesTotal
                     
                     if combineType == "Secondary" {
                         checkForHazard(tile: tile, direction: direction)
@@ -396,6 +405,7 @@ class Board {
             oldColor.pointScored()
             newColor.pointScored()
             score += 1
+            scoreChanged = true
             spacesToAdd += 1
         } else {
             oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true, newColor: newColor, newImage: newImage)
