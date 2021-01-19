@@ -928,6 +928,19 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-iU-bNA">
                                         <rect key="frame" x="0.0" y="94.5" width="414" height="630.5"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-Xg-kfw">
+                                                <rect key="frame" x="8" y="8" width="398" height="615"/>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="Qgf-fj-sWF"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="ubE-wg-yhR"/>
+                                            </scrollView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dRo-Xg-kfw" firstAttribute="top" secondItem="Oo8-iU-bNA" secondAttribute="top" constant="20" id="DXg-mV-fc5"/>
+                                            <constraint firstItem="dRo-Xg-kfw" firstAttribute="leading" secondItem="Oo8-iU-bNA" secondAttribute="leading" constant="20" id="GS6-nW-XMQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="dRo-Xg-kfw" secondAttribute="bottom" constant="20" id="hcG-o8-uUy"/>
+                                            <constraint firstAttribute="trailing" secondItem="dRo-Xg-kfw" secondAttribute="trailing" constant="20" id="wjg-L7-2RL"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -948,11 +961,12 @@
                         <outlet property="arcadeButton" destination="orD-FI-Pbx" id="YII-pN-WSb"/>
                         <outlet property="classicButton" destination="cqc-q1-zB7" id="6YN-7o-aI0"/>
                         <outlet property="hardcoreButton" destination="nM3-Pi-pkX" id="1QQ-9V-Gqr"/>
+                        <outlet property="leadersScrollView" destination="dRo-Xg-kfw" id="yX3-Mj-F2I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KO-MT-lBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="1369"/>
+            <point key="canvasLocation" x="215.94202898550725" y="1368.75"/>
         </scene>
         <!--Store-->
         <scene sceneID="1aj-k8-OH1">

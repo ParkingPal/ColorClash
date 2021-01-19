@@ -164,7 +164,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                         }
                     }
                     
-                    self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef)
+                    self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef, name: name)
                 } else {
                     Firestore.firestore().collection("Users").document("\(Auth.auth().currentUser!.uid)").setData(["lastLogin": FieldValue.serverTimestamp()], merge: true)
 
@@ -175,7 +175,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                             if let document = document, document.exists {
                                 print("Single Game Scores Document exists")
                             } else {
-                                self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef)
+                                self.createSingleGameScoresDocumentFB(docRef: singleGameScoresRef, name: name)
                             }
                         }
                     }
@@ -184,10 +184,11 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
         }
     }
     
-    func createSingleGameScoresDocumentFB(docRef: DocumentReference) {
+    func createSingleGameScoresDocumentFB(docRef: DocumentReference, name: String) {
         var data: [String: Any]
         
         data = ["authID": Auth.auth().currentUser!.uid,
+                "userName": name,
                 "boardSize": 4,
                 "classicGP": 0,
                 "classicHS": 0,

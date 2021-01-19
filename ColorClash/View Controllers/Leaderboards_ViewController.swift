@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
-class Leaderboards_ViewController: UIViewController {
+class Leaderboards_ViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var classicButton: CustomButton!
     @IBOutlet weak var arcadeButton: CustomButton!
     @IBOutlet weak var hardcoreButton: CustomButton!
+    @IBOutlet weak var leadersScrollView: UIScrollView!
+    
+    let stats = ["High Score", "Average Score", "Games Played"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +29,15 @@ class Leaderboards_ViewController: UIViewController {
         let buttonHeight = classicButton.frame.height
 
         classicButton.setupButton(font: "Vollkorn", size: 75.0, horizontalInsets: buttonWidth/6, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
+        classicButton.addTarget(self, action: #selector(classicButtonClicked(sender:)), for: .touchUpInside)
         arcadeButton.setupButton(font: "Abingdon", size: 75.0, horizontalInsets: buttonWidth/6, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        arcadeButton.addTarget(self, action: #selector(arcadeButtonClicked), for: .touchUpInside)
+        arcadeButton.addTarget(self, action: #selector(arcadeButtonClicked(sender:)), for: .touchUpInside)
         hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, horizontalInsets: buttonWidth/6, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        hardcoreButton.addTarget(self, action: #selector(hardcoreButtonClicked), for: .touchUpInside)
+        hardcoreButton.addTarget(self, action: #selector(hardcoreButtonClicked(sender:)), for: .touchUpInside)
         
-        selectedShadow(button: classicButton, opacity: 0.0)
+        selectedShadow(button: classicButton, opacity: 1.0)
         selectedShadow(button: arcadeButton, opacity: 0.0)
-        selectedShadow(button: hardcoreButton, opacity: 1.0)
-        
+        selectedShadow(button: hardcoreButton, opacity: 0.0)
     }
     
     func selectedShadow(button: CustomButton, opacity: Float) {
@@ -53,19 +56,22 @@ class Leaderboards_ViewController: UIViewController {
         button.layer.shadowPath = UIBezierPath(ovalIn: rect).cgPath
     }
     
-    @objc func classicButtonClicked() {
+    @objc func classicButtonClicked(sender: CustomButton) {
+        sender.tag = 0
         shadowAnimation(button: classicButton, opacity: 1.0)
         shadowAnimation(button: arcadeButton, opacity: 0.0)
         shadowAnimation(button: hardcoreButton, opacity: 0.0)
     }
     
-    @objc func arcadeButtonClicked() {
+    @objc func arcadeButtonClicked(sender: CustomButton) {
+        sender.tag = 1
         shadowAnimation(button: classicButton, opacity: 0.0)
         shadowAnimation(button: arcadeButton, opacity: 1.0)
         shadowAnimation(button: hardcoreButton, opacity: 0.0)
     }
     
-    @objc func hardcoreButtonClicked() {
+    @objc func hardcoreButtonClicked(sender: CustomButton) {
+        sender.tag = 2
         shadowAnimation(button: classicButton, opacity: 0.0)
         shadowAnimation(button: arcadeButton, opacity: 0.0)
         shadowAnimation(button: hardcoreButton, opacity: 1.0)
@@ -80,15 +86,75 @@ class Leaderboards_ViewController: UIViewController {
         button.layer.shadowOpacity = opacity
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func fetchLeaderboard(tag: Int) {
+        var gameType = ""
+        
+        switch tag {
+        case 0:
+            gameType = "classic"
+        case 1:
+            gameType = "arcade"
+        case 2:
+            gameType = "hardcore"
+        default:
+            break
+        }
+        
+        /// Query High Score
+        Firestore.firestore().collection("SG_Scores").order(by: "\(gameType)HS", descending: true).limit(to: 10).getDocuments(completion: { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                //do Leaderboard
+            }
+        })
+        
+        /// Query Average Score
+        Firestore.firestore().collection("SG_Scores").order(by: "\(gameType)AS", descending: true).limit(to: 10).getDocuments(completion: { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                //do Leaderboard
+            }
+        })
+        
+        /// Query Games Played
+        Firestore.firestore().collection("SG_Scores").order(by: "\(gameType)GP", descending: true).limit(to: 10).getDocuments(completion: { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                //do Leaderboard
+            }
+        })
     }
-    */
+    
+    func fillLeaderboard(querySnapshot: QuerySnapshot?) {
+        let docCount = querySnapshot!.documents.count
+        var numbers = [String]()
+        var names = [String]()
+        var values = [String]()
+        
+        if docCount > 0 {
+            for num in 1...docCount {
+                numbers.append(String(num))
+            }
+        }
+        
+        for document in querySnapshot!.documents {
+            let docData = document.data()
+            let name = docData["userName"]
+        }
+        
+    }
+}
 
+extension Leaderboards_ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
 }
