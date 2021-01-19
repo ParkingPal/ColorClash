@@ -862,10 +862,93 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gzs-Wg-BYQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KR-Z1-hrF">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-Nt-c1y">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXK-T7-FMQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="94.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqc-q1-zB7" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <state key="normal" title="Classic" backgroundImage="MainMenuButton_Blue"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="cqc-q1-zB7" secondAttribute="bottom" constant="5" id="Tnn-e5-hlI"/>
+                                                            <constraint firstItem="cqc-q1-zB7" firstAttribute="top" secondItem="nXK-T7-FMQ" secondAttribute="top" constant="5" id="mqA-tf-Cfc"/>
+                                                            <constraint firstItem="cqc-q1-zB7" firstAttribute="leading" secondItem="nXK-T7-FMQ" secondAttribute="leading" constant="5" id="uN8-Gn-64G"/>
+                                                            <constraint firstAttribute="trailing" secondItem="cqc-q1-zB7" secondAttribute="trailing" constant="5" id="yIF-U4-c2W"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW1-Qk-aZe">
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="94.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orD-FI-Pbx" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <state key="normal" title="Arcade" backgroundImage="MainMenuButton_Purple"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="orD-FI-Pbx" secondAttribute="bottom" constant="5" id="73K-KA-GNg"/>
+                                                            <constraint firstItem="orD-FI-Pbx" firstAttribute="top" secondItem="gW1-Qk-aZe" secondAttribute="top" constant="5" id="GXd-OL-oef"/>
+                                                            <constraint firstAttribute="trailing" secondItem="orD-FI-Pbx" secondAttribute="trailing" constant="5" id="KZm-ZG-IBz"/>
+                                                            <constraint firstItem="orD-FI-Pbx" firstAttribute="leading" secondItem="gW1-Qk-aZe" secondAttribute="leading" constant="5" id="RP9-nV-dNk"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyg-Lw-d0Q">
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="94.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM3-Pi-pkX" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <state key="normal" title="Hardcore" backgroundImage="MainMenuButton_Green"/>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="nM3-Pi-pkX" secondAttribute="trailing" constant="5" id="RFj-yy-ECp"/>
+                                                            <constraint firstAttribute="bottom" secondItem="nM3-Pi-pkX" secondAttribute="bottom" constant="5" id="S6H-Op-Q01"/>
+                                                            <constraint firstItem="nM3-Pi-pkX" firstAttribute="top" secondItem="cyg-Lw-d0Q" secondAttribute="top" constant="5" id="VXU-qs-bQw"/>
+                                                            <constraint firstItem="nM3-Pi-pkX" firstAttribute="leading" secondItem="cyg-Lw-d0Q" secondAttribute="leading" constant="5" id="nwu-M6-hqo"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5vc-Nt-c1y" secondAttribute="trailing" id="2iN-vl-aJm"/>
+                                            <constraint firstItem="5vc-Nt-c1y" firstAttribute="leading" secondItem="1KR-Z1-hrF" secondAttribute="leading" id="FHK-ol-dQc"/>
+                                            <constraint firstAttribute="bottom" secondItem="5vc-Nt-c1y" secondAttribute="bottom" id="gdB-PA-qHu"/>
+                                            <constraint firstItem="5vc-Nt-c1y" firstAttribute="top" secondItem="1KR-Z1-hrF" secondAttribute="top" id="rdd-wR-DmY"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-iU-bNA">
+                                        <rect key="frame" x="0.0" y="94.5" width="414" height="630.5"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="1KR-Z1-hrF" firstAttribute="height" secondItem="Oo8-iU-bNA" secondAttribute="height" multiplier="0.15" id="1aP-sK-3OL"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gx5-SE-R1t"/>
+                        <constraints>
+                            <constraint firstItem="gzs-Wg-BYQ" firstAttribute="top" secondItem="Gx5-SE-R1t" secondAttribute="top" id="G0B-Me-XbN"/>
+                            <constraint firstItem="gzs-Wg-BYQ" firstAttribute="leading" secondItem="Gx5-SE-R1t" secondAttribute="leading" id="mBU-2X-cK5"/>
+                            <constraint firstItem="Gx5-SE-R1t" firstAttribute="bottom" secondItem="gzs-Wg-BYQ" secondAttribute="bottom" id="tCJ-Fy-Icu"/>
+                            <constraint firstItem="Gx5-SE-R1t" firstAttribute="trailing" secondItem="gzs-Wg-BYQ" secondAttribute="trailing" id="y7H-3H-kUQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Leaderboards" id="gnW-fG-kFZ"/>
+                    <connections>
+                        <outlet property="arcadeButton" destination="orD-FI-Pbx" id="YII-pN-WSb"/>
+                        <outlet property="classicButton" destination="cqc-q1-zB7" id="6YN-7o-aI0"/>
+                        <outlet property="hardcoreButton" destination="nM3-Pi-pkX" id="1QQ-9V-Gqr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KO-MT-lBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
