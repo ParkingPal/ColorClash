@@ -866,16 +866,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1KR-Z1-hrF">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5vc-Nt-c1y">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="94.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXK-T7-FMQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="94.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="91.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqc-q1-zB7" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
-                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <rect key="frame" x="5" y="5" width="128" height="81.5"/>
                                                                 <state key="normal" title="Classic" backgroundImage="MainMenuButton_Blue"/>
                                                             </button>
                                                         </subviews>
@@ -887,10 +887,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gW1-Qk-aZe">
-                                                        <rect key="frame" x="138" y="0.0" width="138" height="94.5"/>
+                                                        <rect key="frame" x="138" y="0.0" width="138" height="91.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orD-FI-Pbx" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
-                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <rect key="frame" x="5" y="5" width="128" height="81.5"/>
                                                                 <state key="normal" title="Arcade" backgroundImage="MainMenuButton_Purple"/>
                                                             </button>
                                                         </subviews>
@@ -902,10 +902,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyg-Lw-d0Q">
-                                                        <rect key="frame" x="276" y="0.0" width="138" height="94.5"/>
+                                                        <rect key="frame" x="276" y="0.0" width="138" height="91.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM3-Pi-pkX" customClass="CustomButton" customModule="ColorClash" customModuleProvider="target">
-                                                                <rect key="frame" x="5" y="5" width="128" height="84.5"/>
+                                                                <rect key="frame" x="5" y="5" width="128" height="81.5"/>
                                                                 <state key="normal" title="Hardcore" backgroundImage="MainMenuButton_Green"/>
                                                             </button>
                                                         </subviews>
@@ -927,9 +927,9 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-iU-bNA">
-                                        <rect key="frame" x="0.0" y="94.5" width="414" height="630.5"/>
+                                        <rect key="frame" x="0.0" y="91.5" width="414" height="610.5"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-Xg-kfw">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-Xg-kfw">
                                                 <rect key="frame" x="8" y="8" width="398" height="615"/>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="Qgf-fj-sWF"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="ubE-wg-yhR"/>
@@ -942,9 +942,19 @@
                                             <constraint firstAttribute="trailing" secondItem="dRo-Xg-kfw" secondAttribute="trailing" constant="20" id="wjg-L7-2RL"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4z-kz-kp0">
+                                        <rect key="frame" x="0.0" y="702" width="414" height="23"/>
+                                        <subviews>
+                                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="oUT-2x-JZB">
+                                                <rect key="frame" x="145" y="-3" width="123" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </pageControl>
+                                        </subviews>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1KR-Z1-hrF" firstAttribute="height" secondItem="Oo8-iU-bNA" secondAttribute="height" multiplier="0.15" id="1aP-sK-3OL"/>
+                                    <constraint firstItem="1KR-Z1-hrF" firstAttribute="height" secondItem="v4z-kz-kp0" secondAttribute="height" multiplier="4" id="R3d-vu-ezJ"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -962,6 +972,7 @@
                         <outlet property="classicButton" destination="cqc-q1-zB7" id="6YN-7o-aI0"/>
                         <outlet property="hardcoreButton" destination="nM3-Pi-pkX" id="1QQ-9V-Gqr"/>
                         <outlet property="leadersScrollView" destination="dRo-Xg-kfw" id="yX3-Mj-F2I"/>
+                        <outlet property="pageControl" destination="oUT-2x-JZB" id="dpI-GJ-a5F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0KO-MT-lBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

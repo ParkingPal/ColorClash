@@ -152,7 +152,9 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                         "name": name,
                         "email": Auth.auth().currentUser!.email ?? "Email Not Provided",
                         "authID": Auth.auth().currentUser!.uid,
-                        "lastLogin": FieldValue.serverTimestamp()
+                        "lastLogin": FieldValue.serverTimestamp(),
+                        "customTableUnlocked": false,
+                        "removes": 10
                     ]
                     
                     Firestore.firestore().collection("Users").document("\(Auth.auth().currentUser!.uid)").setData(data)
