@@ -47,6 +47,7 @@
 		4CF2859725AC1D65004FC644 /* CustomTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2859625AC1D63004FC644 /* CustomTableCell.swift */; };
 		4CF285B825B7F69C004FC644 /* LeaderboardsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF285B725B7F699004FC644 /* LeaderboardsTableCell.swift */; };
 		4CF285BD25B7FD29004FC644 /* Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF285BC25B7FD28004FC644 /* Leader.swift */; };
+		4CF285C225BD1D3A004FC644 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF285C125BD1D33004FC644 /* Level.swift */; };
 		4CF8A6B0257831A5009B98D3 /* TileCombine.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6AF257831A5009B98D3 /* TileCombine.wav */; };
 		4CF8A6B8257832F5009B98D3 /* PointScored.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6B7257832F4009B98D3 /* PointScored.wav */; };
 		4CF8A6C62579D8B7009B98D3 /* Click2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4CF8A6C52579D8B7009B98D3 /* Click2.wav */; };
@@ -121,6 +122,7 @@
 		4CF2859625AC1D63004FC644 /* CustomTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableCell.swift; sourceTree = "<group>"; };
 		4CF285B725B7F699004FC644 /* LeaderboardsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardsTableCell.swift; sourceTree = "<group>"; };
 		4CF285BC25B7FD28004FC644 /* Leader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leader.swift; sourceTree = "<group>"; };
+		4CF285C125BD1D33004FC644 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4CF8A6AF257831A5009B98D3 /* TileCombine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TileCombine.wav; sourceTree = "<group>"; };
 		4CF8A6B7257832F4009B98D3 /* PointScored.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PointScored.wav; sourceTree = "<group>"; };
 		4CF8A6C52579D8B7009B98D3 /* Click2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click2.wav; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				4CF2859625AC1D63004FC644 /* CustomTableCell.swift */,
 				4CF285B725B7F699004FC644 /* LeaderboardsTableCell.swift */,
 				4CF285BC25B7FD28004FC644 /* Leader.swift */,
+				4CF285C125BD1D33004FC644 /* Level.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				4C3F441E257EFE1A00012BE4 /* CustomButton.swift in Sources */,
 				4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */,
 				4C3F444B257F669400012BE4 /* Levels_ViewController.swift in Sources */,
+				4CF285C225BD1D3A004FC644 /* Level.swift in Sources */,
 				4CE7D76F259D4F7700E658F9 /* Loading_ViewController.swift in Sources */,
 				4CE7D7A125A8004D00E658F9 /* Hazard.swift in Sources */,
 				4CE7D767259D499900E658F9 /* UserDocument.swift in Sources */,

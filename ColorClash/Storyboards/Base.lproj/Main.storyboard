@@ -841,10 +841,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXH-qn-sxW">
+                                <rect key="frame" x="184" y="347.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="REQ-Iz-qLH"/>
+                        <constraints>
+                            <constraint firstItem="OXH-qn-sxW" firstAttribute="centerY" secondItem="ONc-sy-a75" secondAttribute="centerY" id="UKj-VW-GyS"/>
+                            <constraint firstItem="OXH-qn-sxW" firstAttribute="centerX" secondItem="ONc-sy-a75" secondAttribute="centerX" id="Vta-xi-989"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Challenge Levels" id="J9U-CQ-fxR"/>
+                    <navigationItem key="navigationItem" title="Challenge Levels" id="J9U-CQ-fxR">
+                        <barButtonItem key="backBarButtonItem" title="Quit Game" id="7AW-LR-DYg"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="testButton" destination="OXH-qn-sxW" id="ImC-HV-q48"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toLevels" id="kOa-EV-LJU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3a4-L1-1RB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1132,11 +1146,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="U8K-NE-U9m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="2084"/>
+            <point key="canvasLocation" x="-806" y="2138"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="93T-b0-MpV"/>
+        <segue reference="kOa-EV-LJU"/>
         <segue reference="1NP-s1-pXv"/>
         <segue reference="QYi-n3-FQx"/>
     </inferredMetricsTieBreakers>
