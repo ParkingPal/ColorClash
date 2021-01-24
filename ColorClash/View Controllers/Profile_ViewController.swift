@@ -250,9 +250,7 @@ extension Profile_ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel!.textAlignment = .center
         cell.textLabel!.font = cell.fontToFitHeight()
         cell.textLabel!.adjustsFontSizeToFitWidth = true
-        
-        
-        
+
         return cell
     }
     

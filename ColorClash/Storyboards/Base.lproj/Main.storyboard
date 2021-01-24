@@ -929,7 +929,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-iU-bNA">
                                         <rect key="frame" x="0.0" y="91.5" width="414" height="610.5"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-Xg-kfw">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-Xg-kfw">
                                                 <rect key="frame" x="8" y="8" width="398" height="615"/>
                                                 <viewLayoutGuide key="contentLayoutGuide" id="Qgf-fj-sWF"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="ubE-wg-yhR"/>
@@ -972,6 +972,7 @@
                         <outlet property="classicButton" destination="cqc-q1-zB7" id="6YN-7o-aI0"/>
                         <outlet property="hardcoreButton" destination="nM3-Pi-pkX" id="1QQ-9V-Gqr"/>
                         <outlet property="leadersScrollView" destination="dRo-Xg-kfw" id="yX3-Mj-F2I"/>
+                        <outlet property="leadersView" destination="Oo8-iU-bNA" id="7zx-wu-liq"/>
                         <outlet property="pageControl" destination="oUT-2x-JZB" id="dpI-GJ-a5F"/>
                     </connections>
                 </viewController>

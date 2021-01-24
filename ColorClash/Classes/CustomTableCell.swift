@@ -33,6 +33,7 @@ class CustomTableCell: UITableViewCell {
             
             if let labelText: NSString = self.textLabel!.text as NSString? {
                 let labelHeight = frame.size.height - 20
+                print(frame.size.height)
                 
                 let testStringHeight = labelText.size(
                     withAttributes: [NSAttributedString.Key.font: self.textLabel!.font.withSize(fontSizeAverage)]

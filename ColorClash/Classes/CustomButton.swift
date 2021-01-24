@@ -22,12 +22,17 @@ class CustomButton: UIButton {
         imageView?.contentMode = .scaleAspectFit
         titleLabel?.font = UIFont(name: font, size: size)
         titleLabel?.adjustsFontSizeToFitWidth = true
+        contentHorizontalAlignment = .fill
+        contentVerticalAlignment = .fill
         contentEdgeInsets = UIEdgeInsets(top: verticalInsets, left: horizontalInsets, bottom: verticalInsets, right: horizontalInsets)
+        titleLabel?.baselineAdjustment = .alignCenters
         layer.masksToBounds = false
         layer.shadowColor = CGColor(srgbRed: shadowColor/255, green: shadowColor/255, blue: shadowColor/255, alpha: 1.0)
         layer.shadowOpacity = shadowOpacity
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         layer.shadowRadius = shadowRadius
+        
+        contentVerticalAlignment = .center
     }
     
     func fontToFitHeight() -> UIFont {
