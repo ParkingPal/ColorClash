@@ -10,15 +10,55 @@ import Firebase
 
 class Loading_ViewController: UIViewController {
     
-    var timer = Timer()
-
+    @IBOutlet weak var tmpLogo: UIImageView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    var cycles = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingLabel.alpha = 0.0
+        loadingLabel.font = UIFont(name: "Futura-CondensedMedium", size: 40.0)
         createUserDocument()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
+    }
+    
+    func animate() {
+        cycles += 1
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkCompletion), userInfo: nil, repeats: true)
-
-        // Do any additional setup after loading the view.
+        UIView.animate(withDuration: 0.3) {
+            self.tmpLogo.alpha = 1.0
+        } completion: { (finished) in
+            UIView.animate(withDuration: 0.3, delay: 0.3, animations: {
+                self.tmpLogo.transform = CGAffineTransform.identity.scaledBy(x: 1.8, y: 1.8)
+            }) { finished in
+                UIView.animate(withDuration: 0.7, animations: {
+                    self.tmpLogo.transform = CGAffineTransform.identity.scaledBy(x: 0.7, y: 0.7)
+                }) { finished in
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.tmpLogo.transform = CGAffineTransform.identity
+                    }) { finished in
+                        if self.cycles >= 5 {
+                            UIView.animate(withDuration: 0.3) {
+                                self.loadingLabel.alpha = 1.0
+                            }
+                        }
+                        if self.checkCompletion() {
+                            UIView.animate(withDuration: 0.7) {
+                                self.tmpLogo.alpha = 0.0
+                            } completion: { (finished) in
+                                self.performSegue(withIdentifier: "toGame", sender: self)
+                            }
+                        } else {
+                            self.animate()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func createUserDocument() {
@@ -41,12 +81,11 @@ class Loading_ViewController: UIViewController {
         }
     }
     
-    @objc func checkCompletion() {
+    func checkCompletion() -> Bool {
         if UserDocument.isInitialized {
-            self.performSegue(withIdentifier: "toGame", sender: self)
-            timer.invalidate()
+            return true
         } else {
-            print("User not yet initialized")
+            return false
         }
     }
 

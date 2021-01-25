@@ -20,7 +20,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="guA-3i-dDb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon_Transparent" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Ww-6Tg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon_Transparent" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Ww-6Tg">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="WHr-wL-QMH"/>
@@ -41,7 +41,7 @@
                     <connections>
                         <outlet property="tmpLogo" destination="JQV-Ww-6Tg" id="Ah4-KE-qA9"/>
                         <segue destination="Sgk-jG-ceX" kind="presentation" identifier="toLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ATB-YB-WFX"/>
-                        <segue destination="2tP-lh-SRX" kind="presentation" identifier="toLoading" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dJ2-wz-rD1"/>
+                        <segue destination="2tP-lh-SRX" kind="presentation" identifier="toLoading" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="dJ2-wz-rD1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mJh-Dg-WaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -190,16 +190,37 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="O4l-Bl-eZf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon_Transparent" translatesAutoresizingMaskIntoConstraints="NO" id="W2D-t1-cSc">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="9NX-mF-lda"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZHC-wz-7zv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7od-Cv-okF">
+                                <rect key="frame" x="0.0" y="741" width="414" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jhO-b9-j3j"/>
                         <constraints>
+                            <constraint firstItem="7od-Cv-okF" firstAttribute="centerX" secondItem="CbJ-4r-H2A" secondAttribute="centerX" id="DMy-Rr-LN0"/>
                             <constraint firstAttribute="bottom" secondItem="O4l-Bl-eZf" secondAttribute="bottom" id="M94-Sf-oYQ"/>
+                            <constraint firstItem="7od-Cv-okF" firstAttribute="leading" secondItem="jhO-b9-j3j" secondAttribute="leading" id="Nqr-7X-FEa"/>
                             <constraint firstItem="O4l-Bl-eZf" firstAttribute="leading" secondItem="jhO-b9-j3j" secondAttribute="leading" id="QGD-MB-9Ot"/>
+                            <constraint firstItem="jhO-b9-j3j" firstAttribute="trailing" secondItem="7od-Cv-okF" secondAttribute="trailing" id="RPo-nh-Dbv"/>
+                            <constraint firstItem="W2D-t1-cSc" firstAttribute="centerX" secondItem="CbJ-4r-H2A" secondAttribute="centerX" id="Yur-ME-Bhc"/>
+                            <constraint firstItem="jhO-b9-j3j" firstAttribute="bottom" secondItem="7od-Cv-okF" secondAttribute="bottom" constant="100" id="bVa-TG-Bdm"/>
                             <constraint firstItem="O4l-Bl-eZf" firstAttribute="top" secondItem="CbJ-4r-H2A" secondAttribute="top" id="hoY-YZ-rAg"/>
                             <constraint firstItem="jhO-b9-j3j" firstAttribute="trailing" secondItem="O4l-Bl-eZf" secondAttribute="trailing" id="rEV-7h-YgV"/>
+                            <constraint firstItem="W2D-t1-cSc" firstAttribute="centerY" secondItem="CbJ-4r-H2A" secondAttribute="centerY" id="vFJ-o6-mVf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingLabel" destination="7od-Cv-okF" id="SaG-no-h1d"/>
+                        <outlet property="tmpLogo" destination="W2D-t1-cSc" id="iGi-Qy-sr9"/>
                         <segue destination="VA2-yQ-NLE" kind="presentation" identifier="toGame" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="VG9-J3-IKb"/>
                     </connections>
                 </viewController>

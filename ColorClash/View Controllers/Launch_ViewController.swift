@@ -26,7 +26,14 @@ class Launch_ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {self.animate()})
+        
+        if self.userSignedIn() {
+            self.performSegue(withIdentifier: "toLoading", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "toLogin", sender: self)
+        }
+        
+        //DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {self.animate()})
     }
     
     func animate() {
@@ -43,7 +50,5 @@ class Launch_ViewController: UIViewController {
                 
             }
         }
-
     }
-
 }
