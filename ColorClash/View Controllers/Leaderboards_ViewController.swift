@@ -36,10 +36,17 @@ class Leaderboards_ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        var frame: CGRect = leadersScrollView.frame
+        
         leadersScrollView.alpha = 0.0
         shadowAnimation(button: classicButton, opacity: 0.0)
         shadowAnimation(button: arcadeButton, opacity: 0.0)
         shadowAnimation(button: hardcoreButton, opacity: 0.0)
+        
+        frame.origin.x = 0
+        frame.origin.y = 0
+        pageControl.currentPage = 0
+        leadersScrollView.scrollRectToVisible(frame, animated: true)
     }
     
     func setupLayout() {
