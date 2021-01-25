@@ -413,7 +413,9 @@ class Board {
         }
         
         let musicPlayer = MusicPlayer.shared
+        let haptic = UIImpactFeedbackGenerator(style: .medium)
         musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
+        haptic.impactOccurred()
         return spacesToAdd
     }
     
