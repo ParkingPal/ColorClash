@@ -37,9 +37,9 @@ class Leaderboards_ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         leadersScrollView.alpha = 0.0
-        selectedShadow(selectedView: classicButton, opacity: 0.0)
-        selectedShadow(selectedView: arcadeButton, opacity: 0.0)
-        selectedShadow(selectedView: hardcoreButton, opacity: 0.0)
+        shadowAnimation(button: classicButton, opacity: 0.0)
+        shadowAnimation(button: arcadeButton, opacity: 0.0)
+        shadowAnimation(button: hardcoreButton, opacity: 0.0)
     }
     
     func setupLayout() {
