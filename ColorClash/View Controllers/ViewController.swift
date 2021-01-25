@@ -70,6 +70,7 @@ class ViewController: UIViewController {
         
         if board.gameType == "Test Level" {
             addStartingLevelTiles()
+            testLevel()
         } else {
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
             newTile.growAndAppearTile()
@@ -200,14 +201,12 @@ class ViewController: UIViewController {
     }
     
     //use for easy testing
-    func addTileAtCoords(tileString: String, value: Int, xCoord: Int, yCoord: Int) {
-        let tile = Tile(type: tileString, value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight)
-        board.addTile(tile: tile, xPos: xCoord, yPos: yCoord)
-        //let colorHelper = ColorHelper()
-        //let value = colorHelper.getValueByColor(color: colorString)
-        //let tile = Color(color: UIImage(named: colorString + "TileBevel.png")!, colorString: colorString, colorType: colorHelper.getTypeByValue(value: value), value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight, moveCombined: 0)
-        //board.addTile(tile:tile, xPos: xCoord, yPos: yCoord)
-        //gameBoardView.addSubview(tile)
+    func addTileAtCoords(colorString: String, value: Int, xCoord: Int, yCoord: Int) {
+        let colorHelper = ColorHelper()
+        let value = colorHelper.getValueByColor(color: colorString)
+        let tile = Color(color: UIImage(named: colorString + "TileBevel.png")!, colorString: colorString, colorType: colorHelper.getTypeByValue(value: value), value: value, xCoord: xCoord, yCoord: yCoord, xPos: tileCoordsWithPositions[[xCoord,yCoord]]![0], yPos: tileCoordsWithPositions[[xCoord,yCoord]]![1], width: tileWidth, height: tileHeight, moveCombined: 0)
+        board.addTile(tile:tile, xPos: xCoord, yPos: yCoord)
+        gameBoardView.addSubview(tile)
     }
     
     func createBoardGraphically() {
@@ -283,6 +282,38 @@ class ViewController: UIViewController {
         }
     }
     
+    func testLevel() {
+        var directionsArray = [UISwipeGestureRecognizer]()
+        
+        let testRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        testRight.direction = .right
+        directionsArray.append(testRight)
+        let testLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        testLeft.direction = .left
+        directionsArray.append(testLeft)
+        let testUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        testUp.direction = .up
+        directionsArray.append(testUp)
+        let testDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        testDown.direction = .down
+        directionsArray.append(testDown)
+        
+        self.view.addGestureRecognizer(testRight)
+        self.view.addGestureRecognizer(testLeft)
+        self.view.addGestureRecognizer(testUp)
+        self.view.addGestureRecognizer(testDown)
+        
+
+        repeat {
+            let randomDirectionNum = Int.random(in: 0...3)
+            self.handleGesture(gesture: directionsArray[randomDirectionNum])
+            /// Add the first tile in the turns array to the board at a random location
+            /// Remove that tile after it has been added
+        } while !turns.isEmpty
+        
+        print("\(board.score)")
+    }
+    
     func createGestures() {
         let right = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         right.direction = .right
@@ -302,22 +333,24 @@ class ViewController: UIViewController {
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
         let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
         if isValidMove {
-            
+            print("\(turns.count)")
             board.movesTotal += 1
             
-            if board.score.isMultiple(of: scoreMultiple) && hazardMultiple > 1 && board.scoreChanged {
-                hazardMultiple -= 1
-            }
-            
-            if board.movesTotal.isMultiple(of: hazardMultiple) {
-                if board.emptyTiles().isEmpty || board.emptyTiles().count == 1 {
-                    hazardOwed = true
-                } else {
-                    addHazard()
+            if board.gameType == "Arcade" || board.gameType == "Hardcore" {
+                if board.score.isMultiple(of: scoreMultiple) && hazardMultiple > 1 && board.scoreChanged {
+                    hazardMultiple -= 1
                 }
-            } else if hazardOwed == true {
-                addHazard()
-                hazardOwed = false
+                
+                if board.movesTotal.isMultiple(of: hazardMultiple) {
+                    if board.emptyTiles().isEmpty || board.emptyTiles().count == 1 {
+                        hazardOwed = true
+                    } else {
+                        addHazard()
+                    }
+                } else if hazardOwed == true {
+                    addHazard()
+                    hazardOwed = false
+                }
             }
             
             let newTile = board.addTileRandomly(tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)

@@ -120,9 +120,9 @@ class Board {
     func pickRandomTileColor() -> (UIImage, String, Int) {
         let randomColorInt = Int.random(in: 0...2)
         
-        if randomColorInt == 1 {
+        if randomColorInt == 0 {
             return (UIImage(named: "RedTileBevel.png")!, "Red", colorHelper.getValueByColor(color: "Red"))
-        } else if randomColorInt == 2 {
+        } else if randomColorInt == 1 {
             return (UIImage(named: "BlueTileBevel.png")!, "Blue", colorHelper.getValueByColor(color: "Blue"))
         } else {
             return (UIImage(named: "YellowTileBevel.png")!, "Yellow", colorHelper.getValueByColor(color: "Yellow"))

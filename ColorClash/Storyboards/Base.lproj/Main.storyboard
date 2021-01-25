@@ -20,7 +20,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueBackground" translatesAutoresizingMaskIntoConstraints="NO" id="guA-3i-dDb">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon1" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Ww-6Tg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorClashAppIcon_Transparent" translatesAutoresizingMaskIntoConstraints="NO" id="JQV-Ww-6Tg">
                                 <rect key="frame" x="132" y="373" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="WHr-wL-QMH"/>
@@ -1151,12 +1151,12 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="kOa-EV-LJU"/>
-        <segue reference="1NP-s1-pXv"/>
-        <segue reference="QYi-n3-FQx"/>
+        <segue reference="dJ2-wz-rD1"/>
+        <segue reference="ATB-YB-WFX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BlueBackground" width="200" height="200"/>
-        <image name="ColorClashAppIcon1" width="1024" height="1024"/>
+        <image name="ColorClashAppIcon_Transparent" width="1024" height="1024"/>
         <image name="Customize_128" width="128" height="128"/>
         <image name="LeaderboardsIcon" width="32" height="32"/>
         <image name="LevelsIcon" width="32" height="32"/>
