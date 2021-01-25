@@ -137,8 +137,9 @@ class Board {
         board[xPos][yPos] = nil
     }
     
-    func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) -> Bool {
+    func moveTiles(direction: UISwipeGestureRecognizer.Direction, tileCoordsWithPositions: [[Int]:[CGFloat]], tileSize: CGFloat) -> (Bool, Bool) {
         var isValidMove = false
+        var tilesDidCombine = false
         var loopIfrom = 0
         var loopIthrough = xMax
         var loopByI = 1
@@ -227,6 +228,7 @@ class Board {
                 let combineType = combine.1
                 
                 if canCombine {
+                    tilesDidCombine = true
                     let color = (tile as! Color)
                     isValidMove = true
                     
@@ -251,7 +253,7 @@ class Board {
             }
         }
         
-        return isValidMove
+        return (isValidMove, tilesDidCombine)
     }
     
     func gameEnded() -> Bool {
@@ -412,10 +414,7 @@ class Board {
             removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
         }
         
-        let musicPlayer = MusicPlayer.shared
-        let haptic = UIImpactFeedbackGenerator(style: .medium)
-        musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
-        haptic.impactOccurred()
+        ///
         return spacesToAdd
     }
     

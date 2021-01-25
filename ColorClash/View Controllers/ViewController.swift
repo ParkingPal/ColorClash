@@ -331,7 +331,17 @@ class ViewController: UIViewController {
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) {
-        let isValidMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
+        let checkMove = board.moveTiles(direction: gesture.direction, tileCoordsWithPositions: tileCoordsWithPositions, tileSize: tileWidth)
+        let isValidMove = checkMove.0
+        let tilesDidCombine = checkMove.1
+        
+        if tilesDidCombine {
+            let musicPlayer = MusicPlayer.shared
+            let haptic = UIImpactFeedbackGenerator(style: .medium)
+            musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
+            haptic.impactOccurred()
+        }
+        
         if isValidMove {
             print("\(turns.count)")
             board.movesTotal += 1
