@@ -34,6 +34,14 @@ class Leaderboards_ViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        leadersScrollView.alpha = 0.0
+        selectedShadow(selectedView: classicButton, opacity: 0.0)
+        selectedShadow(selectedView: arcadeButton, opacity: 0.0)
+        selectedShadow(selectedView: hardcoreButton, opacity: 0.0)
+    }
+    
     func setupLayout() {
         let buttonWidth = classicButton.frame.width
         let buttonHeight = classicButton.frame.height
