@@ -343,7 +343,6 @@ class ViewController: UIViewController {
         }
         
         if isValidMove {
-            print("\(turns.count)")
             board.movesTotal += 1
             
             if board.gameType == "Arcade" || board.gameType == "Hardcore" {

@@ -12,10 +12,11 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
     static let shared = MusicPlayer()
     var backgroundPlayer: AVAudioPlayer?
     var soundEffectPlayer: AVAudioPlayer?
-    var regularVolume: Float = 1.0
+    var regularVolume: Float = 0.1
+    let songNames = ["BackgroundMusic", "BackgroundMusic2"]
     
-    /*func startBackgroundMusic() {
-        let bundle = Bundle.main.path(forResource: "TrivieMusic1", ofType: "mp3")
+    func startBackgroundMusic() {
+        let bundle = Bundle.main.path(forResource: "BackgroundMusic", ofType: "mp3")
         let backgroundMusic = NSURL(fileURLWithPath: bundle!)
         do {
             backgroundPlayer = try AVAudioPlayer(contentsOf: backgroundMusic as URL)
@@ -27,7 +28,7 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
         } catch {
             print("cannot play file")
         }
-    }*/
+    }
     
     func playSoundEffect(fileName: String, fileType: String) {
         
@@ -50,9 +51,9 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
         }
     }
     
-    /*func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if player == soundEffectPlayer {
             backgroundPlayer?.volume = regularVolume
         }
-    }*/
+    }
 }
