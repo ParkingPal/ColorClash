@@ -51,7 +51,7 @@ class Loading_ViewController: UIViewController {
                                 self.tmpLogo.alpha = 0.0
                             } completion: { (finished) in
                                 self.performSegue(withIdentifier: "toGame", sender: self)
-                                MusicPlayer.shared.startBackgroundMusic()
+                                MusicPlayer.shared.startBackgroundMusic(vc: self)
                             }
                         } else {
                             self.animate()
