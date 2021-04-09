@@ -30,10 +30,12 @@ class ViewController: UIViewController {
     
     var hazardOwed = false
     var bannerView: GADBannerView!
+    private var interstitial: GADInterstitial!
     
     var turns = [Int]()
     var start = [[String: Int]]()
     var boardSize = 0
+    var adFailed = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,7 +155,7 @@ class ViewController: UIViewController {
     }
     
     func addWalls() {
-        board.addWallsRandomly(numToAdd: Int(((xMax + 1) * (yMax + 1) / 5)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        board.addWallsRandomly(numToAdd: Int((((xMax + 1) * (yMax + 1)) / 6)), gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
     }
     
     func addHazard() {
@@ -180,7 +182,7 @@ class ViewController: UIViewController {
         scoreLabel.text = "Final Score: \(String(board.score))"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+            self.performSegue(withIdentifier: "toContinueGame", sender: self)
         }
     }
     
@@ -339,6 +341,7 @@ class ViewController: UIViewController {
             let musicPlayer = MusicPlayer.shared
             let haptic = UIImpactFeedbackGenerator(style: .medium)
             musicPlayer.playSoundEffect(fileName: "Click2", fileType: "wav")
+            musicPlayer.resetVolume()
             haptic.impactOccurred()
         }
         
@@ -370,6 +373,13 @@ class ViewController: UIViewController {
             if board.gameEnded() {
                 gameIsOver()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toContinueGame" {
+            let continueGameVC = segue.destination as! ContinueGameViewController
+            continueGameVC.score = board.score
         }
     }
 }

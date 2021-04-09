@@ -55,13 +55,13 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         let buttonWidth = customizeButton.frame.width
         let buttonHeight = customizeButton.frame.height
         customizeButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        customizeButton.isEnabled = false
         customizeButton.alpha = 0.5
         settingsButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
-        settingsButton.isEnabled = false
         settingsButton.alpha = 0.5
         signOutButton.setupButton(font: "Vollkorn", size: 20.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight/4, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         signOutButton.addTarget(self, action: #selector(signOutButtonClicked), for: .touchUpInside)
+        customizeButton.addTarget(self, action: #selector(disabledButtonClicked), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(disabledButtonClicked), for: .touchUpInside)
     }
     
     func setupLabels() {
@@ -104,6 +104,10 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         }
         
         performSegue(withIdentifier: "toLogin", sender: self)
+    }
+    
+    @objc func disabledButtonClicked() {
+        self.showToast(message: "In Development", font: .systemFont(ofSize: 12.0))
     }
     
     func setupScrollView() {
@@ -218,6 +222,25 @@ class Profile_ViewController: UIViewController, UIScrollViewDelegate {
         self.classicView.backgroundColor = classicColor
         self.arcadeView.backgroundColor = arcadeColor
         self.hardcoreView.backgroundColor = hardcoreColor
+    }
+    
+    func showToast(message : String, font: UIFont) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(1.0)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }
 

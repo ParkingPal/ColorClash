@@ -8,13 +8,18 @@
 import UIKit
 import Firebase
 
-class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
+let fromGameKey = "fromGameKey"
+
+class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var singleGameTitleLabel: CustomLabel!
     @IBOutlet weak var quickStatsTitleLabel: CustomLabel!
     @IBOutlet weak var classicButton: CustomButton!
+    @IBOutlet weak var classicInfoButton: UIButton!
     @IBOutlet weak var arcadeButton: CustomButton!
+    @IBOutlet weak var arcadeInfoButton: UIButton!
     @IBOutlet weak var hardcoreButton: CustomButton!
+    @IBOutlet weak var hardcoreInfoButton: UIButton!
     @IBOutlet weak var statsScrollView: UIScrollView!
     @IBOutlet weak var statsPageControl: UIPageControl!
     @IBOutlet weak var quickStatsView: UIView!
@@ -28,6 +33,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
     var selectedSize = 0
     var docTimer = Timer()
     var statsTimer = Timer()
+    let key = Notification.Name(rawValue: fromGameKey)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +112,9 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         classicButton.setupButton(font: "Vollkorn", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         arcadeButton.setupButton(font: "Abingdon", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
+        classicInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
+        arcadeInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
+        hardcoreInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
         classicButton.tag = 0
@@ -245,6 +254,34 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         statsTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(changeStats), userInfo: nil, repeats: true)
     }
     
+    @objc func showInfo(sender: UIButton) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "infoPopover") as! InfoPopover
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = sender
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        
+        let width = self.view.frame.width
+        popController.preferredContentSize = CGSize(width: width - 30, height: 120)
+        
+        if sender.tag == 1 {
+            popController.gameType = "Classic"
+            popController.desc = "This game features Walls as its only obstacle. Walls cannot be moved or removed from a game."
+        } else if sender.tag == 2 {
+            popController.gameType = "Arcade"
+            popController.desc = "This game features the Black Box Hazard as its only obstacle. Black Boxes can be removed by combining secondary colors adjacent to them. A new one appears every 5 turns"
+        } else if sender.tag == 3 {
+            popController.gameType = "Hardcore"
+            popController.desc = "This game combines Classic and Arcade by having Walls and the Black Box Hazard."
+        }
+        
+        present(popController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         statsTimer.invalidate()
         
@@ -266,7 +303,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @IBAction func unwindToSingleGameMenu(segue: UIStoryboardSegue) {
+    @IBAction func unwindToSingleGame(segue: UIStoryboardSegue) {
         for v in statsScrollView.subviews {
             v.removeFromSuperview()
         }
@@ -291,5 +328,22 @@ extension SingleGame_ViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedSize = boardSize[row]
+    }
+}
+
+class InfoPopover: UIViewController {
+    
+    @IBOutlet weak var gameTypeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    var gameType = ""
+    var desc = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        gameTypeLabel.text = gameType
+        descriptionLabel.text = desc
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.adjustsFontSizeToFitWidth = true
     }
 }

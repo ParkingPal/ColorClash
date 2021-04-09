@@ -13,14 +13,15 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
     static let shared = MusicPlayer()
     var backgroundPlayer: AVAudioPlayer?
     var soundEffectPlayer: AVAudioPlayer?
-    var regularVolume: Float = 0.1
+    var regularVolume: Float = 0.03
+    var soundEffectVolume: Float = 0.1
     var bundle1 = Bundle.main.url(forResource: "BackgroundMusic", withExtension: "mp3")
     var bundle2 = Bundle.main.url(forResource: "BackgroundMusic2", withExtension: "mp3")
     
     
     func startBackgroundMusic(vc: UIViewController) {
         
-        let song1 = AVPlayerItem(asset: AVAsset(url: bundle1!))
+        /*let song1 = AVPlayerItem(asset: AVAsset(url: bundle1!))
         let song2 = AVPlayerItem(asset: AVAsset(url: bundle2!))
         
         let songs = [song1, song2]
@@ -28,9 +29,9 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
         player.volume = regularVolume
         let playerLayer = AVPlayerLayer(player: player)
         vc.view.layer.addSublayer(playerLayer)
-        player.play()
+        player.play()*/
         
-        /*let bundle = Bundle.main.path(forResource: "BackgroundMusic", ofType: "mp3")
+        let bundle = Bundle.main.path(forResource: "BackgroundMusic", ofType: "mp3")
         let backgroundMusic = NSURL(fileURLWithPath: bundle!)
         do {
             backgroundPlayer = try AVAudioPlayer(contentsOf: backgroundMusic as URL)
@@ -41,11 +42,10 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
             backgroundPlayer!.volume = regularVolume
         } catch {
             print("cannot play file")
-        }*/
+        }
     }
     
     func playSoundEffect(fileName: String, fileType: String) {
-        
         
         let pathToSound = Bundle.main.path(forResource: "\(fileName)", ofType: "\(fileType)")!
         let url = URL(fileURLWithPath: pathToSound)
@@ -59,10 +59,14 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
             soundEffectPlayer!.delegate = self
             soundEffectPlayer!.prepareToPlay()
             soundEffectPlayer!.play()
-            soundEffectPlayer!.volume = regularVolume
+            soundEffectPlayer!.volume = soundEffectVolume
         } catch {
             print("error playing sound")
         }
+    }
+    
+    func resetVolume() {
+        backgroundPlayer!.volume = regularVolume
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
