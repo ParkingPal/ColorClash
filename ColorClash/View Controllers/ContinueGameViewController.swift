@@ -24,7 +24,9 @@ class ContinueGameViewController: UIViewController {
         scoreLabel.text = String(score)
         continueButton.addTarget(self, action: #selector(continueButtonClicked), for: .touchUpInside)
 
-        loadInterstitialAd(adString: "After Game")
+        if UserDocument.docData["adsRemoved"] as! Bool == false {
+            loadInterstitialAd(adString: "After Game")
+        }
     }
     
     func loadInterstitialAd(adString: String) {
@@ -46,14 +48,18 @@ class ContinueGameViewController: UIViewController {
     }
     
     @objc func continueButtonClicked() {
-        if adFailed < 3 {
-            if interstitial.isReady {
-                interstitial.present(fromRootViewController: self)
-            } else {
-                adFailed += 1
-                print("Ad isn't ready")
+        if UserDocument.docData["adsRemoved"] as! Bool == false {
+            if adFailed < 3 {
+                if interstitial.isReady {
+                    interstitial.present(fromRootViewController: self)
+                } else {
+                    adFailed += 1
+                    print("Ad isn't ready")
+                }
+            } else if adFailed >= 3 {
+                performSegue(withIdentifier: "unwindToSingleGame", sender: self)
             }
-        } else if adFailed >= 3 {
+        } else {
             performSegue(withIdentifier: "unwindToSingleGame", sender: self)
         }
     }

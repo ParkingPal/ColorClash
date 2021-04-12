@@ -154,6 +154,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
                         "authID": Auth.auth().currentUser!.uid,
                         "lastLogin": FieldValue.serverTimestamp(),
                         "customTableUnlocked": false,
+                        "adsRemoved": false,
                         "removes": 10
                     ]
                     

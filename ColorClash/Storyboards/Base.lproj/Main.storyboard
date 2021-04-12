@@ -1058,12 +1058,85 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Upr-cZ-2MO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-rS-6Qg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="241.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1k-c8-IUR">
+                                                <rect key="frame" x="20" y="50" width="374" height="141.5"/>
+                                                <inset key="titleEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                <state key="normal" title="Remove Ads ($1.99)" backgroundImage="MainMenuButton_Blue"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="n1k-c8-IUR" secondAttribute="trailing" constant="20" id="4JR-xN-GZE"/>
+                                            <constraint firstItem="n1k-c8-IUR" firstAttribute="leading" secondItem="3dh-rS-6Qg" secondAttribute="leading" constant="20" id="KdN-me-2LQ"/>
+                                            <constraint firstItem="n1k-c8-IUR" firstAttribute="top" secondItem="3dh-rS-6Qg" secondAttribute="top" constant="50" id="M0V-kC-swH"/>
+                                            <constraint firstAttribute="bottom" secondItem="n1k-c8-IUR" secondAttribute="bottom" constant="50" id="Tzf-tL-1QP"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icU-UI-n4w">
+                                        <rect key="frame" x="0.0" y="241.5" width="414" height="242"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F39-Jy-IF0">
+                                                <rect key="frame" x="20" y="50" width="374" height="142"/>
+                                                <inset key="titleEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                <state key="normal" title="Up to 10x10 Board Size ($2.99)" backgroundImage="MainMenuButton_Purple"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="F39-Jy-IF0" secondAttribute="trailing" constant="20" id="6NJ-wO-czy"/>
+                                            <constraint firstItem="F39-Jy-IF0" firstAttribute="leading" secondItem="icU-UI-n4w" secondAttribute="leading" constant="20" id="Lo8-7c-F2T"/>
+                                            <constraint firstAttribute="bottom" secondItem="F39-Jy-IF0" secondAttribute="bottom" constant="50" id="fkS-ss-46r"/>
+                                            <constraint firstItem="F39-Jy-IF0" firstAttribute="top" secondItem="icU-UI-n4w" secondAttribute="top" constant="50" id="hgh-gD-VOU"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hA-0A-FNM">
+                                        <rect key="frame" x="0.0" y="483.5" width="414" height="241.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K08-sV-i99">
+                                                <rect key="frame" x="20" y="50" width="374" height="141.5"/>
+                                                <inset key="titleEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                <state key="normal" title="No Ads &amp; Up to 10x10 Board Size ($3.99)" backgroundImage="MainMenuButton_Green"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="K08-sV-i99" firstAttribute="top" secondItem="0hA-0A-FNM" secondAttribute="top" constant="50" id="N2K-3g-py7"/>
+                                            <constraint firstItem="K08-sV-i99" firstAttribute="leading" secondItem="0hA-0A-FNM" secondAttribute="leading" constant="20" id="S35-qQ-Dvm"/>
+                                            <constraint firstAttribute="bottom" secondItem="K08-sV-i99" secondAttribute="bottom" constant="50" id="YOA-jR-4cN"/>
+                                            <constraint firstAttribute="trailing" secondItem="K08-sV-i99" secondAttribute="trailing" constant="20" id="kor-dk-w5l"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0W4-7v-GVT"/>
+                        <constraints>
+                            <constraint firstItem="Upr-cZ-2MO" firstAttribute="top" secondItem="0W4-7v-GVT" secondAttribute="top" id="8tB-TB-JgE"/>
+                            <constraint firstItem="0W4-7v-GVT" firstAttribute="trailing" secondItem="Upr-cZ-2MO" secondAttribute="trailing" id="QmK-Ro-oex"/>
+                            <constraint firstItem="0W4-7v-GVT" firstAttribute="bottom" secondItem="Upr-cZ-2MO" secondAttribute="bottom" id="vKn-un-KIq"/>
+                            <constraint firstItem="Upr-cZ-2MO" firstAttribute="leading" secondItem="0W4-7v-GVT" secondAttribute="leading" id="zY3-9q-a4h"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Store" id="wdD-eO-OFu"/>
+                    <navigationItem key="navigationItem" title="Store" id="wdD-eO-OFu">
+                        <barButtonItem key="rightBarButtonItem" title="Restore" id="9WL-Cs-wbQ">
+                            <color key="tintColor" red="0.69019607839999997" green="0.87843137250000003" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="restoreButtonClicked:" destination="DiC-5B-P3r" id="sPq-de-a2g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="adsButton" destination="n1k-c8-IUR" id="ZWm-Hz-Y3a"/>
+                        <outlet property="boardButton" destination="F39-Jy-IF0" id="8xp-6X-6J6"/>
+                        <outlet property="comboButton" destination="K08-sV-i99" id="dCg-zd-XvY"/>
+                        <segue destination="oCi-kg-WrF" kind="unwind" identifier="unwindToSingleGame" unwindAction="unwindToSingleGameWithSegue:" id="LPh-ma-Rn5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3j-Tp-gQL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="oCi-kg-WrF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="874" y="1369"/>
         </scene>

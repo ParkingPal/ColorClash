@@ -156,7 +156,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
         case "0":
             performSegue(withIdentifier: "toClassic", sender: self)
         case "1":
-            break
+            performSegue(withIdentifier: "toArcade", sender: self)
         case "2":
             performSegue(withIdentifier: "toHardcore", sender: self)
         default: break
@@ -269,7 +269,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
             popController.desc = "This game features Walls as its only obstacle. Walls cannot be moved or removed from a game."
         } else if sender.tag == 2 {
             popController.gameType = "Arcade"
-            popController.desc = "This game features the Black Box Hazard as its only obstacle. Black Boxes can be removed by combining secondary colors adjacent to them. A new one appears every 5 turns"
+            popController.desc = "This game features the Black Box Hazard as its only obstacle. Black Boxes can be removed by combining secondary colors adjacent to them. A new one appears every so many turns"
         } else if sender.tag == 3 {
             popController.gameType = "Hardcore"
             popController.desc = "This game combines Classic and Arcade by having Walls and the Black Box Hazard."

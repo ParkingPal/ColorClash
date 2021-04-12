@@ -38,6 +38,7 @@
 		4C8DC1E8256E240700ECCCD5 /* ColorClashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1E7256E240700ECCCD5 /* ColorClashTests.swift */; };
 		4C8DC1F3256E240700ECCCD5 /* ColorClashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1F2256E240700ECCCD5 /* ColorClashUITests.swift */; };
 		4C8DC210256E28F400ECCCD5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */; };
+		4CA786902623AD7800E42485 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7868F2623AD7800E42485 /* StoreKit.framework */; };
 		4CB7BDF425BFB4780043EC21 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4CB7BDF325BFB4760043EC21 /* BackgroundMusic.mp3 */; };
 		4CB7BDFC25BFCD840043EC21 /* BackgroundMusic2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4CB7BDFB25BFCD840043EC21 /* BackgroundMusic2.mp3 */; };
 		4CDDA03625770864001DB53F /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDDA03525770863001DB53F /* MusicPlayer.swift */; };
@@ -116,6 +117,7 @@
 		4C8DC1F2256E240700ECCCD5 /* ColorClashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorClashUITests.swift; sourceTree = "<group>"; };
 		4C8DC1F4256E240700ECCCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C8DC20F256E28F300ECCCD5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4CA7868F2623AD7800E42485 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4CB7BDF325BFB4760043EC21 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
 		4CB7BDFB25BFCD840043EC21 /* BackgroundMusic2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic2.mp3; sourceTree = "<group>"; };
 		4CDDA03525770863001DB53F /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				765467AD666DDCA5D9CEBB42 /* Pods_ColorClash.framework in Frameworks */,
+				4CA786902623AD7800E42485 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +334,7 @@
 		6D93BE2A7C17A5B108C2F30C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CA7868F2623AD7800E42485 /* StoreKit.framework */,
 				B5E34C1B7231DC31BAB02B3D /* Pods_ColorClash.framework */,
 				4042CBD00CF4EABA0D87C8B3 /* Pods_ColorClash_ColorClashUITests.framework */,
 				BAC961AE35B8DF1AB7C321C6 /* Pods_ColorClashTests.framework */,

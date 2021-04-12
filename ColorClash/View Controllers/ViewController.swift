@@ -47,11 +47,13 @@ class ViewController: UIViewController {
         singleGame.gameType = board.gameType.lowercased()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        if UserDocument.docData["adsRemoved"] as! Bool == false {
+            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+            bannerView.delegate = self
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            bannerView.rootViewController = self
+            bannerView.load(GADRequest())
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
