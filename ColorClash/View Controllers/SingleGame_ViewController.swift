@@ -23,6 +23,10 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
     @IBOutlet weak var statsScrollView: UIScrollView!
     @IBOutlet weak var statsPageControl: UIPageControl!
     @IBOutlet weak var quickStatsView: UIView!
+    @IBOutlet weak var classicView: UIView!
+    @IBOutlet weak var arcadeView: UIView!
+    @IBOutlet weak var hardcoreView: UIView!
+    @IBOutlet weak var wholeView: UIView!
     
     var headers: [String] = ["High Score", "Average Score", "Games Played"]
     let boardSize: [Int] = [4, 5, 6, 7, 8, 9, 10]
@@ -38,16 +42,22 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
     override func viewDidLoad() {
         super.viewDidLoad()
         createSingleGameScoresDocument()
-        setupLayout()
+        wholeView.alpha = 0.0
+        
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         statsTimer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(changeStats), userInfo: nil, repeats: true)
+        setupLayout()
         setupPicker()
         if isStackViewLoaded == false {
             docTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkDocumentInitilization), userInfo: nil, repeats: true)
+        }
+        
+        UIView.animate(withDuration: 0.5) {
+            self.wholeView.alpha = 1.0
         }
     }
     
@@ -106,6 +116,7 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
     func setupLayout() {
         let buttonWidth = classicButton.frame.width
         let buttonHeight = classicButton.frame.height
+        let constraintAmount = buttonHeight * 0.407
         quickStatsView.alpha = 0.0
         singleGameTitleLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 0.0)
         quickStatsTitleLabel.setupLabel(font: "aArang", size: 100.0, shadowOpacity: 0.3, shadowRadius: 5.0, shadowColor: 255.0)
@@ -113,8 +124,21 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
         arcadeButton.setupButton(font: "Abingdon", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         hardcoreButton.setupButton(font: "aAssassinNinja", size: 75.0, horizontalInsets: buttonWidth/4, verticalInsets: buttonHeight, shadowOpacity: 0.3, shadowRadius: 10.0, shadowColor: 0.0)
         classicInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
+        classicInfoButton.contentMode = .scaleAspectFit
         arcadeInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
+        arcadeInfoButton.contentMode = .scaleAspectFit
         hardcoreInfoButton.addTarget(self, action: #selector(showInfo(sender:)), for: .touchUpInside)
+        hardcoreInfoButton.contentMode = .scaleAspectFit
+        
+        let classicTopConstraint = classicInfoButton.topAnchor.constraint(equalTo: classicView.topAnchor, constant: constraintAmount)
+        let classicBottomConstraint = classicInfoButton.bottomAnchor.constraint(equalTo: classicView.bottomAnchor, constant: -constraintAmount)
+        let arcadeTopConstraint = arcadeInfoButton.topAnchor.constraint(equalTo: arcadeView.topAnchor, constant: constraintAmount)
+        let arcadeBottomConstraint = arcadeInfoButton.bottomAnchor.constraint(equalTo: arcadeView.bottomAnchor, constant: -constraintAmount)
+        let hardcoreTopConstraint = hardcoreInfoButton.topAnchor.constraint(equalTo: hardcoreView.topAnchor, constant: constraintAmount)
+        let hardcoreBottomConstraint = hardcoreInfoButton.bottomAnchor.constraint(equalTo: hardcoreView.bottomAnchor, constant: -constraintAmount)
+        classicView.addConstraints([classicTopConstraint, classicBottomConstraint])
+        arcadeView.addConstraints([arcadeTopConstraint, arcadeBottomConstraint])
+        hardcoreView.addConstraints([hardcoreTopConstraint, hardcoreBottomConstraint])
         
         classicButton.addTarget(self, action: #selector(classicButtonClicked), for: .touchUpInside)
         classicButton.tag = 0

@@ -270,6 +270,7 @@ extension Profile_ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.textLabel!.font = UIFont(name: "Futura-CondensedMedium", size: 40.0)
+        cell.textLabel!.textColor = .white
         cell.textLabel!.textAlignment = .center
         cell.textLabel!.font = cell.fontToFitHeight()
         cell.textLabel!.adjustsFontSizeToFitWidth = true

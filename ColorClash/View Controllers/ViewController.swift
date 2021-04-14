@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var scoreTitleLabel: CustomLabel!
     @IBOutlet weak var scoreLabel: CustomLabel!
+    @IBOutlet weak var gameView: UIView!
     
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
@@ -214,7 +215,10 @@ class ViewController: UIViewController {
     }
     
     func createBoardGraphically() {
-        let boardDimension = view.frame.width - 20
+        var boardDimension = view.frame.width - 20
+        if boardDimension > 500 {
+            boardDimension = 500
+        }
         let boardSpacing = (boardDimension / CGFloat(xMax) / 15)
         
         //create board

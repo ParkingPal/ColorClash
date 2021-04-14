@@ -17,6 +17,8 @@ class Board {
     var gameType: String
     var scoreChanged = false
     var movesTotal = 0
+    var removedSecondaryTiles = [Tile]()
+    var removedSecondaryTilesDirections = [UISwipeGestureRecognizer.Direction]()
     
     init(xMax: Int, yMax: Int, gameType: String) {
         self.xMax = xMax
@@ -247,11 +249,20 @@ class Board {
                     color.moveCombined = movesTotal
                     
                     if combineType == "Secondary" {
-                        checkForHazard(tile: tile, direction: direction)
+                        //checkForHazard(tile: tile, direction: direction)
+                        removedSecondaryTiles.append(tile)
+                        removedSecondaryTilesDirections.append(direction)
                     }
                 }
             }
         }
+        
+        for (index, tile) in removedSecondaryTiles.enumerated() {
+            checkForHazard(tile: tile, direction: removedSecondaryTilesDirections[index])
+        }
+        
+        removedSecondaryTiles.removeAll()
+        removedSecondaryTilesDirections.removeAll()
         
         return (isValidMove, tilesDidCombine)
     }

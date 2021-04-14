@@ -10,9 +10,16 @@ import Firebase
 import AuthenticationServices
 import CryptoKit
 
-class Login_ViewController: UIViewController, ASAuthorizationControllerPresentationContextProviding {
+class Login_ViewController: UIViewController, ASAuthorizationControllerPresentationContextProviding, UIScrollViewDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var signInView: UIView!
+    @IBOutlet weak var titleView: UIView!
+    
+    var images: [String] = ["ColorClashAppIcon_Transparent", "CombineColors1", "OvercomeObstacles1"]
+    var frame = CGRect(x:0, y:0, width: 0, height: 0)
     
     fileprivate var currentNonce: String?
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -20,8 +27,49 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleView.alpha = 0.0
+        scrollView.alpha = 0.0
+        signInView.alpha = 0.0
+        
         setupSignInButton()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        for index in 0 ..< images.count {
+            frame.origin.x = scrollView.frame.width * CGFloat(index)
+            frame.size = scrollView.frame.size
+            
+            let imageView = UIImageView(frame: frame)
+            imageView.image = UIImage(named: images[index])
+            imageView.contentMode = .scaleAspectFit
+            
+            self.scrollView.addSubview(imageView)
+        }
+        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width * CGFloat(images.count)), height: 1)
+        scrollView.delegate = self
+        
+        UIView.animate(withDuration: 0.5) {
+            self.scrollView.alpha = 1.0
+            self.signInView.alpha = 1.0
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
+        
+        if pageControl.currentPage == 0 {
+            UIView.animate(withDuration: 0.5) {
+                self.titleView.alpha = 0.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.titleView.alpha = 1.0
+            }
+        }
     }
     
     enum AppleNameError: Error {
