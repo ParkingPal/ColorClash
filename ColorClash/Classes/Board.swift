@@ -53,7 +53,7 @@ class Board {
         } while isTileOccupied(xPos: randomX, yPos: randomY)
         
         let newHazard = Hazard(xCoord: randomX, yCoord: randomY, xPos: tileCoordsWithPositions[[randomX,randomY]]![0], yPos: tileCoordsWithPositions[[randomX,randomY]]![1], width: tileWidth, height: tileHeight)
-        newHazard.isUserInteractionEnabled = true
+        //newHazard.isUserInteractionEnabled = true
         
         if hazardValue == 0 {
             newHazard.image = UIImage(named: "BlackTileBevel.png")
@@ -363,6 +363,14 @@ class Board {
             checkHazardRight(tile: combinedTile)
             checkHazardUp(tile: combinedTile)
             checkHazardDown(tile: combinedTile)
+        }
+        
+        ///Check the actual coordinate the hazard is at after movement. Would have to have been adjacent
+        if let checkedTile = board[tile.xCoord][tile.yCoord] {
+            if checkedTile.type == "Hazard" {
+                removeTile(xPos: checkedTile.xCoord, yPos: checkedTile.yCoord)
+                checkedTile.removeFromSuperview()
+            }
         }
     }
     

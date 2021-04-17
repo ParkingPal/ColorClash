@@ -8,6 +8,7 @@ target 'ColorClash' do
   # Pods for ColorClash
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'TheAnimation'
   pod 'Google-Mobile-Ads-SDK'

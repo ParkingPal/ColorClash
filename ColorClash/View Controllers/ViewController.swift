@@ -49,11 +49,22 @@ class ViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         if UserDocument.docData["adsRemoved"] as! Bool == false {
-            bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-            bannerView.delegate = self
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            bannerView.rootViewController = self
-            bannerView.load(GADRequest())
+            Firestore.firestore().collection("Ad IDs").document("Ad IDs").getDocument { (document, error) in
+                if error == nil {
+                    self.bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                    self.bannerView.delegate = self
+                    
+                    guard let adID = document?.data()?["Banner"] as? String else {
+                        //FirebaseQuery.reportGuardCrash(vc: self, funcName: "loadAd", varName: "adID")
+                        return
+                    }
+                    self.bannerView.adUnitID = adID
+                    self.bannerView.rootViewController = self
+                    self.bannerView.load(GADRequest())
+                } else {
+                    print("can't load banner ad")
+                }
+            }
         }
     }
     
