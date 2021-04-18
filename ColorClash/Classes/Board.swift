@@ -303,9 +303,10 @@ class Board {
         }
         
         if checkType == tileType {
+            let color = checkTile as! Color
             if tileType == "Primary" && checkType == "Primary" && checkTile!.value != tile.value {
                 return (true, "Primary")
-            } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value) {
+            } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value && color.moveCombined != movesTotal) {
                 return (true, "Secondary")
             }
         }
@@ -429,6 +430,7 @@ class Board {
             scoreChanged = true
             spacesToAdd += 1
         } else {
+            newColor.moveCombined = movesTotal
             oldColor.moveTile(oldCoords: tileCoordsWithPositions[[oldXCoord, oldYCoord]]!, newCoords: tileCoordsWithPositions[[newColor.xCoord, newColor.yCoord]]!, tileSize: tileSize, isCombined: true, newColor: newColor, newImage: newImage)
             removeTile(xPos: oldColor.xCoord, yPos: oldColor.yCoord)
         }
