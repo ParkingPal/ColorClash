@@ -174,6 +174,7 @@ class ViewController: UIViewController {
     
     func addHazard() {
         let hazard = board.addHazard(moveNumber: board.movesTotal, gameBoardView: gameBoardView, tileCoordsWithPositions: tileCoordsWithPositions, tileWidth: tileWidth, tileHeight: tileHeight)
+        hazard.growAndAppearTile()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hazardTapped(tapGestureRecognizer:)))
         hazard.addGestureRecognizer(tapGestureRecognizer)
@@ -193,7 +194,7 @@ class ViewController: UIViewController {
         
         singleGame.gameOver(score: board.score)
         
-        scoreLabel.text = "Final Score: \(String(board.score))"
+        scoreLabel.text = "Game Over"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.performSegue(withIdentifier: "toContinueGame", sender: self)

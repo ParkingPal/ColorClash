@@ -802,6 +802,7 @@
 				CODE_SIGN_ENTITLEMENTS = ColorClash/ColorClash.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -826,6 +827,7 @@
 				CODE_SIGN_ENTITLEMENTS = ColorClash/ColorClash.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

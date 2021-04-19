@@ -303,10 +303,10 @@ class Board {
         }
         
         if checkType == tileType {
-            let color = checkTile as! Color
+            let color = checkTile as? Color
             if tileType == "Primary" && checkType == "Primary" && checkTile!.value != tile.value {
                 return (true, "Primary")
-            } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value && color.moveCombined != movesTotal) {
+            } else if (tileType == "Secondary" && checkType == "Secondary" && checkTile!.value == tile.value && color?.moveCombined != movesTotal) {
                 return (true, "Secondary")
             }
         }
