@@ -371,15 +371,17 @@ class ViewController: UIViewController {
                     hazardMultiple -= 1
                 }
                 
-                if board.movesTotal.isMultiple(of: hazardMultiple) {
+                if board.movesTotal.isMultiple(of: hazardMultiple) && hazardOwed == false {
                     if board.emptyTiles().isEmpty || board.emptyTiles().count == 1 {
                         hazardOwed = true
                     } else {
                         addHazard()
                     }
                 } else if hazardOwed == true {
-                    addHazard()
-                    hazardOwed = false
+                    if board.emptyTiles().count > 1 {
+                        addHazard()
+                        hazardOwed = false
+                    }
                 }
             }
             

@@ -14,6 +14,7 @@ class ContinueGameViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var popupView: UIView!
     
     var score = 0
     var adFailed = 0
