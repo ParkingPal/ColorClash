@@ -45,6 +45,8 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
         wholeView.alpha = 0.0
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Josefin Sans", size: 30.0)!, NSAttributedString.Key.foregroundColor: UIColor(red: 176/255, green: 224/255, blue: 230/255, alpha: 1.0)]
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle.fill")!, style: .plain, target: self, action: #selector(infoButtonClicked(sender:)))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +66,22 @@ class SingleGame_ViewController: UIViewController, UIScrollViewDelegate, UIPopov
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         statsTimer.invalidate()
+    }
+    
+    @objc func infoButtonClicked(sender: UIBarButtonItem) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "infoPopover") as! InfoPopover
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.barButtonItem = sender
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        
+        let width = self.view.frame.width
+        popController.preferredContentSize = CGSize(width: width - 30, height: 210)
+        
+        popController.gameType = "How to Play"
+        popController.desc = "Combine primary colors (Red, Blue, & Yellow) to form secondary colors (Red/Blue: Purple, Red/Yellow: Orange, Blue/Yellow: Green. Then combine matching secondary colors together to score points, and get rid of Black Boxes in Arcade and Hardcore game modes."
+        
+        present(popController, animated: true, completion: nil)
     }
     
     @objc func checkDocumentInitilization() {
