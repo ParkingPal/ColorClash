@@ -68,6 +68,16 @@ class ViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent || self.isBeingDismissed {
+            Firestore.firestore().collection("Games").document().setData(["authID": Auth.auth().currentUser!.uid, "score": board.score, "gameType": board.gameType, "boardSize": xMax + 1, "timeFinished": FieldValue.serverTimestamp()], merge: true)
+            
+            singleGame.gameOver(score: board.score)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         addTileViewsToArray()
