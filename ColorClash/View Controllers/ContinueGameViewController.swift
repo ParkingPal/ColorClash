@@ -18,7 +18,7 @@ class ContinueGameViewController: UIViewController {
     
     var score = 0
     var adFailed = 0
-    var interstitial: GADInterstitial!
+    var interstitial: GADInterstitialAd?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +37,15 @@ class ContinueGameViewController: UIViewController {
                     //FirebaseQuery.reportGuardCrash(vc: self, funcName: "loadAd", varName: "adID")
                     return
                 }
-                
-                self.interstitial = GADInterstitial(adUnitID: "\(adID)")
-                self.interstitial.delegate = self
                 let request = GADRequest()
-                self.interstitial.load(request)
+                GADInterstitialAd.load(withAdUnitID: adID, request: request, completionHandler: { [self] ad, error in
+                    if let error = error {
+                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                        return
+                    }
+                    interstitial = ad
+                    self.interstitial?.fullScreenContentDelegate = self
+                })
             } else {
                 print("cant load ad")
             }
@@ -51,8 +55,8 @@ class ContinueGameViewController: UIViewController {
     @objc func continueButtonClicked() {
         if UserDocument.docData["adsRemoved"] as! Bool == false {
             if adFailed < 3 {
-                if interstitial.isReady {
-                    interstitial.present(fromRootViewController: self)
+                if interstitial != nil {
+                    interstitial?.present(fromRootViewController: self)
                 } else {
                     adFailed += 1
                     print("Ad isn't ready")
@@ -77,10 +81,22 @@ class ContinueGameViewController: UIViewController {
 
 }
 
-extension ContinueGameViewController: GADInterstitialDelegate {
-    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+extension ContinueGameViewController: GADFullScreenContentDelegate {
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         //let name = Notification.Name(rawValue: fromContinueGameKey)
         //NotificationCenter.default.post(name: name, object: nil)
         performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+        print("Ad did dismiss full screen content.")
     }
 }

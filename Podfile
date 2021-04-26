@@ -12,6 +12,7 @@ target 'ColorClash' do
   pod 'Firebase/Auth'
   pod 'TheAnimation'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'FacebookCore'
 
   target 'ColorClashTests' do
     inherit! :search_paths

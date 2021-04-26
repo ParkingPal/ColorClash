@@ -10,6 +10,7 @@ import Firebase
 import AVFoundation
 import UserNotifications
 import GoogleMobileAds
+import FacebookCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -47,8 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
         
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         // Override point for customization after application launch.
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -119,10 +129,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 
 extension AppDelegate: MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase registration token: \(String(describing: fcmToken))")
-        let dataDict:[String: String] = ["tokenID": fcmToken]
-        registrationToken = fcmToken
+        let dataDict:[String: String?] = ["tokenID": fcmToken]
+        
+        if fcmToken != nil {
+            registrationToken = fcmToken!
+        }
         
         if Auth.auth().currentUser != nil {
             let db = Firestore.firestore()
