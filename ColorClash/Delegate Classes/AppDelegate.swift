@@ -10,7 +10,7 @@ import Firebase
 import AVFoundation
 import UserNotifications
 import GoogleMobileAds
-import FacebookCore
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
