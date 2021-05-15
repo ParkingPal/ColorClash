@@ -14,6 +14,7 @@
 		38BEC54C25787809003E6D19 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BEC54B25787809003E6D19 /* ColorHelper.swift */; };
 		38C40526256E2A0F00DD10DE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C40525256E2A0F00DD10DE /* Color.swift */; };
 		4C12FBCF261FED0E005356EE /* ContinueGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12FBCE261FED0E005356EE /* ContinueGameViewController.swift */; };
+		4C3BB0BC265031A3002C06C2 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BB0BB265031A3002C06C2 /* DemoViewController.swift */; };
 		4C3F4419257EED4000012BE4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F4418257EED4000012BE4 /* CustomLabel.swift */; };
 		4C3F441E257EFE1A00012BE4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3F441D257EFE1900012BE4 /* CustomButton.swift */; };
 		4C3F4423257F050800012BE4 /* TheBattleContinuez.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C3F4422257F050700012BE4 /* TheBattleContinuez.ttf */; };
@@ -103,6 +104,7 @@
 		38C40525256E2A0F00DD10DE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		45CB6CAF272132869B770DBA /* Pods-ColorClash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorClash.release.xcconfig"; path = "Target Support Files/Pods-ColorClash/Pods-ColorClash.release.xcconfig"; sourceTree = "<group>"; };
 		4C12FBCE261FED0E005356EE /* ContinueGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueGameViewController.swift; sourceTree = "<group>"; };
+		4C3BB0BB265031A3002C06C2 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		4C3F4418257EED4000012BE4 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4C3F441D257EFE1900012BE4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4C3F4422257F050700012BE4 /* TheBattleContinuez.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TheBattleContinuez.ttf; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				4C3F4454257F66C900012BE4 /* Store_ViewController.swift */,
 				4C8DC1D4256E240400ECCCD5 /* ViewController.swift */,
 				4C12FBCE261FED0E005356EE /* ContinueGameViewController.swift */,
+				4C3BB0BB265031A3002C06C2 /* DemoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				4CF285BD25B7FD29004FC644 /* Leader.swift in Sources */,
 				4CF8A6DA2579E19B009B98D3 /* Launch_ViewController.swift in Sources */,
 				4CF285B825B7F69C004FC644 /* LeaderboardsTableCell.swift in Sources */,
+				4C3BB0BC265031A3002C06C2 /* DemoViewController.swift in Sources */,
 				4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

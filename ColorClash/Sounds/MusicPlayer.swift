@@ -66,7 +66,9 @@ class MusicPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     func resetVolume() {
-        backgroundPlayer!.volume = regularVolume
+        if backgroundPlayer != nil {
+            backgroundPlayer!.volume = regularVolume
+        }
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

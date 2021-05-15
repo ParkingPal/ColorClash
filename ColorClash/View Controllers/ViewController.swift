@@ -9,11 +9,12 @@ import UIKit
 import Firebase
 import GoogleMobileAds
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var scoreTitleLabel: CustomLabel!
     @IBOutlet weak var scoreLabel: CustomLabel!
     @IBOutlet weak var gameView: UIView!
+    @IBOutlet weak var howToPlayButton: UIButton!
     
     var tileHeight: CGFloat = 0.0
     var tileWidth: CGFloat = 0.0
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
         setupLabels()
         createBoardGraphically()
         createGestures()
+        setupHTPButton()
         
         singleGame.boardSize = xMax + 1
         singleGame.gameType = board.gameType.lowercased()
@@ -111,6 +113,34 @@ class ViewController: UIViewController {
                 self.gameBoardView.alpha = 1.0
             }
         }
+    }
+    
+    func setupHTPButton() {
+        howToPlayButton.titleLabel?.font = UIFont(name: "Josefin Sans", size: 25.0)
+        howToPlayButton.titleLabel?.numberOfLines = 0
+        howToPlayButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        howToPlayButton.titleLabel?.textAlignment = .center
+        howToPlayButton.addTarget(self, action: #selector(htpButtonClicked(sender:)), for: .touchUpInside)
+    }
+    
+    @objc func htpButtonClicked(sender: UIButton) {
+        let popController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "infoPopover") as! InfoPopover
+        popController.modalPresentationStyle = UIModalPresentationStyle.popover
+        popController.popoverPresentationController?.delegate = self
+        popController.popoverPresentationController?.sourceView = sender
+        popController.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.up
+        
+        let width = self.view.frame.width
+        popController.preferredContentSize = CGSize(width: width - 30, height: 210)
+        
+        popController.gameType = "How to Play"
+        popController.desc = "Combine primary colors (Red, Blue, & Yellow) to form secondary colors (Red/Blue: Purple, Red/Yellow: Orange, Blue/Yellow: Green. Then combine matching secondary colors together to score points, and get rid of Black Boxes in Arcade and Hardcore game modes."
+        
+        present(popController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     func loadInterstitialAd(adString: String) {

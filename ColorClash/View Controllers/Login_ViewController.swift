@@ -17,6 +17,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var signInView: UIView!
     @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var demoButton: UIButton!
     
     var images: [String] = ["ColorClashAppIcon_Transparent", "CombineColors1", "OvercomeObstacles1"]
     var frame = CGRect(x:0, y:0, width: 0, height: 0)
@@ -30,8 +31,10 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
         titleView.alpha = 0.0
         scrollView.alpha = 0.0
         signInView.alpha = 0.0
+        self.demoButton.alpha = 0.0
         
         setupSignInButton()
+        setupDemoButton()
         // Do any additional setup after loading the view.
     }
     
@@ -54,6 +57,7 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
         UIView.animate(withDuration: 0.5) {
             self.scrollView.alpha = 1.0
             self.signInView.alpha = 1.0
+            self.demoButton.alpha = 1.0
         }
     }
     
@@ -74,6 +78,16 @@ class Login_ViewController: UIViewController, ASAuthorizationControllerPresentat
     
     enum AppleNameError: Error {
         case nilName
+    }
+    
+    func setupDemoButton() {
+        demoButton.titleLabel?.font = UIFont(name: "Josefin Sans", size: 25.0)
+        demoButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        demoButton.addTarget(self, action: #selector(demoButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func demoButtonClicked() {
+        performSegue(withIdentifier: "toDemo", sender: self)
     }
     
     func setupSignInButton() {

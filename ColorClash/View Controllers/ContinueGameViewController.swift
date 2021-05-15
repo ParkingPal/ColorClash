@@ -19,6 +19,7 @@ class ContinueGameViewController: UIViewController {
     var score = 0
     var adFailed = 0
     var interstitial: GADInterstitialAd?
+    var fromDemo = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,7 @@ class ContinueGameViewController: UIViewController {
     }
     
     @objc func continueButtonClicked() {
-        if UserDocument.docData["adsRemoved"] as! Bool == false {
+        if fromDemo {
             if adFailed < 3 {
                 if interstitial != nil {
                     interstitial?.present(fromRootViewController: self)
@@ -40,10 +41,23 @@ class ContinueGameViewController: UIViewController {
                     print("Ad isn't ready")
                 }
             } else if adFailed >= 3 {
-                performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+                performSegue(withIdentifier: "unwindToLogin", sender: self)
             }
         } else {
-            performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+            if UserDocument.docData["adsRemoved"] as! Bool == false {
+                if adFailed < 3 {
+                    if interstitial != nil {
+                        interstitial?.present(fromRootViewController: self)
+                    } else {
+                        adFailed += 1
+                        print("Ad isn't ready")
+                    }
+                } else if adFailed >= 3 {
+                    performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+                }
+            } else {
+                performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+            }
         }
     }
 
@@ -74,7 +88,11 @@ extension ContinueGameViewController: GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         //let name = Notification.Name(rawValue: fromContinueGameKey)
         //NotificationCenter.default.post(name: name, object: nil)
-        performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+        if fromDemo {
+            performSegue(withIdentifier: "unwindToLogin", sender: self)
+        } else {
+            performSegue(withIdentifier: "unwindToSingleGame", sender: self)
+        }
         print("Ad did dismiss full screen content.")
     }
 }
