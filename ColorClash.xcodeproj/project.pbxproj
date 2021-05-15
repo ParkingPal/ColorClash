@@ -29,7 +29,7 @@
 		4C69EA5C257C5BE500C3D2F2 /* AbingdonBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA5B257C5BE400C3D2F2 /* AbingdonBold.ttf */; };
 		4C69EA64257C611800C3D2F2 /* AssassinNinja.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA63257C611700C3D2F2 /* AssassinNinja.ttf */; };
 		4C69EA6C257C624100C3D2F2 /* HeyNovember.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C69EA6B257C624000C3D2F2 /* HeyNovember.ttf */; };
-		4C8B8EDC263F73FE00F60F9A /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C8B8EDC263F73FE00F60F9A /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C8DC1D1256E240400ECCCD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D0256E240400ECCCD5 /* AppDelegate.swift */; };
 		4C8DC1D3256E240400ECCCD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D2256E240400ECCCD5 /* SceneDelegate.swift */; };
 		4C8DC1D5256E240400ECCCD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DC1D4256E240400ECCCD5 /* ViewController.swift */; };
@@ -86,7 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4C8B8EDC263F73FE00F60F9A /* BuildFile in Embed Frameworks */,
+				4C8B8EDC263F73FE00F60F9A /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,7 +818,7 @@
 				CODE_SIGN_ENTITLEMENTS = ColorClash/ColorClash.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -966,7 +966,7 @@
 				CODE_SIGN_ENTITLEMENTS = ColorClash/ColorClash.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y58Z2JJ8PD;
 				INFOPLIST_FILE = ColorClash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

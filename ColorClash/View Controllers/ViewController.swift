@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     var hazardOwed = false
     var bannerView: GADBannerView!
-    private var interstitial: GADInterstitialAd!
+    var interstitial: GADInterstitialAd?
     
     var turns = [Int]()
     var start = [[String: Int]]()
@@ -65,6 +65,8 @@ class ViewController: UIViewController {
                     print("can't load banner ad")
                 }
             }
+            
+            loadInterstitialAd(adString: "After Game")
         }
     }
     
@@ -107,6 +109,27 @@ class ViewController: UIViewController {
             
             UIView.animate(withDuration: 0.5) {
                 self.gameBoardView.alpha = 1.0
+            }
+        }
+    }
+    
+    func loadInterstitialAd(adString: String) {
+        Firestore.firestore().collection("Ad IDs").document("Ad IDs").getDocument { (document, error) in
+            if error == nil {
+                guard let adID = document?.data()?["\(adString)"] as? String else {
+                    //FirebaseQuery.reportGuardCrash(vc: self, funcName: "loadAd", varName: "adID")
+                    return
+                }
+                let request = GADRequest()
+                GADInterstitialAd.load(withAdUnitID: adID, request: request, completionHandler: { [self] ad, error in
+                    if let error = error {
+                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                        return
+                    }
+                    interstitial = ad
+                })
+            } else {
+                print("cant load ad")
             }
         }
     }
@@ -410,6 +433,7 @@ class ViewController: UIViewController {
         if segue.identifier == "toContinueGame" {
             let continueGameVC = segue.destination as! ContinueGameViewController
             continueGameVC.score = board.score
+            continueGameVC.interstitial = self.interstitial
         }
     }
 }

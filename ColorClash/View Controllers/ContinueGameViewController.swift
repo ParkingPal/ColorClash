@@ -24,31 +24,9 @@ class ContinueGameViewController: UIViewController {
         super.viewDidLoad()
         scoreLabel.text = String(score)
         continueButton.addTarget(self, action: #selector(continueButtonClicked), for: .touchUpInside)
-
-        if UserDocument.docData["adsRemoved"] as! Bool == false {
-            loadInterstitialAd(adString: "After Game")
-        }
-    }
-    
-    func loadInterstitialAd(adString: String) {
-        Firestore.firestore().collection("Ad IDs").document("Ad IDs").getDocument { (document, error) in
-            if error == nil {
-                guard let adID = document?.data()?["\(adString)"] as? String else {
-                    //FirebaseQuery.reportGuardCrash(vc: self, funcName: "loadAd", varName: "adID")
-                    return
-                }
-                let request = GADRequest()
-                GADInterstitialAd.load(withAdUnitID: adID, request: request, completionHandler: { [self] ad, error in
-                    if let error = error {
-                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                        return
-                    }
-                    interstitial = ad
-                    self.interstitial?.fullScreenContentDelegate = self
-                })
-            } else {
-                print("cant load ad")
-            }
+        
+        if interstitial != nil {
+            self.interstitial?.fullScreenContentDelegate = self
         }
     }
     
