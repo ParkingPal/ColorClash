@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 class DemoViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
@@ -103,7 +104,7 @@ class DemoViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     func loadBannerAd() {
-        self.bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        self.bannerView = GADBannerView(adSize: GADAdSizeBanner)
         self.bannerView.delegate = self
         
         self.bannerView.adUnitID = "ca-app-pub-2313664443232233/5270628424"

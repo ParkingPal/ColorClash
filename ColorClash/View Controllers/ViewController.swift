@@ -53,7 +53,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if UserDocument.docData["adsRemoved"] as! Bool == false {
             Firestore.firestore().collection("Ad IDs").document("Ad IDs").getDocument { (document, error) in
                 if error == nil {
-                    self.bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+                    self.bannerView = GADBannerView(adSize: GADAdSizeBanner)
                     self.bannerView.delegate = self
                     
                     guard let adID = document?.data()?["Banner"] as? String else {
